@@ -1,18 +1,19 @@
 # mMass Backup Repository
 
-This is the official source code backup repository for mMass software. Although
-mMass is no longer actively developed and supported I decided to put the code
-here for others to be able easily share it, fork it and all the git craziness.
-Feel free to make your own changes but please do not expect further
-contributions from my side.
+This is the official source code backup repository for
+[mMass](https://www.mmass.org) software. Although mMass is no longer actively
+developed and supported I decided to put the code here for others to be able
+to share it, fork it and all the git craziness. Feel free to make your own
+changes but please do not expect further contributions from my side.
 
-At the time of writing the mMass code I was really not a programmer!
+At the time of writing the mMass code I was really not a programmer.
 Programming was just a hobby and I was doing it rather for fun. Please respect
 this while reading and modifying the original code :)
 
-Thank you for your interest, and ... have fun! For more information and latest
-distributions please see the official mMass homepage at
-[www.mmass.org](https://www.mmass.org).
+For more information and latest distributions please see the official mMass
+homepage at [www.mmass.org](https://www.mmass.org).
+
+Thank you for your interest, and ... have fun!
 
 
 # Requirements
@@ -20,8 +21,8 @@ distributions please see the official mMass homepage at
 The mMass code was developed under Python 2 and has never been updated to
 Python 3. Same is true for all the dependencies such as wxPython and NumPy.
 The code was last tested against the following versions of said libraries
-and it is known to not working properly with newer versions. At the end,
-the code has not been touched since 2013.
+and **it is known to not work properly with current versions**. At the end
+of the day, the code has not been touched since 2013.
 
 - Python 2.7
 - NumPy 1.5
