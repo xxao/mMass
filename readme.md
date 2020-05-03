@@ -1,7 +1,7 @@
 # mMass Backup Repository
 
 This is the official source code backup repository for
-[mMass](https://www.mmass.org) software. Although mMass is no longer actively
+[mMass](http://www.mmass.org) software. Although mMass is no longer actively
 developed and supported I decided to put the code here for others to be able
 to share it, fork it and all the git craziness. Feel free to make your own
 changes but please do not expect further contributions from my side.
@@ -11,7 +11,7 @@ Programming was just a hobby and I was doing it rather for fun. Please respect
 this while reading and modifying the original code :)
 
 For more information and latest distributions please see the official mMass
-homepage at [www.mmass.org](https://www.mmass.org).
+homepage at [www.mmass.org](http://www.mmass.org).
 
 Thank you for your interest, and ... have fun!
 
