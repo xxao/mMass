@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mspyEnzymes version="1.0">
+  <enzyme name="Arg-C">
+    <expression><![CDATA[[R][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Asp-N">
+    <expression><![CDATA[[A-Z][D]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="1" after="0" />
+  </enzyme>
+  <enzyme name="Bromelain">
+    <expression><![CDATA[[KAY][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="CNBr-HSerLac">
+    <expression><![CDATA[[M][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="O-1C-1H-3" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Cathepsin B">
+    <expression><![CDATA[[R][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Cathepsin D">
+    <expression><![CDATA[[LF][^VAG]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Cathepsin G">
+    <expression><![CDATA[[YWF][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Chymotrypsin">
+    <expression><![CDATA[[YWFL][^P]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Clostripain">
+    <expression><![CDATA[[R][^P]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Elastase">
+    <expression><![CDATA[[AVLIGS][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Glu-C Bic">
+    <expression><![CDATA[[E][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Glu-C Phos">
+    <expression><![CDATA[[ED][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Hydroxylamine">
+    <expression><![CDATA[[N][G]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="0" />
+  </enzyme>
+  <enzyme name="Lys-C">
+    <expression><![CDATA[[K][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Lys-N">
+    <expression><![CDATA[[A-Z][K]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="1" after="0" />
+  </enzyme>
+  <enzyme name="Non-Specific">
+    <expression><![CDATA[[A-Z][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="1" after="1" />
+  </enzyme>
+  <enzyme name="Papain">
+    <expression><![CDATA[[RK][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Pepsin">
+    <expression><![CDATA[[LF][^VAG]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Proteinase K">
+    <expression><![CDATA[[YWF][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Subtilisin">
+    <expression><![CDATA[[^RHK][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Thermolysin">
+    <expression><![CDATA[[A-Z][LFIVMA]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="1" after="0" />
+  </enzyme>
+  <enzyme name="TrypAspN">
+    <expression><![CDATA[(([KR][^P])|([A-Z][D]))]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="0" />
+  </enzyme>
+  <enzyme name="TrypChymo">
+    <expression><![CDATA[[FYWLKR][^P]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Trypsin">
+    <expression><![CDATA[[KR][^P]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+  <enzyme name="Trypsin/P">
+    <expression><![CDATA[[KR][A-Z]]]></expression>
+    <formula nTerm="H" cTerm="OH" />
+    <allowMods before="0" after="1" />
+  </enzyme>
+</mspyEnzymes>

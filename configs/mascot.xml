@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mMassMascot version="1.0">
+
+   <server name="Matrix Science">
+     <param name="host" value="www.matrixscience.com" type="unicode" />
+     <param name="path" value="/" type="unicode" />
+     <param name="search" value="cgi/nph-mascot.exe" type="unicode" />
+     <param name="results" value="cgi/master_results.pl" type="unicode" />
+     <param name="export" value="cgi/export_dat_2.pl" type="unicode" />
+     <param name="params" value="cgi/get_params.pl" type="unicode" />
+   </server>
+
+</mMassMascot>

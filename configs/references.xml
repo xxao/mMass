@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mMassReferenceMasses version="1.0">
+
+  <group name="DHB Clusters - MALDI Pos Mo">
+    <reference name="DHB [M+H-H2O]+" mass="137.023320" />
+    <reference name="DHB [M+H]+" mass="155.033885" />
+    <reference name="DHB [M+Na-H2O]+" mass="159.005265" />
+    <reference name="DHB [M+Na]+" mass="177.015830" />
+    <reference name="DHB [M+K-H2O]+" mass="174.979202" />
+    <reference name="DHB [M+K]+" mass="192.989767" />
+    <reference name="DHB [2M+H-2H2O]+" mass="273.039364" />
+    <reference name="DHB [2M+H-H2O]+" mass="291.049929" />
+    <reference name="DHB [2M+H]+" mass="309.060494" />
+    <reference name="DHB [2M+Na-2H2O]+" mass="295.021309" />
+    <reference name="DHB [2M+Na-H2O]+" mass="313.031874" />
+    <reference name="DHB [2M+Na]+" mass="331.042439" />
+    <reference name="DHB [2M+K-H2O]+" mass="329.005811" />
+    <reference name="DHB [2M+K]+" mass="347.016376" />
+    <reference name="DHB [2M+K+Na-H2O]+" mass="351.995032" />
+    <reference name="DHB [3M+H-3H2O]+" mass="409.055408" />
+    <reference name="DHB [3M+H-H2O]+" mass="445.076538" />
+    <reference name="DHB [3M+H]+" mass="463.087103" />
+    <reference name="DHB [3M+Na-3H2O]+" mass="431.037353" />
+    <reference name="DHB [3M+Na-H2O]+" mass="467.058483" />
+    <reference name="DHB [3M+Na]+" mass="485.069048" />
+    <reference name="DHB [3M+K-H2O]+" mass="483.032420" />
+    <reference name="DHB [3M+K]+" mass="501.042985" />
+    <reference name="DHB [3M+K+Na-H2O]+" mass="506.021641" />
+    <reference name="DHB [4M+H-4H2O]+" mass="545.071452" />
+    <reference name="DHB [4M+H-H2O]+" mass="599.103147" />
+    <reference name="DHB [4M+H]+" mass="617.113712" />
+    <reference name="DHB [4M+Na-4H2O]+" mass="567.053397" />
+    <reference name="DHB [4M+Na-H2O]+" mass="621.085092" />
+    <reference name="DHB [4M+Na]+" mass="639.095657" />
+    <reference name="DHB [4M+K-H2O]+" mass="637.059029" />
+    <reference name="DHB [4M+K]+" mass="655.069594" />
+    <reference name="DHB [4M+K+Na-H2O]+" mass="660.048250" />
+    <reference name="DHB [5M+H-5H2O]+" mass="681.087496" />
+    <reference name="DHB [5M+H-H2O]+" mass="753.129756" />
+    <reference name="DHB [5M+H]+" mass="771.140321" />
+    <reference name="DHB [5M+Na-H2O]+" mass="775.111701" />
+    <reference name="DHB [5M+Na]+" mass="793.122266" />
+    <reference name="DHB [5M+K-H2O]+" mass="791.085638" />
+    <reference name="DHB [5M+K]+" mass="809.096203" />
+    <reference name="DHB [5M+K+Na-H2O]+" mass="814.074859" />
+    <reference name="DHB [6M+H-6H2O]+" mass="817.103540" />
+    <reference name="DHB [6M+H-H2O]+" mass="907.156365" />
+    <reference name="DHB [6M+H]+" mass="925.166930" />
+    <reference name="DHB [6M+Na-H2O]+" mass="929.138310" />
+    <reference name="DHB [6M+Na]+" mass="947.148875" />
+    <reference name="DHB [6M+K-H2O]+" mass="945.112247" />
+    <reference name="DHB [6M+K]+" mass="963.122812" />
+    <reference name="DHB [6M+K+Na-H2O]+" mass="968.101468" />
+    <reference name="DHB [7M+H-7H2O]+" mass="953.119584" />
+    <reference name="DHB [7M+H-H2O]+" mass="1061.182974" />
+    <reference name="DHB [7M+H]+" mass="1079.193539" />
+    <reference name="DHB [7M+Na-H2O]+" mass="1083.164919" />
+    <reference name="DHB [7M+Na]+" mass="1101.175484" />
+    <reference name="DHB [7M+K-H2O]+" mass="1099.138856" />
+    <reference name="DHB [7M+K]+" mass="1117.149421" />
+    <reference name="DHB [7M+K+Na-H2O]+" mass="1122.128077" />
+  </group>
+
+  <group name="HCCA Clusters - MALDI Pos Mo">
+    <reference name="HCCA [M+H-H2O]+" mass="172.039304" />
+    <reference name="HCCA [M+H]+" mass="190.049869" />
+    <reference name="HCCA [M+Na-H2O]+" mass="194.021249" />
+    <reference name="HCCA [M+Na]+" mass="212.031814" />
+    <reference name="HCCA [M+K-H2O]+" mass="209.995186" />
+    <reference name="HCCA [M+K]+" mass="228.005751" />
+    <reference name="HCCA [2M+H-H2O]+" mass="361.081897" />
+    <reference name="HCCA [2M+H]+" mass="379.092462" />
+    <reference name="HCCA [2M+Na-H2O]+" mass="383.063842" />
+    <reference name="HCCA [2M+Na]+" mass="401.074407" />
+    <reference name="HCCA [2M+K-H2O]+" mass="399.037779" />
+    <reference name="HCCA [2M+K]+" mass="417.048344" />
+    <reference name="HCCA [2M+K+Na-H2O]+" mass="422.027000" />
+    <reference name="HCCA [3M+H-H2O]+" mass="550.124490" />
+    <reference name="HCCA [3M+H]+" mass="568.135055" />
+    <reference name="HCCA [3M+Na-H2O]+" mass="572.106435" />
+    <reference name="HCCA [3M+Na]+" mass="590.117000" />
+    <reference name="HCCA [3M+K-H2O]+" mass="588.080372" />
+    <reference name="HCCA [3M+K]+" mass="606.090937" />
+    <reference name="HCCA [3M+K+Na-H2O]+" mass="611.069593" />
+    <reference name="HCCA [4M+H-H2O]+" mass="739.167083" />
+    <reference name="HCCA [4M+H]+" mass="757.177648" />
+    <reference name="HCCA [4M+Na-H2O]+" mass="761.149028" />
+    <reference name="HCCA [4M+Na]+" mass="779.159593" />
+    <reference name="HCCA [4M+K-H2O]+" mass="777.122965" />
+    <reference name="HCCA [4M+K]+" mass="795.133530" />
+    <reference name="HCCA [4M+K+Na-H2O]+" mass="800.112186" />
+    <reference name="HCCA [5M+H-H2O]+" mass="928.209676" />
+    <reference name="HCCA [5M+H]+" mass="946.220241" />
+    <reference name="HCCA [5M+Na-H2O]+" mass="950.191621" />
+    <reference name="HCCA [5M+Na]+" mass="968.202186" />
+    <reference name="HCCA [5M+K-H2O]+" mass="966.165558" />
+    <reference name="HCCA [5M+K]+" mass="984.176123" />
+    <reference name="HCCA [5M+K+Na-H2O]+" mass="989.154779" />
+    <reference name="HCCA [6M+H-H2O]+" mass="1117.252269" />
+    <reference name="HCCA [6M+H]+" mass="1135.262834" />
+    <reference name="HCCA [6M+Na-H2O]+" mass="1139.234214" />
+    <reference name="HCCA [6M+Na]+" mass="1157.244779" />
+    <reference name="HCCA [6M+K-H2O]+" mass="1155.208151" />
+    <reference name="HCCA [6M+K]+" mass="1173.218716" />
+    <reference name="HCCA [6M+K+Na-H2O]+" mass="1178.197372" />
+    <reference name="HCCA [7M+H-H2O]+" mass="1306.294862" />
+    <reference name="HCCA [7M+H]+" mass="1324.305427" />
+    <reference name="HCCA [7M+Na-H2O]+" mass="1328.276807" />
+    <reference name="HCCA [7M+Na]+" mass="1346.287372" />
+    <reference name="HCCA [7M+K-H2O]+" mass="1344.250744" />
+    <reference name="HCCA [7M+K]+" mass="1362.261309" />
+    <reference name="HCCA [7M+K+Na-H2O]+" mass="1367.239965" />
+  </group>
+
+  <group name="Trypsin (Porcine) - MALDI Pos Mo">
+    <reference name="Trypsin (108-115) [M+H]+" mass="842.509400" />
+    <reference name="Trypsin (209-216) [M+H]+" mass="906.504400" />
+    <reference name="Trypsin (1-8) [M+H]+" mass="952.389400" />
+    <reference name="Trypsin (148-157) [M+H]+" mass="1006.487400" />
+    <reference name="Trypsin (98-107) [M+H]+" mass="1045.563700" />
+    <reference name="Trypsin (134-147) [M+H]+" mass="1469.730500" />
+    <reference name="Trypsin (58-72) [M+H]+" mass="1713.808400" />
+    <reference name="Trypsin (217-231) [M+H]+" mass="1736.842500" />
+    <reference name="Trypsin (116-133) [M+H]+" mass="1768.799300" />
+    <reference name="Trypsin (62-77) [M+H]+" mass="1774.897500" />
+    <reference name="Trypsin (58-76) [M+H]+" mass="2083.009600" />
+    <reference name="Trypsin (158-178) [M+H]+" mass="2158.030700" />
+    <reference name="Trypsin (58-77) [M+H]+" mass="2211.104000" />
+    <reference name="Trypsin (78-97) [M+H]+" mass="2283.180200" />
+    <reference name="Trypsin (179-208) [M+H]+" mass="3013.323700" />
+  </group>
+
+  <group name="In-Gel (Trypsin) - MALDI Pos Mo">
+    <reference name="Keratin 10 [M+H]+" mass="1165.585300" />
+    <reference name="Keratin 1/II [M+H]+" mass="1179.601000" />
+    <reference name="Keratin 1/II [M+H]+" mass="1300.530200" />
+    <reference name="Keratin 1/II [M+H]+" mass="1716.851700" />
+    <reference name="Keratin 1/II [M+H]+" mass="1993.976700" />
+    <reference name="Keratin 1 [M+H]+" mass="2383.952000" />
+    <reference name="Keratin 10 [M+H]+" mass="2825.405600" />
+    <reference name="Trypsin (108-115) [M+H]+" mass="842.509400" />
+    <reference name="Trypsin (209-216) [M+H]+" mass="906.504400" />
+    <reference name="Trypsin (1-8) [M+H]+" mass="952.389400" />
+    <reference name="Trypsin (148-157) [M+H]+" mass="1006.487400" />
+    <reference name="Trypsin (98-107) [M+H]+" mass="1045.563700" />
+    <reference name="Trypsin (134-147) [M+H]+" mass="1469.730500" />
+    <reference name="Trypsin (58-72) [M+H]+" mass="1713.808400" />
+    <reference name="Trypsin (217-231) [M+H]+" mass="1736.842500" />
+    <reference name="Trypsin (116-133) [M+H]+" mass="1768.799300" />
+    <reference name="Trypsin (62-77) [M+H]+" mass="1774.897500" />
+    <reference name="Trypsin (58-76) [M+H]+" mass="2083.009600" />
+    <reference name="Trypsin (158-178) [M+H]+" mass="2158.030700" />
+    <reference name="Trypsin (58-77) [M+H]+" mass="2211.104000" />
+    <reference name="Trypsin (78-97) [M+H]+" mass="2283.180200" />
+    <reference name="Trypsin (179-208) [M+H]+" mass="3013.323700" />
+  </group>
+  
+  <group name="Big-Pig-Mix - MALDI Pos Mo">
+    <reference name="4HCCA Cluster" mass="839.0974" />
+    <reference name="4HCCA Cluster" mass="845.1054" />
+    <reference name="4HCCA Cluster" mass="855.0714" />
+    <reference name="4HCCA Cluster" mass="861.0794" />
+    <reference name="4HCCA Cluster" mass="867.0874" />
+    <reference name="4HCCA Cluster" mass="871.0453" />
+    <reference name="4HCCA Cluster" mass="994.1555" />
+    <reference name="4HCCA Cluster" mass="1036.0828" />
+    <reference name="4HCCA Cluster" mass="1044.1140" />
+    <reference name="4HCCA Cluster" mass="1054.0933" />
+    <reference name="4HCCA Cluster" mass="1225.1254" />
+    <reference name="4HCCA Cluster" mass="1066.0959" />
+    <reference name="4HCCA Cluster" mass="1060.0879" />
+    <reference name="4HCCA Cluster" mass="568.1351" />
+    <reference name="4HCCA Cluster" mass="606.0915" />
+    <reference name="Bovine Casein a-S1" mass="742.4498" />
+    <reference name="Bovine Casein a-S1" mass="1251.7096" />
+    <reference name="Bovine Casein a-S1" mass="1267.7045" />
+    <reference name="Bovine Casein a-S1" mass="1384.7300" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="732.4654" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1002.5830" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1305.7161" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1399.6926" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1439.8118" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1443.6420" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1479.7954" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1491.7518" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1567.7427" />
+    <reference name="Bovine Serum Albumin (BSA)" mass="1639.9378" />
+    <reference name="Keratin" mass="704.3825" />
+    <reference name="Keratin" mass="809.4403" />
+    <reference name="Keratin" mass="995.5197" />
+    <reference name="Keratin" mass="1000.5673" />
+    <reference name="Keratin" mass="1003.5531" />
+    <reference name="Keratin" mass="1036.5323" />
+    <reference name="Keratin" mass="1065.4993" />
+    <reference name="Keratin" mass="1129.6212" />
+    <reference name="Keratin" mass="1141.5194" />
+    <reference name="Keratin" mass="1262.5971" />
+    <reference name="Keratin" mass="1278.5855" />
+    <reference name="Keratin" mass="1301.6583" />
+    <reference name="Keratin" mass="1315.6852" />
+    <reference name="Keratin" mass="1340.6692" />
+    <reference name="Keratin" mass="1344.6754" />
+    <reference name="Keratin" mass="1350.6873" />
+    <reference name="Keratin" mass="1390.6809" />
+    <reference name="Keratin" mass="1418.7274" />
+    <reference name="Keratin" mass="1419.7478" />
+    <reference name="Keratin" mass="1442.8002" />
+    <reference name="Keratin" mass="1453.8373" />
+    <reference name="Keratin" mass="1476.8057" />
+    <reference name="Keratin" mass="1549.6772" />
+    <reference name="Keratin" mass="1599.8337" />
+    <reference name="Keratin" mass="1792.8786" />
+    <reference name="Keratin" mass="1797.0116" />
+    <reference name="Keratin" mass="1837.9654" />
+    <reference name="Keratin" mass="1847.8051" />
+    <reference name="Keratin" mass="1851.9269" />
+    <reference name="Keratin" mass="2082.9648" />
+    <reference name="Keratin" mass="2109.0128" />
+    <reference name="Keratin" mass="2171.0247" />
+    <reference name="Keratin" mass="2184.1255" />
+    <reference name="Keratin" mass="2240.1697" />
+    <reference name="Keratin" mass="2329.1743" />
+    <reference name="Keratin" mass="2564.3679" />
+    <reference name="Keratin" mass="2581.1947" />
+    <reference name="Keratin" mass="2705.1611" />
+    <reference name="Keratin" mass="2746.4192" />
+    <reference name="Keratin" mass="2872.3928" />
+    <reference name="Keratin" mass="2902.4105" />
+    <reference name="Keratin" mass="2904.3826" />
+    <reference name="Keratin" mass="3223.2816" />
+    <reference name="Keratin (Human)" mass="804.4098" />
+    <reference name="Keratin (Human)" mass="807.3995" />
+    <reference name="Keratin (Human)" mass="827.4298" />
+    <reference name="Keratin (Human)" mass="827.4621" />
+    <reference name="Keratin (Human)" mass="832.4887" />
+    <reference name="Keratin (Human)" mass="848.4989" />
+    <reference name="Keratin (Human)" mass="874.4993" />
+    <reference name="Keratin (Human)" mass="881.4727" />
+    <reference name="Keratin (Human)" mass="973.5313" />
+    <reference name="Keratin (Human)" mass="1006.4297" />
+    <reference name="Keratin (Human)" mass="1031.5983" />
+    <reference name="Keratin (Human)" mass="1033.5160" />
+    <reference name="Keratin (Human)" mass="1037.5262" />
+    <reference name="Keratin (Human)" mass="1060.5633" />
+    <reference name="Keratin (Human)" mass="1064.6099" />
+    <reference name="Keratin (Human)" mass="1066.6044" />
+    <reference name="Keratin (Human)" mass="1071.6045" />
+    <reference name="Keratin (Human)" mass="1082.5993" />
+    <reference name="Keratin (Human)" mass="1090.5310" />
+    <reference name="Keratin (Human)" mass="1109.4898" />
+    <reference name="Keratin (Human)" mass="1118.5086" />
+    <reference name="Keratin (Human)" mass="1121.5837" />
+    <reference name="Keratin (Human)" mass="1157.5909" />
+    <reference name="Keratin (Human)" mass="1165.5848" />
+    <reference name="Keratin (Human)" mass="1179.6004" />
+    <reference name="Keratin (Human)" mass="1183.6157" />
+    <reference name="Keratin (Human)" mass="1193.6161" />
+    <reference name="Keratin (Human)" mass="1201.6171" />
+    <reference name="Keratin (Human)" mass="1208.6157" />
+    <reference name="Keratin (Human)" mass="1210.5950" />
+    <reference name="Keratin (Human)" mass="1232.5978" />
+    <reference name="Keratin (Human)" mass="1234.6790" />
+    <reference name="Keratin (Human)" mass="1235.5287" />
+    <reference name="Keratin (Human)" mass="1254.6073" />
+    <reference name="Keratin (Human)" mass="1265.6372" />
+    <reference name="Keratin (Human)" mass="1277.6332" />
+    <reference name="Keratin (Human)" mass="1277.7100" />
+    <reference name="Keratin (Human)" mass="1278.6437" />
+    <reference name="Keratin (Human)" mass="1300.5296" />
+    <reference name="Keratin (Human)" mass="1302.7012" />
+    <reference name="Keratin (Human)" mass="1302.7151" />
+    <reference name="Keratin (Human)" mass="1307.6776" />
+    <reference name="Keratin (Human)" mass="1308.6543" />
+    <reference name="Keratin (Human)" mass="1316.5246" />
+    <reference name="Keratin (Human)" mass="1320.5828" />
+    <reference name="Keratin (Human)" mass="1323.6726" />
+    <reference name="Keratin (Human)" mass="1323.6539" />
+    <reference name="Keratin (Human)" mass="1329.6393" />
+    <reference name="Keratin (Human)" mass="1336.7107" />
+    <reference name="Keratin (Human)" mass="1357.6958" />
+    <reference name="Keratin (Human)" mass="1357.7183" />
+    <reference name="Keratin (Human)" mass="1365.6393" />
+    <reference name="Keratin (Human)" mass="1371.7114" />
+    <reference name="Keratin (Human)" mass="1374.6933" />
+    <reference name="Keratin (Human)" mass="1381.6482" />
+    <reference name="Keratin (Human)" mass="1383.6903" />
+    <reference name="Keratin (Human)" mass="1393.7322" />
+    <reference name="Keratin (Human)" mass="1410.7084" />
+    <reference name="Keratin (Human)" mass="1419.7954" />
+    <reference name="Keratin (Human)" mass="1434.7700" />
+    <reference name="Keratin (Human)" mass="1438.7437" />
+    <reference name="Keratin (Human)" mass="1447.7751" />
+    <reference name="Keratin (Human)" mass="1475.7489" />
+    <reference name="Keratin (Human)" mass="1475.7853" />
+    <reference name="Keratin (Human)" mass="1491.7438" />
+    <reference name="Keratin (Human)" mass="1493.7343" />
+    <reference name="Keratin (Human)" mass="1507.7387" />
+    <reference name="Keratin (Human)" mass="1585.7584" />
+    <reference name="Keratin (Human)" mass="1638.7657" />
+    <reference name="Keratin (Human)" mass="1638.8598" />
+    <reference name="Keratin (Human)" mass="1657.7929" />
+    <reference name="Keratin (Human)" mass="1665.9044" />
+    <reference name="Keratin (Human)" mass="1687.9701" />
+    <reference name="Keratin (Human)" mass="1707.7721" />
+    <reference name="Keratin (Human)" mass="1708.7132" />
+    <reference name="Keratin (Human)" mass="1716.8511" />
+    <reference name="Keratin (Human)" mass="1744.9228" />
+    <reference name="Keratin (Human)" mass="1765.7347" />
+    <reference name="Keratin (Human)" mass="1791.7277" />
+    <reference name="Keratin (Human)" mass="1812.8583" />
+    <reference name="Keratin (Human)" mass="1838.9144" />
+    <reference name="Keratin (Human)" mass="1993.9767" />
+    <reference name="Keratin (Human)" mass="1993.9825" />
+    <reference name="Keratin (Human)" mass="2021.9887" />
+    <reference name="Keratin (Human)" mass="2096.0580" />
+    <reference name="Keratin (Human)" mass="2150.0778" />
+    <reference name="Keratin (Human)" mass="2286.1248" />
+    <reference name="Keratin (Human)" mass="2367.2627" />
+    <reference name="Keratin (Human)" mass="2383.9519" />
+    <reference name="Keratin (Human)+Mox" mass="2399.9468" />
+    <reference name="Keratin (Human)" mass="2399.0184" />
+    <reference name="Keratin (Human)" mass="2501.0672" />
+    <reference name="Keratin (Human)" mass="2501.2518" />
+    <reference name="Keratin (Human)" mass="2510.1318" />
+    <reference name="Keratin (Human)" mass="2566.2784" />
+    <reference name="Keratin (Human)" mass="2584.2063" />
+    <reference name="Keratin (Human)" mass="2932.5163" />
+    <reference name="Keratin (Human)" mass="3312.3081" />
+    <reference name="Keratin (Human), ion source fragment" mass="646.3519" />
+    <reference name="Keratin (Human), ion source fragment" mass="863.4734" />
+    <reference name="Keratin (Human), ion source fragment" mass="865.4778" />
+    <reference name="Keratin (Human), ion-source fragment" mass="1399.7005" />
+    <reference name="Porcine Trypsin" mass="571.3562" />
+    <reference name="Porcine Trypsin" mass="672.4039" />
+    <reference name="Porcine Trypsin" mass="672.4039" />
+    <reference name="Porcine Trypsin" mass="743.4410" />
+    <reference name="Porcine Trypsin" mass="758.4155" />
+    <reference name="Porcine Trypsin" mass="842.5094" />
+    <reference name="Porcine Trypsin" mass="906.5043" />
+    <reference name="Porcine Trypsin" mass="1045.5637" />
+    <reference name="Porcine Trypsin" mass="1091.5480" />
+    <reference name="Porcine Trypsin" mass="1175.6340" />
+    <reference name="Porcine Trypsin" mass="1191.6290" />
+    <reference name="Porcine Trypsin" mass="1220.5906" />
+    <reference name="Porcine Trypsin" mass="1493.5995" />
+    <reference name="Porcine Trypsin" mass="1774.8970" />
+    <reference name="Porcine Trypsin" mass="2211.1040" />
+    <reference name="Porcine Trypsin" mass="2225.1197" />
+    <reference name="Porcine Trypsin+Na" mass="2233.0860" />
+    <reference name="Porcine Trypsin" mass="2239.1353" />
+    <reference name="Porcine Trypsin+K" mass="2249.0599" />
+    <reference name="Porcine Trypsin" mass="2283.1802" />
+    <reference name="Porcine Trypsin+Mox" mass="2299.1751" />
+    <reference name="Porcine Trypsin+Na" mass="2305.16215" />
+    <reference name="Porcine Trypsin - Methylated" mass="870.5407" />
+    <reference name="Porcine Trypsin, Methylated" mass="1424.7645" />
+    <reference name="Porcine Trypsin, Methylated" mass="1623.8853" />
+    <reference name="Porcine Trypsin, Methylated" mass="1987.0780" />
+    <reference name="Porcine Trypsin, Methylated" mass="2003.0729" />
+    <reference name="Porcine Trypsin, Methylated" mass="2297.1958" />
+    <reference name="Porcine Trypsin, Methylated+Mox" mass="2313.1907" />
+    <reference name="Porcine Trypsin, Methylated" mass="2564.1809" />
+    <reference name="Porcine Trypsin, Methylated" mass="2707.4162" />
+    <reference name="Porcine Trypsin, Methylated" mass="2720.3634" />
+    <reference name="Porcine Trypsin, Methylated" mass="2748.3947" />
+    <reference name="Porcine Trypsin, Methylated" mass="2807.3141" />
+    <reference name="Porcine Trypsin, Methylated" mass="2914.5058" />
+    <reference name="Porcine Trypsin, Methylated" mass="3346.6815" />
+    <reference name="Porcine Trypsin, Methylated, Truncated" mass="1126.5640" />
+    <reference name="Porcine Trypsin, Truncated" mass="802.4305" />
+    <reference name="Porcine Trypsin, Truncated" mass="1566.7394" />
+    <reference name="Porcine Trypsin, Truncated" mass="1713.8079" />
+    <reference name="Porcine Trypsin, Truncated" mass="2083.0091" />
+    <reference name="Porcine Trypsin, Truncated, Methylated" mass="1940.9349" />
+  </group>
+
+</mMassReferenceMasses>

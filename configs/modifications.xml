@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mspyModifications version="1.0">
+  <modification name="Acetyl">
+    <description>Acetylation</description>
+    <formula gain="C2H3O" loss="H" />
+    <specifity amino="KCST" terminus="N" />
+  </modification>
+  <modification name="Amide">
+    <description>Amidation</description>
+    <formula gain="NH2" loss="OH" />
+    <specifity amino="" terminus="C" />
+  </modification>
+  <modification name="Aminotyrosine">
+    <description>Tyrosine oxidation to 2-aminotyrosine</description>
+    <formula gain="HN" loss="" />
+    <specifity amino="Y" terminus="" />
+  </modification>
+  <modification name="Biotin">
+    <description>Biotinylation</description>
+    <formula gain="H14C10N2O2S" loss="" />
+    <specifity amino="K" terminus="N" />
+  </modification>
+  <modification name="Boc">
+    <description>Boc protecting group</description>
+    <formula gain="C5H9O2" loss="H" />
+    <specifity amino="K" terminus="N" />
+  </modification>
+  <modification name="Carbamidomethyl">
+    <description>Iodoacetamide derivative</description>
+    <formula gain="CH2CONH2" loss="H" />
+    <specifity amino="CKHDE" terminus="N" />
+  </modification>
+  <modification name="Carbamyl">
+    <description>Carbamylation</description>
+    <formula gain="HCNO" loss="" />
+    <specifity amino="KRCM" terminus="N" />
+  </modification>
+  <modification name="Carboxyethyl">
+    <description>Carboxyethyl</description>
+    <formula gain="H4C3O2" loss="" />
+    <specifity amino="K" terminus="" />
+  </modification>
+  <modification name="Carboxyl">
+    <description>Carboxylation</description>
+    <formula gain="CO2" loss="" />
+    <specifity amino="WKDEM" terminus="" />
+  </modification>
+  <modification name="Carboxymethyl">
+    <description>Iodoacetic acid derivative</description>
+    <formula gain="CH2COOH" loss="H" />
+    <specifity amino="CKW" terminus="N" />
+  </modification>
+  <modification name="Cation:K">
+    <description>Replacement of proton by potassium</description>
+    <formula gain="K" loss="H" />
+    <specifity amino="DE" terminus="C" />
+  </modification>
+  <modification name="Cation:Na">
+    <description>Replacement of proton by sodium</description>
+    <formula gain="Na" loss="H" />
+    <specifity amino="DE" terminus="C" />
+  </modification>
+  <modification name="Cyano">
+    <description>Cyano</description>
+    <formula gain="CN" loss="H" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Cys-&gt;Dha">
+    <description>Dehydroalanine (from Cysteine)</description>
+    <formula gain="" loss="H2S" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Cystine">
+    <description>Half of a disulfide bridge</description>
+    <formula gain="" loss="H" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Deamidation">
+    <description>Deamidation</description>
+    <formula gain="O" loss="HN" />
+    <specifity amino="NQRF" terminus="" />
+  </modification>
+  <modification name="Dehydrated">
+    <description>Dehydration</description>
+    <formula gain="" loss="H2O" />
+    <specifity amino="NQSTYDC" terminus="" />
+  </modification>
+  <modification name="Diacylglycerol">
+    <description>Diacylglycerol</description>
+    <formula gain="H68C37O4" loss="" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Dimethyl">
+    <description>Di-Methylation</description>
+    <formula gain="C2H6" loss="H2" />
+    <specifity amino="KRNP" terminus="N" />
+  </modification>
+  <modification name="Dioxidation">
+    <description>Dihydroxy</description>
+    <formula gain="O2H2" loss="H2" />
+    <specifity amino="PRKMFWYC" terminus="" />
+  </modification>
+  <modification name="Ethanolyl">
+    <description>Ethanolation of Cys</description>
+    <formula gain="H4C2O" loss="" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Ethyl">
+    <description>Ethylation</description>
+    <formula gain="H4C2" loss="" />
+    <specifity amino="KED" terminus="N" />
+  </modification>
+  <modification name="FAD">
+    <description>Flavin adenine dinucleotide</description>
+    <formula gain="H31C27N9O15P2" loss="" />
+    <specifity amino="CHY" terminus="" />
+  </modification>
+  <modification name="FMNH">
+    <description>Flavin mononucleotide</description>
+    <formula gain="H19C17N4O9P" loss="" />
+    <specifity amino="CH" terminus="" />
+  </modification>
+  <modification name="Fluorescein">
+    <description>5-iodoacetamidofluorescein</description>
+    <formula gain="H14C22NO6" loss="" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="Fmoc">
+    <description>Fmoc protecting group</description>
+    <formula gain="C15H11O2" loss="H" />
+    <specifity amino="K" terminus="N" />
+  </modification>
+  <modification name="Formyl">
+    <description>Formylation</description>
+    <formula gain="CHO" loss="H" />
+    <specifity amino="KST" terminus="N" />
+  </modification>
+  <modification name="FormylMet">
+    <description>Addition of N-formyl Methionine</description>
+    <formula gain="H10C6NO2S" loss="" />
+    <specifity amino="" terminus="N" />
+  </modification>
+  <modification name="Guanidination">
+    <description>Homoarginine from Lysine</description>
+    <formula gain="CH3N2" loss="H" />
+    <specifity amino="K" terminus="" />
+  </modification>
+  <modification name="Guanidinyl">
+    <description>Guanidination</description>
+    <formula gain="H2CN2" loss="" />
+    <specifity amino="K" terminus="" />
+  </modification>
+  <modification name="Heme">
+    <description>Heme</description>
+    <formula gain="H32C34N4O4Fe" loss="" />
+    <specifity amino="CH" terminus="" />
+  </modification>
+  <modification name="Hep">
+    <description>Heptose</description>
+    <formula gain="C7H14O7" loss="H2O" />
+    <specifity amino="KNQRST" terminus="" />
+  </modification>
+  <modification name="Hex">
+    <description>Hexose</description>
+    <formula gain="C6H12O6" loss="H2O" />
+    <specifity amino="KNTWCRY" terminus="N" />
+  </modification>
+  <modification name="HexN">
+    <description>Hexosamine</description>
+    <formula gain="C6H13N1O5" loss="H2O" />
+    <specifity amino="KNTW" terminus="" />
+  </modification>
+  <modification name="HexNAc">
+    <description>N-Acetylhexosamine</description>
+    <formula gain="C8H15N1O6" loss="H2O" />
+    <specifity amino="NST" terminus="" />
+  </modification>
+  <modification name="Hydroxymethyl">
+    <description>Hydroxymethyl</description>
+    <formula gain="H2CO" loss="" />
+    <specifity amino="N" terminus="" />
+  </modification>
+  <modification name="Iodo">
+    <description>Iodination</description>
+    <formula gain="I" loss="H" />
+    <specifity amino="YH" terminus="" />
+  </modification>
+  <modification name="Label:13C(6)">
+    <description>13C(6) Silac label</description>
+    <formula gain="C{13}6" loss="C6" />
+    <specifity amino="KR" terminus="" />
+  </modification>
+  <modification name="Lipoyl">
+    <description>Lipoyl</description>
+    <formula gain="H12C8OS2" loss="" />
+    <specifity amino="K" terminus="" />
+  </modification>
+  <modification name="Methyl">
+    <description>Methylation</description>
+    <formula gain="CH3" loss="H" />
+    <specifity amino="CHKNQRIL" terminus="N" />
+  </modification>
+  <modification name="Myristoyl">
+    <description>Myristoylation</description>
+    <formula gain="C14H27O" loss="H" />
+    <specifity amino="GKC" terminus="N" />
+  </modification>
+  <modification name="Nitro">
+    <description>Oxidation to nitro</description>
+    <formula gain="NO2" loss="H" />
+    <specifity amino="WY" terminus="" />
+  </modification>
+  <modification name="Oxidation">
+    <description>Oxidation or Hydroxylation</description>
+    <formula gain="O" loss="" />
+    <specifity amino="ODKNPFYRMCHWG" terminus="" />
+  </modification>
+  <modification name="Palmitoyl">
+    <description>Palmitoylation</description>
+    <formula gain="C16H31O" loss="H" />
+    <specifity amino="CKST" terminus="N" />
+  </modification>
+  <modification name="Pentose">
+    <description>Pentose</description>
+    <formula gain="C5H10O5" loss="H2O" />
+    <specifity amino="STD" terminus="" />
+  </modification>
+  <modification name="Phenylisocyanate">
+    <description>Phenyl isocyanate</description>
+    <formula gain="H5C7NO" loss="" />
+    <specifity amino="" terminus="N" />
+  </modification>
+  <modification name="Phospho">
+    <description>Phosphorylation</description>
+    <formula gain="H2PO3" loss="H" />
+    <specifity amino="STYDHCR" terminus="" />
+  </modification>
+  <modification name="Propionamide">
+    <description>Acrylamide adduct</description>
+    <formula gain="C3H6ON" loss="H" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="SeCys">
+    <description>Selenium replaces sulphur in Cysteine</description>
+    <formula gain="Se" loss="S" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="SeMet">
+    <description>Selenium replaces sulphur in Methionine</description>
+    <formula gain="Se" loss="S" />
+    <specifity amino="M" terminus="" />
+  </modification>
+  <modification name="Sulfo">
+    <description>O-Sulfonation</description>
+    <formula gain="HSO3" loss="H" />
+    <specifity amino="STYC" terminus="" />
+  </modification>
+  <modification name="Tyr-&gt;Dha">
+    <description>Dehydroalanine (from Tyrosine)</description>
+    <formula gain="" loss="H6C6O" />
+    <specifity amino="Y" terminus="" />
+  </modification>
+  <modification name="dHex">
+    <description>Deoxyhexose, fucose</description>
+    <formula gain="C6H12O5" loss="H2O" />
+    <specifity amino="ST" terminus="" />
+  </modification>
+  <modification name="pCMB">
+    <description>p-Chloromercurybenzoate</description>
+    <formula gain="C7H5HgO2" loss="H" />
+    <specifity amino="C" terminus="" />
+  </modification>
+  <modification name="tButyl">
+    <description>tButyl protecting group</description>
+    <formula gain="C4H9" loss="H" />
+    <specifity amino="CDEHSTY" terminus="" />
+  </modification>
+</mspyModifications>

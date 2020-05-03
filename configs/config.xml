@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mMassConfig version="1.0">
+
+  <main>
+    <param name="appWidth" value="1043" type="int" />
+    <param name="appHeight" value="620" type="int" />
+    <param name="appMaximized" value="0" type="int" />
+    <param name="layout" value="default" type="str" />
+    <param name="documentsWidth" value="195" type="int" />
+    <param name="documentsHeight" value="550" type="int" />
+    <param name="peaklistWidth" value="195" type="int" />
+    <param name="peaklistHeight" value="550" type="int" />
+    <param name="reverseScrolling" value="0" type="int" />
+    <param name="macListCtrlGeneric" value="1" type="int" />
+    <param name="cursorInfo" value="mz;dist;ppm;z" type="str" />
+    <param name="peaklistColumns" value="mz;int;rel;sn;z;fwhm;resol" type="str" />
+    <param name="mzDigits" value="4" type="int" />
+    <param name="intDigits" value="0" type="int" />
+    <param name="ppmDigits" value="1" type="int" />
+    <param name="chargeDigits" value="2" type="int" />
+    <param name="lastDir" value="" type="unicode" />
+    <param name="lastSeqDir" value="" type="unicode" />
+    <param name="errorUnits" value="Da" type="str" />
+    <param name="printQuality" value="5" type="int" />
+    <param name="useServer" value="1" type="int" />
+    <param name="serverPort" value="65456" type="int" />
+    <param name="updatesEnabled" value="1" type="int" />
+    <param name="updatesChecked" value="" type="str" />
+    <param name="updatesCurrent" value="" type="str" />
+    <param name="updatesAvailable" value="" type="str" />
+    <param name="compassMode" value="Profile" type="str" />
+    <param name="compassFormat" value="mzML" type="str" />
+    <param name="compassDeleteFile" value="1" type="int" />
+  </main>
+
+  <recent>
+  </recent>
+
+  <colours>
+    <colour value="1047b9" />
+    <colour value="328c00" />
+    <colour value="f19000" />
+    <colour value="4cc7c5" />
+    <colour value="8f8f15" />
+    <colour value="267aff" />
+    <colour value="268f49" />
+    <colour value="edbb00" />
+    <colour value="786dff" />
+    <colour value="b34e00" />
+    <colour value="80bfbd" />
+    <colour value="898844" />
+    <colour value="c88812" />
+    <colour value="c5ca3d" />
+    <colour value="7bb6ff" />
+    <colour value="45438a" />
+    <colour value="188183" />
+    <colour value="838183" />
+    <colour value="457ec6" />
+    <colour value="bdc17b" />
+    <colour value="7f2200" />
+    <colour value="4c4e4c" />
+    <colour value="1f4a91" />
+    <colour value="0f4e4b" />
+    <colour value="4f1a51" />
+  </colours>
+
+  <export>
+    <param name="imageWidth" value="750.0" type="float" />
+    <param name="imageHeight" value="500.0" type="float" />
+    <param name="imageUnits" value="px" type="str" />
+    <param name="imageResolution" value="72" type="int" />
+    <param name="imageFontsScale" value="1" type="int" />
+    <param name="imageDrawingsScale" value="1" type="int" />
+    <param name="imageFormat" value="PNG" type="str" />
+    <param name="peaklistColumns" value="mz;int" type="str" />
+    <param name="peaklistFormat" value="ASCII" type="str" />
+    <param name="peaklistSeparator" value="tab" type="str" />
+    <param name="spectrumSeparator" value="tab" type="str" />
+  </export>
+
+  <spectrum>
+    <param name="xLabel" value="m/z" type="unicode" />
+    <param name="yLabel" value="a.i." type="unicode" />
+    <param name="showGrid" value="1" type="int" />
+    <param name="showMinorTicks" value="1" type="int" />
+    <param name="showLegend" value="1" type="int" />
+    <param name="showPosBars" value="1" type="int" />
+    <param name="showGel" value="1" type="int" />
+    <param name="showGelLegend" value="1" type="int" />
+    <param name="showTracker" value="1" type="int" />
+    <param name="showNotations" value="1" type="int" />
+    <param name="showDataPoints" value="1" type="int" />
+    <param name="showLabels" value="1" type="int" />
+    <param name="showAllLabels" value="1" type="int" />
+    <param name="showTicks" value="1" type="int" />
+    <param name="showCursorImage" value="1" type="int" />
+    <param name="posBarSize" value="7" type="int" />
+    <param name="gelHeight" value="19" type="int" />
+    <param name="autoscale" value="1" type="int" />
+    <param name="overlapLabels" value="0" type="int" />
+    <param name="checkLimits" value="1" type="int" />
+    <param name="labelAngle" value="90" type="int" />
+    <param name="labelCharge" value="1" type="int" />
+    <param name="labelGroup" value="0" type="int" />
+    <param name="labelBgr" value="1" type="int" />
+    <param name="labelFontSize" value="10" type="int" />
+    <param name="axisFontSize" value="10" type="int" />
+    <param name="tickColour" value="ff4b4b" type="str" />
+    <param name="tmpSpectrumColour" value="ff0000" type="str" />
+    <param name="notationMarksColour" value="00ff00" type="str" />
+    <param name="notationMaxLength" value="40" type="int" />
+    <param name="notationMarks" value="1" type="int" />
+    <param name="notationLabels" value="0" type="int" />
+    <param name="notationMZ" value="0" type="int" />
+  </spectrum>
+
+  <match>
+    <param name="tolerance" value="0.200000" type="float" />
+    <param name="units" value="Da" type="str" />
+    <param name="ignoreCharge" value="0" type="int" />
+    <param name="filterAnnotations" value="0" type="int" />
+    <param name="filterMatches" value="0" type="int" />
+    <param name="filterUnselected" value="0" type="int" />
+    <param name="filterIsotopes" value="1" type="int" />
+    <param name="filterUnknown" value="0" type="int" />
+  </match>
+
+  <processing>
+    <crop>
+      <param name="lowMass" value="500" type="int" />
+      <param name="highMass" value="5000" type="int" />
+    </crop>
+    <baseline>
+      <param name="precision" value="15" type="int" />
+      <param name="offset" value="0.250000" type="float" />
+    </baseline>
+    <smoothing>
+      <param name="method" value="SG" type="str" />
+      <param name="windowSize" value="0.300000" type="float" />
+      <param name="cycles" value="2" type="int" />
+    </smoothing>
+    <peakpicking>
+      <param name="snThreshold" value="3.000000" type="float" />
+      <param name="absIntThreshold" value="0.000000" type="float" />
+      <param name="relIntThreshold" value="0.000000" type="float" />
+      <param name="pickingHeight" value="0.750000" type="float" />
+      <param name="baseline" value="1" type="int" />
+      <param name="smoothing" value="1" type="int" />
+      <param name="deisotoping" value="1" type="int" />
+      <param name="removeShoulders" value="0" type="int" />
+    </peakpicking>
+    <deisotoping>
+      <param name="maxCharge" value="1" type="int" />
+      <param name="massTolerance" value="0.100000" type="float" />
+      <param name="intTolerance" value="0.500000" type="float" />
+      <param name="removeIsotopes" value="1" type="int" />
+      <param name="removeUnknown" value="1" type="int" />
+      <param name="labelEnvelope" value="1st" type="str" />
+      <param name="envelopeIntensity" value="maximum" type="str" />
+      <param name="setAsMonoisotopic" value="0" type="int" />
+    </deisotoping>
+    <deconvolution>
+      <param name="massType" value="0" type="int" />
+      <param name="groupWindow" value="0.010000" type="float" />
+      <param name="groupPeaks" value="1" type="int" />
+      <param name="forceGroupWindow" value="0" type="int" />
+    </deconvolution>
+    <batch>
+      <param name="math" value="0" type="int" />
+      <param name="crop" value="0" type="int" />
+      <param name="baseline" value="0" type="int" />
+      <param name="smoothing" value="0" type="int" />
+      <param name="peakpicking" value="0" type="int" />
+      <param name="deisotoping" value="0" type="int" />
+      <param name="deconvolution" value="0" type="int" />
+    </batch>
+  </processing>
+
+  <calibration>
+    <param name="fitting" value="quadratic" type="str" />
+    <param name="tolerance" value="50.000000" type="float" />
+    <param name="units" value="ppm" type="str" />
+    <param name="statCutOff" value="800" type="int" />
+  </calibration>
+
+  <sequence>
+    <editor>
+      <param name="gridSize" value="20" type="int" />
+    </editor>
+    <digest>
+      <param name="maxMods" value="1" type="int" />
+      <param name="maxCharge" value="1" type="int" />
+      <param name="massType" value="0" type="int" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscl" value="1" type="int" />
+      <param name="lowMass" value="500" type="int" />
+      <param name="highMass" value="5000" type="int" />
+      <param name="retainPos" value="0" type="int" />
+      <param name="allowMods" value="0" type="int" />
+    </digest>
+    <fragment>
+      <param name="maxMods" value="1" type="int" />
+      <param name="maxCharge" value="1" type="int" />
+      <param name="massType" value="1" type="int" />
+      <param name="fragments" value="a;b;y;-NH3;-H2O" type="str" />
+      <param name="maxLosses" value="2" type="int" />
+      <param name="filterFragments" value="1" type="int" />
+    </fragment>
+    <search>
+      <param name="maxMods" value="1" type="int" />
+      <param name="charge" value="1" type="int" />
+      <param name="massType" value="0" type="int" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="semiSpecific" value="1" type="int" />
+      <param name="tolerance" value="0.200000" type="float" />
+      <param name="units" value="Da" type="str" />
+      <param name="retainPos" value="0" type="int" />
+    </search>
+  </sequence>
+
+  <massCalculator>
+    <param name="ionseriesAgent" value="H" type="str" />
+    <param name="ionseriesAgentCharge" value="1" type="int" />
+    <param name="ionseriesPolarity" value="1" type="int" />
+    <param name="patternFwhm" value="0.100000" type="float" />
+    <param name="patternThreshold" value="0.001000" type="float" />
+    <param name="patternShowPeaks" value="1" type="int" />
+    <param name="patternPeakShape" value="gaussian" type="unicode" />
+  </massCalculator>
+
+  <massToFormula>
+    <param name="countLimit" value="1000" type="int" />
+    <param name="massLimit" value="3000" type="int" />
+    <param name="charge" value="1" type="int" />
+    <param name="ionization" value="H" type="str" />
+    <param name="tolerance" value="1.000000" type="float" />
+    <param name="units" value="ppm" type="str" />
+    <param name="formulaMin" value="" type="str" />
+    <param name="formulaMax" value="" type="str" />
+    <param name="autoCHNO" value="1" type="int" />
+    <param name="checkPattern" value="1" type="int" />
+    <param name="rules" value="HC;NOPSC;NOPS;RDBE;RDBEInt" type="str" />
+    <param name="HCMin" value="0.100000" type="float" />
+    <param name="HCMax" value="3.000000" type="float" />
+    <param name="NCMax" value="4.000000" type="float" />
+    <param name="OCMax" value="3.000000" type="float" />
+    <param name="PCMax" value="2.000000" type="float" />
+    <param name="SCMax" value="3.000000" type="float" />
+    <param name="RDBEMin" value="-1.000000" type="float" />
+    <param name="RDBEMax" value="40.000000" type="float" />
+  </massToFormula>
+
+  <massDefectPlot>
+    <param name="yAxis" value="standard" type="str" />
+    <param name="nominalMass" value="floor" type="str" />
+    <param name="kendrickFormula" value="CH2" type="str" />
+    <param name="relIntCutoff" value="0.000000" type="float" />
+    <param name="removeIsotopes" value="0" type="int" />
+    <param name="ignoreCharge" value="1" type="int" />
+    <param name="showNotations" value="0" type="int" />
+  </massDefectPlot>
+
+  <compoundsSearch>
+    <param name="massType" value="0" type="int" />
+    <param name="maxCharge" value="1" type="int" />
+    <param name="radicals" value="0" type="int" />
+    <param name="adducts" value="Na;K" type="str" />
+  </compoundsSearch>
+
+  <peakDifferences>
+    <param name="aminoacids" value="1" type="int" />
+    <param name="dipeptides" value="0" type="int" />
+    <param name="tolerance" value="0.100000" type="float" />
+    <param name="massType" value="0" type="int" />
+    <param name="consolidate" value="1" type="int" />
+  </peakDifferences>
+
+  <comparePeaklists>
+    <param name="tolerance" value="0.200000" type="float" />
+    <param name="units" value="Da" type="str" />
+    <param name="ignoreCharge" value="0" type="int" />
+    <param name="ratioCheck" value="0" type="int" />
+    <param name="ratioDirection" value="1" type="int" />
+    <param name="ratioThreshold" value="2.000000" type="float" />
+  </comparePeaklists>
+
+  <spectrumGenerator>
+    <param name="fwhm" value="0.100000" type="float" />
+    <param name="points" value="10" type="int" />
+    <param name="noise" value="0.000000" type="float" />
+    <param name="forceFwhm" value="0" type="int" />
+    <param name="peakShape" value="gaussian" type="unicode" />
+    <param name="showPeaks" value="1" type="int" />
+    <param name="showOverlay" value="0" type="int" />
+  </spectrumGenerator>
+
+  <envelopeFit>
+    <param name="fit" value="spectrum" type="str" />
+    <param name="fwhm" value="0.010000" type="float" />
+    <param name="forceFwhm" value="0" type="int" />
+    <param name="peakShape" value="gaussian" type="unicode" />
+    <param name="autoAlign" value="1" type="int" />
+    <param name="relThreshold" value="0.050000" type="float" />
+  </envelopeFit>
+
+  <mascot>
+    <common>
+      <param name="server" value="Matrix Science" type="unicode" />
+      <param name="searchType" value="pmf" type="str" />
+      <param name="userName" value="" type="unicode" />
+      <param name="userEmail" value="" type="unicode" />
+      <param name="filterAnnotations" value="0" type="int" />
+      <param name="filterMatches" value="0" type="int" />
+      <param name="filterUnselected" value="0" type="int" />
+      <param name="filterIsotopes" value="1" type="int" />
+      <param name="filterUnknown" value="0" type="int" />
+    </common>
+    <pmf>
+      <param name="database" value="SwissProt" type="unicode" />
+      <param name="taxonomy" value="All entries" type="unicode" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscleavages" value="1" type="unicode" />
+      <param name="fixedMods" value="" type="unicode" />
+      <param name="variableMods" value="" type="unicode" />
+      <param name="hiddenMods" value="0" type="int" />
+      <param name="proteinMass" value="" type="unicode" />
+      <param name="peptideTol" value="0.1" type="unicode" />
+      <param name="peptideTolUnits" value="Da" type="unicode" />
+      <param name="massType" value="Monoisotopic" type="unicode" />
+      <param name="charge" value="1+" type="unicode" />
+      <param name="decoy" value="0" type="int" />
+      <param name="report" value="AUTO" type="unicode" />
+    </pmf>
+    <sq>
+      <param name="database" value="SwissProt" type="unicode" />
+      <param name="taxonomy" value="All entries" type="unicode" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscleavages" value="1" type="unicode" />
+      <param name="fixedMods" value="" type="unicode" />
+      <param name="variableMods" value="" type="unicode" />
+      <param name="hiddenMods" value="0" type="int" />
+      <param name="peptideTol" value="0.1" type="unicode" />
+      <param name="peptideTolUnits" value="Da" type="unicode" />
+      <param name="msmsTol" value="0.2" type="unicode" />
+      <param name="msmsTolUnits" value="Da" type="unicode" />
+      <param name="massType" value="Average" type="unicode" />
+      <param name="charge" value="1+" type="unicode" />
+      <param name="instrument" value="Default" type="unicode" />
+      <param name="quantitation" value="None" type="unicode" />
+      <param name="decoy" value="0" type="int" />
+      <param name="report" value="AUTO" type="unicode" />
+    </sq>
+    <mis>
+      <param name="database" value="SwissProt" type="unicode" />
+      <param name="taxonomy" value="All entries" type="unicode" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscleavages" value="1" type="unicode" />
+      <param name="fixedMods" value="" type="unicode" />
+      <param name="variableMods" value="" type="unicode" />
+      <param name="hiddenMods" value="0" type="int" />
+      <param name="peptideTol" value="0.1" type="unicode" />
+      <param name="peptideTolUnits" value="Da" type="unicode" />
+      <param name="msmsTol" value="0.2" type="unicode" />
+      <param name="msmsTolUnits" value="Da" type="unicode" />
+      <param name="massType" value="Average" type="unicode" />
+      <param name="charge" value="1+" type="unicode" />
+      <param name="instrument" value="Default" type="unicode" />
+      <param name="quantitation" value="None" type="unicode" />
+      <param name="errorTolerant" value="0" type="int" />
+      <param name="decoy" value="0" type="int" />
+      <param name="report" value="AUTO" type="unicode" />
+    </mis>
+  </mascot>
+
+  <profound>
+    <param name="script" value="http://prowl.rockefeller.edu/prowl-cgi/profound.exe" type="unicode" />
+    <param name="database" value="NCBI nr" type="unicode" />
+    <param name="taxonomy" value="All taxa" type="unicode" />
+    <param name="enzyme" value="Trypsin" type="unicode" />
+    <param name="miscleavages" value="1" type="unicode" />
+    <param name="fixedMods" value="" type="unicode" />
+    <param name="variableMods" value="" type="unicode" />
+    <param name="proteinMassLow" value="0.000000" type="float" />
+    <param name="proteinMassHigh" value="300.000000" type="float" />
+    <param name="proteinPILow" value="0" type="int" />
+    <param name="proteinPIHigh" value="14" type="int" />
+    <param name="peptideTol" value="0.100000" type="float" />
+    <param name="peptideTolUnits" value="Da" type="unicode" />
+    <param name="massType" value="Monoisotopic" type="unicode" />
+    <param name="charge" value="MH+" type="unicode" />
+    <param name="ranking" value="expect" type="unicode" />
+    <param name="expectation" value="1.000000" type="float" />
+    <param name="candidates" value="10" type="int" />
+    <param name="filterAnnotations" value="0" type="int" />
+    <param name="filterMatches" value="0" type="int" />
+    <param name="filterUnselected" value="0" type="int" />
+    <param name="filterIsotopes" value="1" type="int" />
+    <param name="filterUnknown" value="0" type="int" />
+  </profound>
+
+  <prospector>
+    <common>
+      <param name="script" value="http://prospector.ucsf.edu/prospector/cgi-bin/mssearch.cgi" type="unicode" />
+      <param name="searchType" value="msfit" type="str" />
+      <param name="filterAnnotations" value="0" type="int" />
+      <param name="filterMatches" value="0" type="int" />
+      <param name="filterUnselected" value="0" type="int" />
+      <param name="filterIsotopes" value="1" type="int" />
+      <param name="filterUnknown" value="0" type="int" />
+    </common>
+    <msfit>
+      <param name="database" value="SwissProt" type="unicode" />
+      <param name="taxonomy" value="All" type="unicode" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscleavages" value="1" type="unicode" />
+      <param name="fixedMods" value="" type="unicode" />
+      <param name="variableMods" value="" type="unicode" />
+      <param name="proteinMassLow" value="0" type="unicode" />
+      <param name="proteinMassHigh" value="300" type="unicode" />
+      <param name="proteinPILow" value="0" type="unicode" />
+      <param name="proteinPIHigh" value="14" type="unicode" />
+      <param name="peptideTol" value="0.1" type="unicode" />
+      <param name="peptideTolUnits" value="Da" type="unicode" />
+      <param name="massType" value="Monoisotopic" type="unicode" />
+      <param name="instrument" value="MALDI-TOFTOF" type="unicode" />
+      <param name="minMatches" value="4" type="unicode" />
+      <param name="maxMods" value="1" type="unicode" />
+      <param name="report" value="5" type="unicode" />
+      <param name="pfactor" value="0.4" type="unicode" />
+    </msfit>
+    <mstag>
+      <param name="database" value="SwissProt" type="unicode" />
+      <param name="taxonomy" value="All" type="unicode" />
+      <param name="enzyme" value="Trypsin" type="unicode" />
+      <param name="miscleavages" value="1" type="unicode" />
+      <param name="fixedMods" value="" type="unicode" />
+      <param name="variableMods" value="" type="unicode" />
+      <param name="peptideTol" value="0.1" type="unicode" />
+      <param name="peptideTolUnits" value="Da" type="unicode" />
+      <param name="peptideCharge" value="1" type="unicode" />
+      <param name="msmsTol" value="0.2" type="unicode" />
+      <param name="msmsTolUnits" value="Da" type="unicode" />
+      <param name="massType" value="Monoisotopic" type="unicode" />
+      <param name="instrument" value="MALDI-TOFTOF" type="unicode" />
+      <param name="maxMods" value="1" type="unicode" />
+      <param name="report" value="5" type="unicode" />
+    </mstag>
+  </prospector>
+
+  <links>
+    <link name="unimod" value="http://www.unimod.org/" />
+    <link name="fasta" value="http://www.ebi.ac.uk/Tools/fasta33/" />
+    <link name="pir" value="http://pir.georgetown.edu/" />
+    <link name="expasy" value="http://www.expasy.org/" />
+    <link name="ncbi" value="http://www.ncbi.nlm.nih.gov/Entrez/" />
+    <link name="mMassWhatsNew" value="http://www.mmass.org/download/history.php" />
+    <link name="biomedmstools" value="http://ms.biomed.cas.cz/MSTools/" />
+    <link name="matrixscience" value="http://www.matrixscience.com/" />
+    <link name="emblebi" value="http://www.ebi.ac.uk/services/" />
+    <link name="deltamass" value="http://www.abrf.org/index.cfm/dm.home" />
+    <link name="blast" value="http://www.ebi.ac.uk/Tools/blastall/" />
+    <link name="prospector" value="http://prospector.ucsf.edu/" />
+    <link name="clustalw" value="http://www.ebi.ac.uk/Tools/clustalw/" />
+    <link name="profound" value="http://prowl.rockefeller.edu/prowl-cgi/profound.exe" />
+    <link name="uniprot" value="http://www.uniprot.org/" />
+    <link name="muscle" value="http://phylogenomics.berkeley.edu/cgi-bin/muscle/input_muscle.py" />
+    <link name="pdb" value="http://www.rcsb.org/pdb/" />
+  </links>
+
+</mMassConfig>

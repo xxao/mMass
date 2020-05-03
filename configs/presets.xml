@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mMassPresets version="1.0">
+
+  <operator>
+
+  </operator>
+
+  <processing>
+
+    <presets name="ESI-ICR Peptides">
+      <crop>
+        <param name="lowMass" value="200" type="int" />
+        <param name="highMass" value="4000" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="15" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="SG" type="str" />
+        <param name="windowSize" value="0.050000" type="float" />
+        <param name="cycles" value="1" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="4.000000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.001000" type="float" />
+        <param name="pickingHeight" value="0.900000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="0" type="int" />
+        <param name="deisotoping" value="1" type="int" />
+        <param name="removeShoulders" value="1" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="5" type="int" />
+        <param name="massTolerance" value="0.005000" type="float" />
+        <param name="intTolerance" value="0.500000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="1" type="int" />
+        <param name="removeUnknown" value="1" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="1" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="0" type="int" />
+        <param name="groupWindow" value="0.001000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+    <presets name="MALDI-ICR Low Mass">
+      <crop>
+        <param name="lowMass" value="200" type="int" />
+        <param name="highMass" value="1500" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="15" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="SG" type="str" />
+        <param name="windowSize" value="0.050000" type="float" />
+        <param name="cycles" value="1" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="6.000000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.001000" type="float" />
+        <param name="pickingHeight" value="0.900000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="0" type="int" />
+        <param name="deisotoping" value="1" type="int" />
+        <param name="removeShoulders" value="1" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="1" type="int" />
+        <param name="massTolerance" value="0.020000" type="float" />
+        <param name="intTolerance" value="0.700000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="1" type="int" />
+        <param name="removeUnknown" value="1" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="1" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="0" type="int" />
+        <param name="groupWindow" value="0.001000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+    <presets name="MALDI-ICR Peptides">
+      <crop>
+        <param name="lowMass" value="750" type="int" />
+        <param name="highMass" value="4000" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="15" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="SG" type="str" />
+        <param name="windowSize" value="0.050000" type="float" />
+        <param name="cycles" value="1" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="4.000000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.001000" type="float" />
+        <param name="pickingHeight" value="0.900000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="0" type="int" />
+        <param name="deisotoping" value="1" type="int" />
+        <param name="removeShoulders" value="1" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="1" type="int" />
+        <param name="massTolerance" value="0.020000" type="float" />
+        <param name="intTolerance" value="0.500000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="1" type="int" />
+        <param name="removeUnknown" value="1" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="1" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="0" type="int" />
+        <param name="groupWindow" value="0.001000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+    <presets name="MALDI-TOF PSD">
+      <crop>
+        <param name="lowMass" value="0" type="int" />
+        <param name="highMass" value="4000" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="20" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="SG" type="str" />
+        <param name="windowSize" value="0.250000" type="float" />
+        <param name="cycles" value="2" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="3.000000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.005000" type="float" />
+        <param name="pickingHeight" value="0.750000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="1" type="int" />
+        <param name="deisotoping" value="1" type="int" />
+        <param name="removeShoulders" value="0" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="1" type="int" />
+        <param name="massTolerance" value="0.200000" type="float" />
+        <param name="intTolerance" value="0.500000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="1" type="int" />
+        <param name="removeUnknown" value="0" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="1" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="0" type="int" />
+        <param name="groupWindow" value="0.100000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+    <presets name="MALDI-TOF Peptides">
+      <crop>
+        <param name="lowMass" value="750" type="int" />
+        <param name="highMass" value="4000" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="15" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="SG" type="str" />
+        <param name="windowSize" value="0.200000" type="float" />
+        <param name="cycles" value="2" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="3.500000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.005000" type="float" />
+        <param name="pickingHeight" value="0.750000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="1" type="int" />
+        <param name="deisotoping" value="1" type="int" />
+        <param name="removeShoulders" value="0" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="1" type="int" />
+        <param name="massTolerance" value="0.150000" type="float" />
+        <param name="intTolerance" value="0.500000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="1" type="int" />
+        <param name="removeUnknown" value="1" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="1" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="0" type="int" />
+        <param name="groupWindow" value="0.050000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+    <presets name="MALDI-TOF Proteins 5-20 kDa">
+      <crop>
+        <param name="lowMass" value="5000" type="int" />
+        <param name="highMass" value="20000" type="int" />
+      </crop>
+      <baseline>
+        <param name="precision" value="20" type="int" />
+        <param name="offset" value="0.250000" type="float" />
+      </baseline>
+      <smoothing>
+        <param name="method" value="MA" type="str" />
+        <param name="windowSize" value="5.000000" type="float" />
+        <param name="cycles" value="2" type="int" />
+      </smoothing>
+      <peakpicking>
+        <param name="snThreshold" value="2.500000" type="float" />
+        <param name="absIntThreshold" value="0.000000" type="float" />
+        <param name="relIntThreshold" value="0.010000" type="float" />
+        <param name="pickingHeight" value="0.750000" type="float" />
+        <param name="baseline" value="1" type="int" />
+        <param name="smoothing" value="1" type="int" />
+        <param name="deisotoping" value="0" type="int" />
+        <param name="removeShoulders" value="0" type="int" />
+      </peakpicking>
+      <deisotoping>
+        <param name="maxCharge" value="1" type="int" />
+        <param name="massTolerance" value="0.100000" type="float" />
+        <param name="intTolerance" value="0.500000" type="float" />
+        <param name="isotopeShift" value="0.000000" type="float" />
+        <param name="removeIsotopes" value="0" type="int" />
+        <param name="removeUnknown" value="0" type="int" />
+        <param name="labelEnvelope" value="1st" type="str" />
+        <param name="envelopeIntensity" value="maximum" type="str" />
+        <param name="setAsMonoisotopic" value="0" type="int" />
+      </deisotoping>
+      <deconvolution>
+        <param name="massType" value="1" type="int" />
+        <param name="groupWindow" value="2.500000" type="float" />
+        <param name="groupPeaks" value="1" type="int" />
+        <param name="forceGroupWindow" value="0" type="int" />
+      </deconvolution>
+    </presets>
+
+  </processing>
+
+  <modifications>
+
+    <presets name="-None-">
+    </presets>
+
+    <presets name="Carbamidomethyl (C)">
+      <modification name="Carbamidomethyl" position="C" type="f" />
+    </presets>
+
+    <presets name="N-Formyl Met">
+      <modification name="FormylMet" position="0" type="v" />
+    </presets>
+
+    <presets name="Oxidation (MW)">
+      <modification name="Oxidation" position="M" type="v" />
+      <modification name="Oxidation" position="W" type="v" />
+    </presets>
+
+  </modifications>
+
+  <fragments>
+
+    <presets name="-None-">
+    </presets>
+
+    <presets name="CID">
+      <fragment name="b" />
+      <fragment name="y" />
+      <fragment name="-NH3" />
+      <fragment name="-H2O" />
+    </presets>
+
+    <presets name="ECD/ETD">
+      <fragment name="c" />
+      <fragment name="y" />
+    </presets>
+
+    <presets name="ISD">
+      <fragment name="a" />
+      <fragment name="c" />
+      <fragment name="y" />
+    </presets>
+
+    <presets name="Ladder-C">
+      <fragment name="c-ladder" />
+    </presets>
+
+    <presets name="Ladder-N">
+      <fragment name="n-ladder" />
+    </presets>
+
+    <presets name="PSD">
+      <fragment name="a" />
+      <fragment name="b" />
+      <fragment name="y" />
+      <fragment name="-NH3" />
+      <fragment name="-H2O" />
+      <fragment name="im" />
+    </presets>
+
+  </fragments>
+
+</mMassPresets>
