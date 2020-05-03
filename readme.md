@@ -1,4 +1,4 @@
-# mMass Backup Repository
+# Official mMass Repository
 
 This is the official source code backup repository for
 [mMass](http://www.mmass.org) software. Although mMass is no longer actively
@@ -16,7 +16,7 @@ homepage at [www.mmass.org](http://www.mmass.org).
 Thank you for your interest, and ... have fun!
 
 
-# Requirements
+## Requirements
 
 The mMass code was developed under Python 2 and has never been updated to
 Python 3. Same is true for all the dependencies such as wxPython and NumPy.
@@ -29,7 +29,7 @@ of the day, the code has not been touched since 2013.
 - wxPython 2.8.12.1
 
 
-# Disclaimer
+## Disclaimer
 
 This program is distributed in the hope that it will be useful, but WITHOUT
 ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
@@ -39,7 +39,7 @@ For Research Use Only. Not for use in diagnostic procedures.
 
 
 
-# License
+## License
 
 This program and its documentation are Copyright 2005-2013 by Martin Strohalm.
 
