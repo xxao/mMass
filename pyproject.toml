@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "mMass3"
+version = "0.1.0"
+description = ""
+authors = ["Edd Salkield <edd@salkield.uk>", "Martin Strohalm"]
+license = "GPL-3.0-or-later"
+build = 'build.py'
+
+packages = [
+    { include = "gui" },
+    { include = "mspy" },
+]
+
+include = ["calculations/"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.19.0"
+wxPython = "^4.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+mmass = "mmass:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+

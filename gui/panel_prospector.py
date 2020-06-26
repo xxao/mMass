@@ -22,12 +22,12 @@ import tempfile
 import os.path
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
-import doc
+from . import doc
 
 
 # FLOATING PANEL WITH PROSPECTOR SEARCH TOOLS
@@ -37,7 +37,7 @@ class panelProspector(wx.MiniFrame):
     """ProteinProspector search tools."""
     
     def __init__(self, parent, tool=config.prospector['common']['searchType']):
-        wx.MiniFrame.__init__(self, parent, -1, 'Protein Prospector', size=(300, -1), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Protein Prospector', size=(300, -1), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
         
         self.parent = parent
         
@@ -47,7 +47,7 @@ class panelProspector(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select tool
         self.onToolSelected(tool=self.currentTool)
@@ -468,13 +468,13 @@ class panelProspector(wx.MiniFrame):
         
         pklSizer = wx.BoxSizer(wx.VERTICAL)
         if wx.Platform == '__WXMAC__': pklSizer.AddSpacer(mwx.PANEL_SPACE_MAIN)
-        pklSizer.Add(self.paramQuery_value, 1, wx.EXPAND|wx.ALIGN_CENTER|wx.LEFT|wx.RIGHT|wx.BOTTOM, mwx.PANEL_SPACE_MAIN)
+        pklSizer.Add(self.paramQuery_value, 1, wx.EXPAND|wx.LEFT|wx.RIGHT|wx.BOTTOM, mwx.PANEL_SPACE_MAIN)
         pklSizer.Fit(pklPanel)
         pklPanel.SetSizer(pklSizer)
         
         mainSizer = wx.BoxSizer(wx.VERTICAL)
-        mainSizer.Add(ctrlPanel, 0, wx.EXPAND|wx.ALIGN_CENTER)
-        mainSizer.Add(pklPanel, 1, wx.EXPAND|wx.ALIGN_CENTER)
+        mainSizer.Add(ctrlPanel, 0, wx.EXPAND)
+        mainSizer.Add(pklPanel, 1, wx.EXPAND)
         
         return mainSizer
     # ----
@@ -617,9 +617,8 @@ class panelProspector(wx.MiniFrame):
         htmlData = self.makeSearchHTML()
         try:
             path = os.path.join(tempfile.gettempdir(), 'mmass_prospector_search.html')
-            htmlFile = file(path, 'w')
-            htmlFile.write(htmlData.encode("utf-8"))
-            htmlFile.close()
+            with open(path, 'wb') as f:
+                f.write(htmlData.encode("utf-8"))
             webbrowser.open('file://'+path, autoraise=1)
         except:
             wx.Bell()

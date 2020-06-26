@@ -19,8 +19,8 @@
 import wx
 
 # load modules
-import mwx
-import config
+from . import mwx
+from . import config
 import mspy
 
 
@@ -296,7 +296,7 @@ class dlgModificationsEditor(wx.Dialog):
             return
         
         # add new data
-        digits = '%0.' + `config.main['mzDigits']` + 'f'
+        digits = '%0.' + repr(config.main['mzDigits']) + 'f'
         for row, item in enumerate(self.itemsMap):
             
             # format data
@@ -304,14 +304,14 @@ class dlgModificationsEditor(wx.Dialog):
             avMass = digits % (item[4])
             
             # add data
-            self.itemsList.InsertStringItem(row, item[0])
-            self.itemsList.SetStringItem(row, 1, item[1])
-            self.itemsList.SetStringItem(row, 2, item[2])
-            self.itemsList.SetStringItem(row, 3, str(moMass))
-            self.itemsList.SetStringItem(row, 4, str(avMass))
-            self.itemsList.SetStringItem(row, 5, item[5])
-            self.itemsList.SetStringItem(row, 6, item[6])
-            self.itemsList.SetStringItem(row, 7, item[7])
+            self.itemsList.InsertItem(row, item[0])
+            self.itemsList.SetItem(row, 1, item[1])
+            self.itemsList.SetItem(row, 2, item[2])
+            self.itemsList.SetItem(row, 3, str(moMass))
+            self.itemsList.SetItem(row, 4, str(avMass))
+            self.itemsList.SetItem(row, 5, item[5])
+            self.itemsList.SetItem(row, 6, item[6])
+            self.itemsList.SetItem(row, 7, item[7])
             self.itemsList.SetItemData(row, row)
         
         # sort

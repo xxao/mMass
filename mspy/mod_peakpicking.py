@@ -22,19 +22,19 @@ import numpy
 import time
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import blocks
+from . import blocks
 
 # load objects
-import obj_compound
-import obj_peak
-import obj_peaklist
+from . import obj_compound
+from . import obj_peak
+from . import obj_peaklist
 
 # load modules
-import mod_basics
-import mod_signal
+from . import mod_basics
+from . import mod_signal
 
 
 # BASIC CONSTANTS
@@ -57,11 +57,11 @@ def labelpoint(signal, mz, baseline=None):
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Baseline must be NumPy array!"
+        raise TypeError("Baseline must be NumPy array!")
     
     # check signal data
     if len(signal) == 0:
@@ -79,7 +79,7 @@ def labelpoint(signal, mz, baseline=None):
     # get peak baseline and s/n
     base = 0.0
     sn = None
-    if baseline == None:
+    if baseline is None:
         base, noise = mod_signal.noise(signal, x=mz)
         if noise:
             sn = (ai - base) / noise
@@ -118,15 +118,15 @@ def labelpeak(signal, mz=None, minX=None, maxX=None, pickingHeight=0.75, baselin
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Baseline must be NumPy array!"
+        raise TypeError("Baseline must be NumPy array!")
     
     # check m/z value or range
-    if mz == None and minX == None and maxX == None:
-        raise TypeError, "m/z value or range must be specified!"
+    if mz is None and minX is None and maxX is None:
+        raise TypeError("m/z value or range must be specified!")
     
     # check signal data
     if len(signal) == 0:
@@ -171,7 +171,7 @@ def labelpeak(signal, mz=None, minX=None, maxX=None, pickingHeight=0.75, baselin
     rightMZ = mod_signal.interpolate(signal[iright-1], signal[iright], y=h)
     
     # check range
-    if mz == None and (leftMZ < minX or rightMZ > maxX) and (leftMZ != rightMZ):
+    if mz is None and (leftMZ < minX or rightMZ > maxX) and (leftMZ != rightMZ):
         return None
     
     # label peak in the newly found selection
@@ -210,11 +210,11 @@ def labelscan(signal, minX=None, maxX=None, pickingHeight=0.75, absThreshold=0.,
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Baseline must be NumPy array!"
+        raise TypeError("Baseline must be NumPy array!")
     
     # crop data
     if minX != None and maxX != None:
@@ -389,7 +389,7 @@ def envcentroid(isotopes, pickingHeight=0.5, intensity='maximum'):
     for x, isotope in enumerate(isotopes):
         if isotope.intensity >= minInt:
             i2 = x
-            if i1 == None:
+            if i1 is None:
                 i1 = x
     
     mz1 = isotopes[i1].mz
@@ -481,7 +481,7 @@ def deisotope(peaklist, maxCharge=1, mzTolerance=0.15, intTolerance=0.5, isotope
     
     # check peaklist
     if not isinstance(peaklist, obj_peaklist.peaklist):
-        raise TypeError, "Peak list must be mspy.peaklist object!"
+        raise TypeError("Peak list must be mspy.peaklist object!")
     
     # clear previous results
     for peak in peaklist:
@@ -672,9 +672,9 @@ def _gentable(highmass, step=200, composition=AVERAGE_AMINO, table='tuple'):
             pattern += '%.3f, ' % abundance
         
         if table == 'tuple':
-            print '(%s), #%d' % (pattern[:-2], mass)
+            print('(%s), #%d' % (pattern[:-2], mass))
         elif table == 'dict':
-            print '%d: (%s),' % (mass, pattern[:-2])
+            print('%d: (%s),' % (mass, pattern[:-2]))
 # ----
 
 

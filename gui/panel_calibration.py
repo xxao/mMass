@@ -22,11 +22,11 @@ import wx
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
 import mspy.plot
 
@@ -34,11 +34,11 @@ import mspy.plot
 # FLOATING PANEL WITH CALIBRATION TOOL
 # ------------------------------------
 
-class panelCalibration(wx.MiniFrame):
+class panelCalibration(wx.MiniFrame, mspy.MakeModalMixin):
     """Calibration tool."""
     
     def __init__(self, parent, tool='references'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Calibration', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Calibration', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         self.processing = None
@@ -50,7 +50,7 @@ class panelCalibration(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select default tool
         self.onToolSelected(tool=self.currentTool)
@@ -172,7 +172,7 @@ class panelCalibration(wx.MiniFrame):
         # make controls
         references_label = wx.StaticText(ctrlPanel, -1, "References:")
         references_label.SetFont(wx.SMALL_FONT)
-        choices = libs.references.keys()
+        choices = list(libs.references.keys())
         choices.sort()
         choices.insert(0,'Reference lists')
         self.references_choice = wx.Choice(ctrlPanel, -1, choices=choices, size=(250, mwx.SMALL_CHOICE_HEIGHT))
@@ -331,7 +331,7 @@ class panelCalibration(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -590,8 +590,8 @@ class panelCalibration(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        ppmFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
+        ppmFormat = '%0.' + repr(config.main['ppmDigits']) + 'f'
         fontSkipped = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_ITALIC, wx.NORMAL)
         fontUsed = wx.SMALL_FONT
         for row, item in enumerate(self.currentReferences):
@@ -615,13 +615,13 @@ class panelCalibration(wx.MiniFrame):
                     errorAfter = ppmFormat % (item[5])
             
             # add data
-            self.referencesList.InsertStringItem(row, '')
-            self.referencesList.SetStringItem(row, 0, item[0])
-            self.referencesList.SetStringItem(row, 1, theoretical)
-            self.referencesList.SetStringItem(row, 2, measured)
-            self.referencesList.SetStringItem(row, 3, calibrated)
-            self.referencesList.SetStringItem(row, 4, errorBefore)
-            self.referencesList.SetStringItem(row, 5, errorAfter)
+            self.referencesList.InsertItem(row, '')
+            self.referencesList.SetItem(row, 0, item[0])
+            self.referencesList.SetItem(row, 1, theoretical)
+            self.referencesList.SetItem(row, 2, measured)
+            self.referencesList.SetItem(row, 3, calibrated)
+            self.referencesList.SetItem(row, 4, errorBefore)
+            self.referencesList.SetItem(row, 5, errorAfter)
             self.referencesList.SetItemData(row, row)
             
             # mark skipped

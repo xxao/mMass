@@ -14,12 +14,13 @@
 #     Complete text of GNU GPL can be found in the file LICENSE.TXT in the
 #     main directory of the program.
 # -------------------------------------------------------------------------
+import pdb
 
 # load libs
 import wx
 from wx.tools import img2py
 
-import ids
+#from . import ids
 
 
 # IMAGES
@@ -32,11 +33,11 @@ def loadImages():
     
     # load image library
     if wx.Platform == '__WXMAC__':
-        import images_lib_mac as images_lib
+        from . import images_lib_mac as images_lib
     elif wx.Platform == '__WXMSW__':
-        import images_lib_msw as images_lib
+        from . import images_lib_msw as images_lib
     else:
-        import images_lib_gtk as images_lib
+        from . import images_lib_gtk as images_lib
     
     # common
     lib['icon16'] = images_lib.getIcon16Icon()
@@ -56,53 +57,53 @@ def loadImages():
     # cursors
     cursors = images_lib.getCursorsBitmap()
     image = cursors.GetSubBitmap(wx.Rect(0, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrow'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrow'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(16, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrowMeasure'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrowMeasure'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(32, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrowPeak'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrowPeak'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(48, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrowPoint'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrowPoint'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(64, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrowDelete'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrowDelete'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(80, 0, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
-    lib['cursorsArrowOffset'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 0)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 0)
+    lib['cursorsArrowOffset'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(0, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCross'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCross'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(16, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCrossMeasure'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCrossMeasure'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(32, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCrossPeak'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCrossPeak'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(48, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCrossPoint'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCrossPoint'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(64, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCrossDelete'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCrossDelete'] = wx.Cursor(image)
     image = cursors.GetSubBitmap(wx.Rect(80, 16, 16, 16)).ConvertToImage()
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
-    image.SetOptionInt(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
-    lib['cursorsCrossOffset'] = wx.CursorFromImage(image)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_X, 7)
+    image.SetOption(wx.IMAGE_OPTION_CUR_HOTSPOT_Y, 7)
+    lib['cursorsCrossOffset'] = wx.Cursor(image)
     
     # arrows
     arrows = images_lib.getArrowsBitmap()
@@ -650,9 +651,8 @@ def convertImages():
     for platform in ('mac', 'msw', 'gtk'):
         
         # create file
-        imageFile = file('images_lib_'+platform+'.py', 'w')
-        imageFile.write(imp)
-        imageFile.close()
+        with open(f'images_lib_{platform}.py', 'w') as f:
+            f.write(imp)
         
         # make commands
         commands = [

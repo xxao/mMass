@@ -20,7 +20,7 @@ import numpy
 from numpy.linalg import solve as solveLinEq
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 
 # DATA RE-CALIBRATION
@@ -90,7 +90,7 @@ def _leastSquaresFit(model, parameters, data, maxIterations=None, limit=1e-7):
         niter += 1
         
         delta = solveLinEq(alpha+l*numpy.diagonal(alpha)*id,-0.5*numpy.array(chi_sq[1]))
-        next_p = map(lambda a,b: a+b, p, delta)
+        next_p = list(map(lambda a,b: a+b, p, delta))
         
         next_chi_sq, next_alpha = _chiSquare(model, next_p, data)
         if next_chi_sq > chi_sq:
@@ -106,7 +106,7 @@ def _leastSquaresFit(model, parameters, data, maxIterations=None, limit=1e-7):
         if maxIterations and niter == maxIterations:
             break
     
-    return map(lambda p: p[0], next_p), next_chi_sq[0]
+    return [p[0] for p in next_p], next_chi_sq[0]
 # ----
 
 
@@ -141,7 +141,7 @@ class _DerivVar:
         nvars = max(len(a), len(b))
         a = a + (nvars-len(a))*[0]
         b = b + (nvars-len(b))*[0]
-        return map(func, a, b)
+        return list(map(func, a, b))
     
     def __getitem__(self, item):
         if item == 0:
@@ -151,11 +151,12 @@ class _DerivVar:
         else:
             raise IndexError
     
-    def __cmp__(self, other):
-        if isinstance(other, _DerivVar):
-            return cmp(self.value, other.value)
-        else:
-            return cmp(self.value, other)
+    # TODO: confirm that this can be deprecated
+#    def __cmp__(self, other):
+#        if isinstance(other, _DerivVar):
+#            return cmp(self.value, other.value)
+#        else:
+#            return cmp(self.value, other)
     
     def __add__(self, other):
         if isinstance(other, _DerivVar):
@@ -189,26 +190,26 @@ class _DerivVar:
     
     def __mul__(self, other):
         if isinstance(other, _DerivVar):
-            return _DerivVar(self.value * other.value, self._mapderiv(lambda a,b: a+b, map(lambda x,f=self.value:f*x, other.deriv), map(lambda x,f=other.value:f*x, self.deriv)))
+            return _DerivVar(self.value * other.value, self._mapderiv(lambda a,b: a+b, list(map(lambda x,f=self.value:f*x, other.deriv)), list(map(lambda x,f=other.value:f*x, self.deriv))))
         else:
-            return _DerivVar(self.value * other, map(lambda x,f=other:f*x, self.deriv))
+            return _DerivVar(self.value * other, list(map(lambda x,f=other:f*x, self.deriv)))
     
     def __div__(self, other):
         if isinstance(other, _DerivVar):
             inv = 1./other.value
-            return _DerivVar(self.value * inv, self._mapderiv(lambda a,b: a-b, map(lambda x,f=inv: f*x, self.deriv), map(lambda x,f=self.value*inv*inv: f*x, other.deriv)))
+            return _DerivVar(self.value * inv, self._mapderiv(lambda a,b: a-b, list(map(lambda x,f=inv: f*x, self.deriv)), list(map(lambda x,f=self.value*inv*inv: f*x, other.deriv))))
         else:
             inv = 1./value
-            return _DerivVar(self.value * inv, map(lambda x,f=inv:f*x, self.deriv))
+            return _DerivVar(self.value * inv, list(map(lambda x,f=inv:f*x, self.deriv)))
     
     def __pow__(self, other):
         val1 = pow(self.value, other-1)
-        deriv1 = map(lambda x,f=val1*other: f*x, self.deriv)
+        deriv1 = list(map(lambda x,f=val1*other: f*x, self.deriv))
         return _DerivVar(val1*self.value, deriv1)
         
     def __abs__(self):
         absvalue = abs(self.value)
-        return _DerivVar(absvalue, map(lambda a, d=self.value/absvalue: d*a, self.deriv))
+        return _DerivVar(absvalue, list(map(lambda a, d=self.value/absvalue: d*a, self.deriv)))
     
 # ----
 

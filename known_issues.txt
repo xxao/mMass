@@ -1,0 +1,12 @@
+File -> Open Document gives:
+    (mmass:5121): Gtk-WARNING **: 12:32:48.388: Failed to measure available space: The specified location is not supported
+
+In doc.py, line 550, we changed the strings into bytes strings
+    This may affect loading of the zlib compressed objects again
+
+When moving the cursor from an open dropdown to outside the window:
+    Debug: window wxMenuBar(0x563af2a564f0) lost focus even though it didn't have it
+
+Windows build
+
+Update README with build info (esp regarding long build times for wxPython)

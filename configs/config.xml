@@ -22,7 +22,7 @@
     <param name="lastSeqDir" value="" type="unicode" />
     <param name="errorUnits" value="Da" type="str" />
     <param name="printQuality" value="5" type="int" />
-    <param name="useServer" value="1" type="int" />
+    <param name="useServer" value="0" type="int" />
     <param name="serverPort" value="65456" type="int" />
     <param name="updatesEnabled" value="1" type="int" />
     <param name="updatesChecked" value="" type="str" />

@@ -19,10 +19,10 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 
 
 # ABOUT mMass PANEL
@@ -40,12 +40,12 @@ class panelAbout(frame):
     """About mMass."""
     
     def __init__(self, parent):
-        frame.__init__(self, parent, -1, frameTitle, style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.MINIMIZE_BOX))
+        frame.__init__(self, parent, -1, frameTitle, style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.MAXIMIZE_BOX | wx.MINIMIZE_BOX))
         self.parent = parent
         
         # make gui items
         sizer = self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # fit layout
         self.Layout()

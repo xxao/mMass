@@ -21,9 +21,9 @@ import wx
 import numpy
 
 # load modules
-import mwx
-import images
-import config
+from . import mwx
+from . import images
+from . import config
 import mspy
 import mspy.plot
 
@@ -31,11 +31,11 @@ import mspy.plot
 # FLOATING PANEL WITH SPECTRUM GENERATOR TOOL
 # -------------------------------------------
 
-class panelSpectrumGenerator(wx.MiniFrame):
+class panelSpectrumGenerator(wx.MiniFrame, mspy.MakeModalMixin):
     """Spectrum generator tool."""
     
     def __init__(self, parent):
-        wx.MiniFrame.__init__(self, parent, -1, 'Spectrum Generator', size=(700, 400), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Spectrum Generator', size=(700, 400), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         
@@ -50,7 +50,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -280,7 +280,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -347,7 +347,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         """Apply current profile to current document."""
         
         # check data and document
-        if self.currentDocument == None or self.currentProfile == None:
+        if self.currentDocument is None or self.currentProfile is None:
             wx.Bell()
             return
         
@@ -487,7 +487,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         self.spectrumCanvas.setProperties(axisFont=axisFont)
         
         # set cursor
-        cursor = (wx.StockCursor(wx.CURSOR_ARROW), images.lib['cursorsCrossMeasure'])
+        cursor = (wx.Cursor(wx.CURSOR_ARROW), images.lib['cursorsCrossMeasure'])
         self.spectrumCanvas.setCursorImage(cursor[bool(config.spectrum['showTracker'])])
         self.spectrumCanvas.setMFunction([None, 'cross'][config.spectrum['showTracker']])
         
@@ -569,7 +569,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         """Show / hide profile overlay in main viewer."""
         
         # update tmp spectrum
-        if self.currentProfile == None or not config.spectrumGenerator['showOverlay']:
+        if self.currentProfile is None or not config.spectrumGenerator['showOverlay']:
             self.parent.updateTmpSpectrum(None)
         else:
             self.parent.updateTmpSpectrum(self.currentProfile, flipped=config.spectrumGenerator['showFlipped'])

@@ -20,10 +20,10 @@ import wx
 import webbrowser
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
 
 
@@ -34,7 +34,7 @@ class panelPeriodicTable(wx.MiniFrame):
     """Periodic table of elements."""
     
     def __init__(self, parent):
-        wx.MiniFrame.__init__(self, parent, -1, 'Periodic Table of the Elements', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Periodic Table of the Elements', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
         
         self.parent = parent
         
@@ -62,7 +62,7 @@ class panelPeriodicTable(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     

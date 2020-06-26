@@ -69,7 +69,7 @@ else:
         except: pass
 
 if not os.path.exists(confdir):
-    raise IOError, "Configuration folder cannot be found!"
+    raise IOError("Configuration folder cannot be found!")
 
 
 # INIT DEFAULT VALUES
@@ -1339,9 +1339,8 @@ def saveConfig(path=os.path.join(confdir, 'config.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
-        save.write(buff.encode("utf-8"))
-        save.close()
+        with open(path, 'wb') as f:
+            f.write(buff.encode("utf-8"))
         return True
     except:
         return False

@@ -19,15 +19,15 @@
 import os.path
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load parsers
-from parser_xy import parseXY
-from parser_mzxml import parseMZXML
-from parser_mzdata import parseMZDATA
-from parser_mzml import parseMZML
-from parser_mgf import parseMGF
-from parser_fasta import parseFASTA
+from .parser_xy import parseXY
+from .parser_mzxml import parseMZXML
+from .parser_mzdata import parseMZDATA
+from .parser_mzml import parseMZML
+from .parser_mgf import parseMGF
+from .parser_fasta import parseFASTA
 
 
 # UTILITIES
@@ -38,7 +38,7 @@ def load(path, scanID=None, dataType='continuous'):
     
     # check path
     if not os.path.exists(path):
-        raise IOError, 'File not found! --> ' + path
+        raise IOError('File not found! --> ' + path)
     
     # get filename and extension
     dirName, fileName = os.path.split(path)
@@ -71,7 +71,7 @@ def load(path, scanID=None, dataType='continuous'):
     
     # check document type
     if not docType:
-        raise ValueError, 'Unknown document type! --> ' + path
+        raise ValueError('Unknown document type! --> ' + path)
     
     # load document data
     if docType == 'mzData':
@@ -101,8 +101,7 @@ def save(data, path):
     for point in data:
         buff += "%f\t%f\n" % tuple(point)
     
-    save = file(path, 'w')
-    save.write(buff.encode("utf-8"))
-    save.close()
+    with open(path, 'wb') as f:
+        f.write(buff.encode("utf-8"))
 # ----
 

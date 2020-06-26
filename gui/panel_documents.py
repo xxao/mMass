@@ -19,14 +19,14 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
-import doc
+from . import doc
 
-from dlg_notation import dlgNotation
+from .dlg_notation import dlgNotation
 
 
 # DOCUMENTS PANEL
@@ -193,7 +193,7 @@ class panelDocuments(wx.Panel):
             return
         
         # get item data
-        itemData = self.documentTree.GetPyData(item)
+        itemData = self.documentTree.GetItemData(item)
         
         # get object index
         docIndex = self._getDocumentIndex(item)
@@ -388,7 +388,7 @@ class panelDocuments(wx.Panel):
         
         # highlight mass of selected match or annotation
         if itemType in ('annotation', 'match'):
-            matchData = self.documentTree.GetPyData(item)
+            matchData = self.documentTree.GetItemData(item)
             points = [matchData.mz]
             if matchData.theoretical != None:
                 points.append(matchData.theoretical)
@@ -532,7 +532,7 @@ class panelDocuments(wx.Panel):
         # get selected item
         item = self.documentTree.GetSelection()
         itemType = self.documentTree.getItemType(item)
-        itemData = self.documentTree.GetPyData(item)
+        itemData = self.documentTree.GetItemData(item)
         
         # show dialog
         dlg = dlgNotation(self.parent, itemData, button='Update')
@@ -576,7 +576,7 @@ class panelDocuments(wx.Panel):
         # get selected item
         item = self.documentTree.GetSelection()
         itemType = self.documentTree.getItemType(item)
-        itemData = self.documentTree.GetPyData(item)
+        itemData = self.documentTree.GetItemData(item)
         
         # send data to Mass Calculator
         if itemType == 'sequence':
@@ -595,7 +595,7 @@ class panelDocuments(wx.Panel):
         # get selected item
         item = self.documentTree.GetSelection()
         itemType = self.documentTree.getItemType(item)
-        itemData = self.documentTree.GetPyData(item)
+        itemData = self.documentTree.GetItemData(item)
         
         # send data to Mass To Formula panel
         if itemData.radical:
@@ -611,7 +611,7 @@ class panelDocuments(wx.Panel):
         # get selected item
         item = self.documentTree.GetSelection()
         itemType = self.documentTree.getItemType(item)
-        itemData = self.documentTree.GetPyData(item)
+        itemData = self.documentTree.GetItemData(item)
         
         # send data to envelope fit
         if itemType == 'sequence':
@@ -637,7 +637,7 @@ class panelDocuments(wx.Panel):
         """Select document"""
         
         # deselect all documents
-        if docIndex == None:
+        if docIndex is None:
             self.documentTree.Unselect()
             self.parent.onDocumentSelected(None)
             return
@@ -667,7 +667,7 @@ class panelDocuments(wx.Panel):
         """Delete selected document."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # remove from tree
@@ -679,7 +679,7 @@ class panelDocuments(wx.Panel):
         """Enable/disable selected document."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # get item
@@ -695,7 +695,7 @@ class panelDocuments(wx.Panel):
         """Update document title."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # get item
@@ -716,7 +716,7 @@ class panelDocuments(wx.Panel):
         """Update bullet of selected document."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # get document item
@@ -732,7 +732,7 @@ class panelDocuments(wx.Panel):
         """Set new annotations for document."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # get item
@@ -769,7 +769,7 @@ class panelDocuments(wx.Panel):
         """Select sequence"""
         
         # check index
-        if docIndex == None or seqIndex == None:
+        if docIndex is None or seqIndex is None:
             return
         
         # get item
@@ -785,7 +785,7 @@ class panelDocuments(wx.Panel):
         """Append new sequence to the tree."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # get document item
@@ -804,7 +804,7 @@ class panelDocuments(wx.Panel):
         """Delete selected sequence."""
         
         # check document
-        if docIndex == None or seqIndex == None:
+        if docIndex is None or seqIndex is None:
             return
         
         # collapse document first
@@ -825,7 +825,7 @@ class panelDocuments(wx.Panel):
         """Set new label for sequence."""
         
         # check document
-        if docIndex == None or seqIndex == None:
+        if docIndex is None or seqIndex is None:
             return
         
         # get item
@@ -841,7 +841,7 @@ class panelDocuments(wx.Panel):
         """Set new matches for sequence."""
         
         # check document
-        if docIndex == None or seqIndex == None:
+        if docIndex is None or seqIndex is None:
             return
         
         # get item
@@ -875,7 +875,7 @@ class panelDocuments(wx.Panel):
         """Set new sequences for current document."""
         
         # check document
-        if docIndex == None:
+        if docIndex is None:
             return
         
         # collapse document first
@@ -924,7 +924,7 @@ class panelDocuments(wx.Panel):
         """Get parent document index."""
         
         docItem = self.documentTree.getParentItem(item, 1)
-        docData = self.documentTree.GetPyData(docItem)
+        docData = self.documentTree.GetItemData(docItem)
         
         if docData in self.documents:
             return self.documents.index(docData)
@@ -937,7 +937,7 @@ class panelDocuments(wx.Panel):
         """Get annotation index."""
         
         docIndex = self._getDocumentIndex(item)
-        annotData = self.documentTree.GetPyData(item)
+        annotData = self.documentTree.GetItemData(item)
         
         if annotData in self.documents[docIndex].annotations:
             return self.documents[docIndex].annotations.index(annotData)
@@ -951,7 +951,7 @@ class panelDocuments(wx.Panel):
         
         docIndex = self._getDocumentIndex(item)
         seqItem = self.documentTree.getParentItem(item, 2)
-        seqData = self.documentTree.GetPyData(seqItem)
+        seqData = self.documentTree.GetItemData(seqItem)
         
         if seqData in self.documents[docIndex].sequences:
             return self.documents[docIndex].sequences.index(seqData)
@@ -965,7 +965,7 @@ class panelDocuments(wx.Panel):
         
         docIndex = self._getDocumentIndex(item)
         seqIndex = self._getSequenceIndex(item)
-        matchData = self.documentTree.GetPyData(item)
+        matchData = self.documentTree.GetItemData(item)
         
         if matchData in self.documents[docIndex].sequences[seqIndex].matches:
             return self.documents[docIndex].sequences[seqIndex].matches.index(matchData)
@@ -1026,7 +1026,7 @@ class documentsTree(wx.TreeCtrl):
             return None
         
         # get item type
-        data = self.GetPyData(item)
+        data = self.GetItemData(item)
         if isinstance(data, doc.document):
             return 'document'
         elif isinstance(data, list):
@@ -1046,13 +1046,13 @@ class documentsTree(wx.TreeCtrl):
         """Get item by its data."""
         
         # get root
-        if root == None:
+        if root is None:
             root = self.GetRootItem()
         
         # check children
         if self.ItemHasChildren(root):
             firstchild, cookie = self.GetFirstChild(root)
-            if self.GetPyData(firstchild) is data:
+            if self.GetItemData(firstchild) is data:
                 return firstchild
             matchedItem = self.getItemByData(data, firstchild, cookie)
             if matchedItem:
@@ -1061,7 +1061,7 @@ class documentsTree(wx.TreeCtrl):
         # check siblings
         child = self.GetNextSibling(root)
         if child and child.IsOk():
-            if self.GetPyData(child) is data:
+            if self.GetItemData(child) is data:
                 return child
             matchedItem = self.getItemByData(data, child, cookie)
             if matchedItem:
@@ -1124,7 +1124,7 @@ class documentsTree(wx.TreeCtrl):
         # set document bullet
         if itemType == 'document':
             if enable:
-                self.SetItemImage(item, self.GetPyData(item).bulletIndex, wx.TreeItemIcon_Normal)
+                self.SetItemImage(item, self.GetItemData(item).bulletIndex, wx.TreeItemIcon_Normal)
             else:
                 self.SetItemImage(item, 1, wx.TreeItemIcon_Normal)
         
@@ -1166,12 +1166,12 @@ class documentsTree(wx.TreeCtrl):
         # add document
         docItem = self.AppendItem(self.GetRootItem(), title)
         self.SetItemImage(docItem, docData.bulletIndex, wx.TreeItemIcon_Normal)
-        self.SetPyData(docItem, docData)
+        self.SetItemData(docItem, docData)
         
         # add annotations
         annotsItem = self.AppendItem(docItem, 'Annotations')
         self.SetItemImage(annotsItem, 2, wx.TreeItemIcon_Normal)
-        self.SetPyData(annotsItem, docData.annotations)
+        self.SetItemData(annotsItem, docData.annotations)
         for annotData in docData.annotations:
             self.appendNotation(annotsItem, annotData)
         
@@ -1192,7 +1192,7 @@ class documentsTree(wx.TreeCtrl):
         # add sequence
         seqItem = self.AppendItem(item, seqData.title)
         self.SetItemImage(seqItem, 4, wx.TreeItemIcon_Normal)
-        self.SetPyData(seqItem, seqData)
+        self.SetItemData(seqItem, seqData)
         
         # add matches
         for matchData in seqData.matches:
@@ -1224,7 +1224,7 @@ class documentsTree(wx.TreeCtrl):
         # add match
         notationItem = self.AppendItem(item, label)
         self.SetItemImage(notationItem, 6, wx.TreeItemIcon_Normal)
-        self.SetPyData(notationItem, notationData)
+        self.SetItemData(notationItem, notationData)
         
         return notationItem
     # ----
@@ -1260,7 +1260,7 @@ class documentsTree(wx.TreeCtrl):
         
         # add bullet
         item = self.getParentItem(item, 1)
-        docData = self.GetPyData(item)
+        docData = self.GetItemData(item)
         
         bullet = self._makeColourBullet(docData.colour, True)
         docData.bulletIndex = self.bullets.Add(bullet)
@@ -1289,7 +1289,7 @@ class documentsTree(wx.TreeCtrl):
         """Make bullet bitmap with specified colour."""
         
         # create empty bitmap
-        bitmap = wx.EmptyBitmap(13, 12)
+        bitmap = wx.Bitmap(13, 12)
         dc = wx.MemoryDC()
         dc.SelectObject(bitmap)
         

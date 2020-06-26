@@ -20,7 +20,7 @@ import os.path
 import xml.dom.minidom
 
 # load objects
-import obj_compound
+from . import obj_compound
 
 # set default blocks path
 blocksdir = '.'
@@ -50,7 +50,7 @@ class element:
         massMo = 0
         massAv = 0
         maxAbundance = 0
-        for isotop in self.isotopes.values():
+        for isotop in list(self.isotopes.values()):
             massAv += isotop[0]*isotop[1]
             if maxAbundance < isotop[1]:
                 massMo = isotop[0]
@@ -169,7 +169,7 @@ class modification:
         lossComposition = lossCmpd.composition()
         
         formula = self.gainFormula
-        for el, count in lossComposition.items():
+        for el, count in list(lossComposition.items()):
             formula += '%s%d' % (el, -1*count)
         
         cmpd = obj_compound.compound(formula)
@@ -586,7 +586,7 @@ def saveMonomers(path=os.path.join(blocksdir, 'monomers.xml')):
     buff = '<?xml version="1.0" encoding="utf-8" ?>\n'
     buff += '<mspyMonomers version="1.0">\n'
     
-    abbrs = monomers.keys()
+    abbrs = list(monomers.keys())
     abbrs.sort()
     for abbr in abbrs:
         if monomers[abbr].category != '_InternalAA':
@@ -596,9 +596,8 @@ def saveMonomers(path=os.path.join(blocksdir, 'monomers.xml')):
     
     # save monomers file
     try:
-        save = file(path, 'w')
-        save.write(buff.encode("utf-8"))
-        save.close()
+        with open(path, 'wb') as f:
+            f.write(buff.encode("utf-8"))
         return True
     except:
         return False
@@ -612,7 +611,7 @@ def saveEnzymes(path=os.path.join(blocksdir, 'enzymes.xml')):
     buff = '<?xml version="1.0" encoding="utf-8" ?>\n'
     buff += '<mspyEnzymes version="1.0">\n'
     
-    names = enzymes.keys()
+    names = list(enzymes.keys())
     names.sort()
     for name in names:
         buff += '  <enzyme name="%s">\n' % (_escape(enzymes[name].name))
@@ -625,9 +624,8 @@ def saveEnzymes(path=os.path.join(blocksdir, 'enzymes.xml')):
     
     # save enzymes file
     try:
-        save = file(path, 'w')
-        save.write(buff.encode("utf-8"))
-        save.close()
+        with open(path, 'wb') as f:
+            f.write(buff.encode("utf-8"))
         return True
     except:
         return False
@@ -641,7 +639,7 @@ def saveModifications(path=os.path.join(blocksdir, 'modifications.xml')):
     buff = '<?xml version="1.0" encoding="utf-8" ?>\n'
     buff += '<mspyModifications version="1.0">\n'
     
-    names = modifications.keys()
+    names = list(modifications.keys())
     names.sort()
     for name in names:
         buff += '  <modification name="%s">\n' % (_escape(modifications[name].name))
@@ -654,9 +652,8 @@ def saveModifications(path=os.path.join(blocksdir, 'modifications.xml')):
     
     # save modifications file
     try:
-        save = file(path, 'w')
-        save.write(buff.encode("utf-8"))
-        save.close()
+        with open(path, 'wb') as f:
+            f.write(buff.encode("utf-8"))
         return True
     except:
         return False

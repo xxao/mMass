@@ -21,9 +21,9 @@ import copy
 import wx
 
 # load modules
-from ids import *
-import images
-import config
+from .ids import *
+from . import images
+from . import config
 import mspy
 
 
@@ -175,6 +175,11 @@ elif wx.Platform == '__WXGTK__':
     PERIODIC_TABLE_GRID = (-7,-7)
     
 
+def cmp(a, b):
+    if a == b:
+        return 0
+    return (a > b) - (a < b)
+
 
 # RUN AFTER APP INIT
 # ------------------
@@ -214,7 +219,7 @@ class bgrPanel(wx.Panel):
         self.image = image
         
         # set paint event to tile image
-        wx.EVT_PAINT(self, self._onPaint)
+        self.Bind(wx.EVT_PAINT, self._onPaint)
     # ----
     
     
@@ -245,7 +250,7 @@ class sortListCtrl(wx.ListCtrl):
         
         self._defaultColour = self.GetBackgroundColour()
         self._altColour = self.GetBackgroundColour()
-        self._currentAttr = wx.ListItemAttr()
+        self._currentAttr = wx.ItemAttr()
         
         self._getItemTextFn = None
         self._getItemAttrFn = None
@@ -261,7 +266,7 @@ class sortListCtrl(wx.ListCtrl):
         if self._getItemTextFn != None:
             return self._getItemTextFn(row, col)
         else:
-            return unicode(self._data[row][col])
+            return str(self._data[row][col])
     # ----
     
     
@@ -440,7 +445,7 @@ class sortListCtrl(wx.ListCtrl):
         
         # get column and direction
         direction = self._currentDirection
-        if col == None:
+        if col is None:
             col = self._currentColumn
         else:
             if self._currentColumn != col:
@@ -480,7 +485,7 @@ class sortListCtrl(wx.ListCtrl):
             return
         
         # update each row
-        for row in xrange(self.GetItemCount()):
+        for row in range(self.GetItemCount()):
             if row % 2:
                 self.SetItemBackgroundColour(row, self._altColour)
             else:
@@ -499,7 +504,7 @@ class sortListCtrl(wx.ListCtrl):
                 line = ''
                 for col in range(self.GetColumnCount()):
                     item = self.GetItem(row, col)
-                    line += item.GetText() + '\t'
+                    line += item.GetItemLabel() + '\t'
                 buff += '%s\n' % (line.rstrip())
         
         # get all
@@ -508,7 +513,7 @@ class sortListCtrl(wx.ListCtrl):
                 line = ''
                 for col in range(self.GetColumnCount()):
                     item = self.GetItem(row, col)
-                    line += item.GetText() + '\t'
+                    line += item.GetItemLabel() + '\t'
                 buff += '%s\n' % (line.rstrip())
         
         # make text object for data
@@ -601,7 +606,7 @@ class scrollTextCtrl(wx.TextCtrl):
         if new > 10000 or new < -10000:
             format = '%0.1e'
         else:
-            format = '%0.' + `self._digits` + 'f'
+            format = '%0.' + repr(self._digits) + 'f'
         new = format % new
         
         # set new value
@@ -684,7 +689,7 @@ class gauge(wx.Gauge):
         """Pulse gauge."""
         
         self.Pulse()
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
         time.sleep(0.05)
     # ----
@@ -692,7 +697,7 @@ class gauge(wx.Gauge):
     
 
 
-class gaugePanel(wx.Dialog):
+class gaugePanel(wx.Dialog, mspy.MakeModalMixin):
     """Processing panel."""
     
     def __init__(self, parent, label, title='Progress...'):
@@ -718,16 +723,16 @@ class gaugePanel(wx.Dialog):
         self.Layout()
         mainSizer.Fit(self)
         self.SetSizer(mainSizer)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
-    
+
     
     def setLabel(self, label):
         """Set new label."""
         
         self.label.SetLabel(label)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -737,7 +742,7 @@ class gaugePanel(wx.Dialog):
         
         self.gauge.Pulse()
         
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
         time.sleep(0.05)
     # ----
@@ -750,7 +755,7 @@ class gaugePanel(wx.Dialog):
         self.MakeModal(True)
         self.Show()
         
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -768,7 +773,7 @@ class validator(wx.PyValidator):
     """Text validator."""
     
     def __init__(self, flag):
-        wx.PyValidator.__init__(self)
+        wx.Validator.__init__(self)
         self.flag = flag
         self.Bind(wx.EVT_CHAR, self.OnChar)
     # ----

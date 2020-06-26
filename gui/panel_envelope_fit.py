@@ -20,22 +20,22 @@ import threading
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
 
 
 # FLOATING PANEL WITH ENVELOPE FIT TOOL
 # -------------------------------------
 
-class panelEnvelopeFit(wx.MiniFrame):
+class panelEnvelopeFit(wx.MiniFrame, mspy.MakeModalMixin):
     """Envelope fit tool."""
     
     def __init__(self, parent):
-        wx.MiniFrame.__init__(self, parent, -1, 'Envelope Fit', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Envelope Fit', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         
@@ -50,7 +50,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -356,7 +356,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         self.spectrumCanvas.SetMinSize(self.spectrumCanvas.GetSize())
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
         self.spectrumCanvas.SetMinSize((-1,-1))
     # ----
@@ -578,7 +578,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         self.spectrumCanvas.setProperties(axisFont=axisFont)
         
         # set cursor
-        cursor = (wx.StockCursor(wx.CURSOR_ARROW), images.lib['cursorsCrossMeasure'])
+        cursor = (wx.Cursor(wx.CURSOR_ARROW), images.lib['cursorsCrossMeasure'])
         self.spectrumCanvas.setCursorImage(cursor[bool(config.spectrum['showTracker'])])
         self.spectrumCanvas.setMFunction([None, 'cross'][config.spectrum['showTracker']])
         
@@ -595,7 +595,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         self.spectrumContainer.empty()
         
         # check fit
-        if self.currentFit == None:
+        if self.currentFit is None:
             self.spectrumCanvas.draw(self.spectrumContainer)
             self.parent.updateTmpSpectrum(None)
             return
@@ -624,10 +624,10 @@ class panelEnvelopeFit(wx.MiniFrame):
         """Update results list."""
         
         # make data map
-        if self.currentFit == None:
+        if self.currentFit is None:
             data = []
         else:
-            data = self.currentFit.ncomposition.items()
+            data = list(self.currentFit.ncomposition.items())
             data.sort()
         
         # clear previous data and set new
@@ -640,8 +640,8 @@ class panelEnvelopeFit(wx.MiniFrame):
         
         # add new data
         for row, item in enumerate(data):
-            self.resultsList.InsertStringItem(row, str(item[0]))
-            self.resultsList.SetStringItem(row, 1, str(round(item[1]*100, 1)))
+            self.resultsList.InsertItem(row, str(item[0]))
+            self.resultsList.SetItem(row, 1, str(round(item[1]*100, 1)))
             self.resultsList.SetItemData(row, row)
         
         # sort data

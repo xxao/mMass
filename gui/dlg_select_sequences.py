@@ -19,8 +19,8 @@
 import wx
 
 # load modules
-import mwx
-import config
+from . import mwx
+from . import config
 
 
 # SEQUENCE SELECTION DIALOG
@@ -123,10 +123,10 @@ class dlgSelectSequences(wx.Dialog):
             if item[1]:
                 accession = str(item[1])
             
-            self.sequenceList.InsertStringItem(row, str(item[0]+1))
-            self.sequenceList.SetStringItem(row, 1, accession)
-            self.sequenceList.SetStringItem(row, 2, item[2])
-            self.sequenceList.SetStringItem(row, 3, str(item[3]))
+            self.sequenceList.InsertItem(row, str(item[0]+1))
+            self.sequenceList.SetItem(row, 1, accession)
+            self.sequenceList.SetItem(row, 2, item[2])
+            self.sequenceList.SetItem(row, 3, str(item[3]))
             self.sequenceList.SetItemData(row, row)
         
         # sort data

@@ -21,16 +21,16 @@ import wx
 import wx.grid
 
 # load modules
-import mwx
-import images
-import config
+from . import mwx
+from . import images
+from . import config
 import mspy
 
 
 # FLOATING PANEL WITH PEAK DIFFERENCES TOOL
 # -----------------------------------------
 
-class panelPeakDifferences(wx.MiniFrame):
+class panelPeakDifferences(wx.MiniFrame, mspy.MakeModalMixin):
     """Peak differences tool."""
     
     def __init__(self, parent):
@@ -50,7 +50,7 @@ class panelPeakDifferences(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -280,7 +280,7 @@ class panelPeakDifferences(wx.MiniFrame):
         self.differencesGrid.SetMinSize(self.differencesGrid.GetSize())
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
         self.differencesGrid.SetMinSize((-1,-1))
     # ----
@@ -457,7 +457,7 @@ class panelPeakDifferences(wx.MiniFrame):
         self.differencesGrid.AppendRows(size)
         
         # create labels
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         cellAttr = wx.grid.GridCellAttr()
         cellAttr.SetReadOnly(True)
         for x in range(size):
@@ -467,7 +467,7 @@ class panelPeakDifferences(wx.MiniFrame):
             self.differencesGrid.SetColAttr(x, cellAttr)
         
         # paste data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         for x in range(size):
             for y in range(size):
                 
@@ -528,7 +528,7 @@ class panelPeakDifferences(wx.MiniFrame):
         self.matchesGrid.SetColAttr(1, cellAttr)
         
         # set format
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        errFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         
         # add data
         for i, match in enumerate(self.currentMatches):

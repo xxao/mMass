@@ -24,7 +24,7 @@ import sys
 import os
 import threading
 import socket
-import SocketServer
+import socketserver
 import wx
 
 # load modules
@@ -45,12 +45,16 @@ class mMass(wx.App):
         self.frame = mainFrame(None, -1, 'mMass')
         
         # bind main app frame to server
-        if server != None:
-            server.app = self.frame
+        #if server != None:
+        #    server.app = self.frame
         
         # show frame
         self.SetTopWindow(self.frame)
-        try: wx.Yield()
+        # TODO: organise code to not need Yield
+        # http://wxpython-users.1045709.n5.nabble.com/wxpython-4-0-3-wx-yield-depreciated-td5728983.html
+        # https://stackoverflow.com/questions/22327494/multiple-wx-yield-alternative
+        # https://wiki.wxpython.org/LongRunningTasks
+        try: wx.GetApp().Yield()
         except: pass
         
         # open file from commandline
@@ -89,13 +93,13 @@ class mMass(wx.App):
     
     
 
-class TCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+class TCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     """TCP communication server."""
     
     def __init__(self, server_address, RequestHandlerClass):
         self.allow_reuse_address = True
         self.stopped = False
-        SocketServer.TCPServer.__init__(self, server_address, RequestHandlerClass, False)
+        socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass, False)
     # ----
     
     
@@ -112,7 +116,7 @@ class TCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
     
     
 
-class TCPServerHandler(SocketServer.BaseRequestHandler):
+class TCPServerHandler(socketserver.BaseRequestHandler):
     """TCP communication server handler."""
     
     def handle(self):
@@ -130,13 +134,12 @@ class TCPServerHandler(SocketServer.BaseRequestHandler):
     
     
 
-
-if __name__ == '__main__':
-    
+def main():    
     server = None
     
     # use server
-    if config.main['useServer'] and sys.platform != 'darwin':
+    #if config.main['useServer'] and sys.platform != 'darwin':
+    if False:   # TODO: fix this, having worked out what the server is for
         
         # init server params
         HOST = socket.gethostname()
@@ -150,6 +153,8 @@ if __name__ == '__main__':
         # try to connect to existing server
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            print(f'host: {HOST}')
+            print(f'port: {PORT}')
             sock.connect((HOST, PORT))
             sock.sendall(command)
             sock.close()

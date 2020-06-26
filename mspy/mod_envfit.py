@@ -21,17 +21,17 @@ import numpy
 from numpy.linalg import solve as solveLinEq
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_compound
-import obj_peaklist
+from . import obj_compound
+from . import obj_peaklist
 
 # load modules
-import mod_pattern
-import mod_signal
-import mod_peakpicking
-import mod_calibration
+from . import mod_pattern
+from . import mod_signal
+from . import mod_peakpicking
+from . import mod_calibration
 
 
 # ENVELOPE FIT
@@ -265,7 +265,7 @@ class envfit():
     def _initRange(self):
         """Get relevant mz range from models."""
         
-        scales = self.models.keys()
+        scales = list(self.models.keys())
         
         compound = self.models[min(scales)][0]
         pattern = compound.pattern(fwhm=0.5, charge=self.charge)
@@ -405,7 +405,7 @@ class envfit():
             
             niter += 1
             delta = solveLinEq(alpha+l*numpy.diagonal(alpha)*id,-0.5*numpy.array(chisq[1]))
-            next_params = map(lambda a,b: a+b, params, delta)
+            next_params = list(map(lambda a,b: a+b, params, delta))
             
             for x in range(len(next_params)):
                 if next_params[x] < 0.:
@@ -448,8 +448,8 @@ class envfit():
             for i in range(cycles):
                 p_deriv = cycles*[0]
                 p_deriv[i] = models[i][x]
-                deriv = map(lambda a,b: a+b, deriv, p_deriv)
-            chisq_deriv = map(lambda a,b: a+b, chisq_deriv, map(lambda x,f=differences[x]*2:f*x, deriv))
+                deriv = list(map(lambda a,b: a+b, deriv, p_deriv))
+            chisq_deriv = list(map(lambda a,b: a+b, chisq_deriv, list(map(lambda x,f=differences[x]*2:f*x, deriv))))
             
             d = numpy.array(deriv)
             alpha = alpha + d[:,numpy.newaxis]*d

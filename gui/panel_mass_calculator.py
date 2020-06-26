@@ -21,11 +21,11 @@ import numpy
 import copy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import doc
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import doc
 import mspy
 import mspy.plot
 
@@ -37,7 +37,7 @@ class panelMassCalculator(wx.MiniFrame):
     """Mass calculator tools."""
     
     def __init__(self, parent, tool='pattern'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Mass Calculator', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Mass Calculator', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         
@@ -52,7 +52,7 @@ class panelMassCalculator(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select default tool
         self.onToolSelected(tool=self.currentTool)
@@ -515,7 +515,7 @@ class panelMassCalculator(wx.MiniFrame):
         
         # use current axis
         rescale = False
-        if evt == None:
+        if evt is None:
             rescale = True
         
         # update gui
@@ -528,7 +528,7 @@ class panelMassCalculator(wx.MiniFrame):
         """Shift tmp profile."""
         
         # check pattern
-        if self.currentPattern == None:
+        if self.currentPattern is None:
             return
         
         # get all params
@@ -580,7 +580,7 @@ class panelMassCalculator(wx.MiniFrame):
         """Save current pattern as doument."""
         
         # check data
-        if self.currentPatternScan == None or self.currentCompound == None:
+        if self.currentPatternScan is None or self.currentCompound is None:
             wx.Bell()
             return
         
@@ -670,7 +670,7 @@ class panelMassCalculator(wx.MiniFrame):
         else:
             self.ionseriesNegative_radio.SetValue(True)
         
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
         
         # get all params
@@ -783,7 +783,7 @@ class panelMassCalculator(wx.MiniFrame):
         """Calculate summary for curent compound."""
         
         # check current compound
-        if self.currentCompound == None:
+        if self.currentCompound is None:
             self.summaryFormula_value.SetValue('')
             self.summaryMono_value.SetValue('')
             self.summaryAverage_value.SetValue('')
@@ -810,11 +810,11 @@ class panelMassCalculator(wx.MiniFrame):
         self.ionsList.setDataMap(self.currentIons)
         
         # check data
-        if self.currentIons == None:
+        if self.currentIons is None:
             return
         
         # add new data
-        format = '%0.' + `config.main['mzDigits']` + 'f'
+        format = '%0.' + repr(config.main['mzDigits']) + 'f'
         for row, ion in enumerate(self.currentIons):
             
             # format data
@@ -823,9 +823,9 @@ class panelMassCalculator(wx.MiniFrame):
             average = format % (ion[2])
             
             # add data
-            self.ionsList.InsertStringItem(row, title)
-            self.ionsList.SetStringItem(row, 1, mono)
-            self.ionsList.SetStringItem(row, 2, average)
+            self.ionsList.InsertItem(row, title)
+            self.ionsList.SetItem(row, 1, mono)
+            self.ionsList.SetItem(row, 2, average)
             self.ionsList.SetItemData(row, row)
         
         # sort data
@@ -843,7 +843,7 @@ class panelMassCalculator(wx.MiniFrame):
         container = mspy.plot.container([])
         
         # check data
-        if self.currentPatternScan == None:
+        if self.currentPatternScan is None:
             self.patternCanvas.draw(container)
             return
         
@@ -905,7 +905,7 @@ class panelMassCalculator(wx.MiniFrame):
         """Show current profile in the main canvas."""
         
         # check data
-        if self.currentPatternProfile == None:
+        if self.currentPatternProfile is None:
             self.parent.updateTmpSpectrum(None)
             return
         
@@ -1019,7 +1019,7 @@ class panelMassCalculator(wx.MiniFrame):
         self.currentPatternScan = None
         
         # check pattern
-        if self.currentPattern == None:
+        if self.currentPattern is None:
             return
         
         # get selected charge

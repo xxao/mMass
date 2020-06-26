@@ -22,23 +22,23 @@ import wx
 import copy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
-import doc
+from . import doc
 
 
 # FLOATING PANEL WITH PROCESSING TOOLS
 # ------------------------------------
 
-class panelProcessing(wx.MiniFrame):
+class panelProcessing(wx.MiniFrame, mspy.MakeModalMixin):
     """Data processing tools."""
     
     def __init__(self, parent, tool='peakpicking'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Processing', size=(300, -1), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Processing', size=(300, -1), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
         
         self.parent = parent
         
@@ -51,7 +51,7 @@ class panelProcessing(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # update documents lists
         self.updateAvailableDocuments()
@@ -301,12 +301,14 @@ class panelProcessing(wx.MiniFrame):
         # make elements
         baselinePrecision_label = wx.StaticText(panel, -1, "Precision:")
         self.baselinePrecision_slider = wx.Slider(panel, -1, config.processing['baseline']['precision'], 1, 100, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.baselinePrecision_slider.SetTickFreq(10,1)
+        self.baselinePrecision_slider.SetTick(1)
+        self.baselinePrecision_slider.SetTickFreq(10)
         self.baselinePrecision_slider.Bind(wx.EVT_SCROLL, self.onBaselineChanged)
         
         baselineOffset_label = wx.StaticText(panel, -1, "Relative offset:")
         self.baselineOffset_slider = wx.Slider(panel, -1, config.processing['baseline']['offset']*100, 0, 100, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.baselineOffset_slider.SetTickFreq(10,1)
+        self.baselinePrecision_slider.SetTick(1)
+        self.baselineOffset_slider.SetTickFreq(10)
         self.baselineOffset_slider.Bind(wx.EVT_SCROLL, self.onBaselineChanged)
         
         # pack elements
@@ -349,7 +351,8 @@ class panelProcessing(wx.MiniFrame):
         
         smoothingCycles_label = wx.StaticText(panel, -1, "Cycles:")
         self.smoothingCycles_slider = wx.Slider(panel, -1, config.processing['smoothing']['cycles'], 1, 5, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.smoothingCycles_slider.SetTickFreq(1,1)
+        self.smoothingCycles_slider.SetTick(1)
+        self.smoothingCycles_slider.SetTickFreq(1)
         self.smoothingCycles_slider.Bind(wx.EVT_SCROLL, self.onSmoothingChanged)
         
         # pack elements
@@ -394,7 +397,8 @@ class panelProcessing(wx.MiniFrame):
         
         peakpickingHeight_label = wx.StaticText(panel, -1, "Picking height:")
         self.peakpickingHeight_slider = wx.Slider(panel, -1, config.processing['peakpicking']['pickingHeight']*100, 1, 100, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.peakpickingHeight_slider.SetTickFreq(10,1)
+        self.peakpickingHeight_slider.SetTick(1)
+        self.peakpickingHeight_slider.SetTickFreq(10)
         self.peakpickingHeight_slider.Bind(wx.EVT_SCROLL, self.onPeakpickingChanged)
         
         peakpickingBaseline_label = wx.StaticText(panel, -1, "Apply baseline:")
@@ -519,7 +523,7 @@ class panelProcessing(wx.MiniFrame):
         grid.Add(self.deisotopingRemoveIsotopes_check, (4,1))
         grid.Add(deisotopingRemoveUnknown_label, (5,0), flag=wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL)
         grid.Add(self.deisotopingRemoveUnknown_check, (5,1))
-        grid.Add(wx.StaticLine(panel), (6,0), (1,3), flag=wx.EXPAND|wx.ALIGN_CENTER_VERTICAL)
+        grid.Add(wx.StaticLine(panel), (6,0), (1,3), flag=wx.EXPAND)
         grid.Add(deisotopingLabelEnvelopeTool_label, (7,0), flag=wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL)
         grid.Add(self.deisotopingLabelEnvelopeTool_choice, (7,1), (1,2))
         grid.Add(deisotopingEnvelopeIntensity_label, (8,0), flag=wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL)
@@ -817,7 +821,7 @@ class panelProcessing(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -836,7 +840,7 @@ class panelProcessing(wx.MiniFrame):
         """Show presets."""
         
         # get presets
-        presets = libs.presets['processing'].keys()
+        presets = list(libs.presets['processing'].keys())
         presets.sort()
         
         # make menu
@@ -860,7 +864,7 @@ class panelProcessing(wx.MiniFrame):
         
         # get presets
         item = self.presets_popup.FindItemById(evt.GetId())
-        presets = libs.presets['processing'][item.GetText()]
+        presets = libs.presets['processing'][item.GetItemLabel()]
         
         # set crop
         self.cropLowMass_value.SetValue(str(presets['crop']['lowMass']))
@@ -1154,7 +1158,7 @@ class panelProcessing(wx.MiniFrame):
             return
         
         # check document
-        if self.currentDocument == None and not self.currentTool in ('math', 'batch'):
+        if self.currentDocument is None and not self.currentTool in ('math', 'batch'):
             wx.Bell()
             return
         
@@ -1380,7 +1384,7 @@ class panelProcessing(wx.MiniFrame):
         self.mathSpectrumA_choice.Clear()
         
         # check document
-        if self.currentDocument == None:
+        if self.currentDocument is None:
             self.mathSpectrumA_choice.Append('None')
             self.mathSpectrumA_choice.Select(0)
             return
@@ -1422,7 +1426,7 @@ class panelProcessing(wx.MiniFrame):
         
         row = 0
         for title, colour in documentsMap:
-            self.batchDocumentsList.InsertStringItem(row, title)
+            self.batchDocumentsList.InsertItem(row, title)
             self.batchDocumentsList.SetItemData(row, row)
             self.batchDocumentsList.SetItemTextColour(row, colour)
             row += 1

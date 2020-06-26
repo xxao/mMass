@@ -16,13 +16,13 @@
 # -------------------------------------------------------------------------
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_compound
+from . import obj_compound
 
 # load modules
-import mod_basics
+from . import mod_basics
 import calculations
 
 
@@ -113,7 +113,7 @@ def _compositions(minimum, maximum, masses, loMass, hiMass, limit):
     
     # check data
     if (len(minimum) != len(maximum) or len(minimum) != len(masses)):
-        raise ValueError, "Sizes of minimum, maximum and masses are not equal!"
+        raise ValueError("Sizes of minimum, maximum and masses are not equal!")
     
     # generate compositions
     return calculations.formula_composition(tuple(minimum), tuple(maximum), tuple(masses), float(loMass), float(hiMass), int(limit))

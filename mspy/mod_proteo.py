@@ -20,13 +20,13 @@ import re
 import itertools
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load building blocks
-import blocks
+from . import blocks
 
 # load objects
-import obj_sequence
+from . import obj_sequence
 
 
 # SEQUENCE DIGESTION
@@ -43,15 +43,15 @@ def digest(sequence, enzyme, miscleavage=0, allowMods=False, strict=True):
     
     # check sequence object
     if not isinstance(sequence, obj_sequence.sequence):
-        raise TypeError, "Cannot digest non-sequence object!"
+        raise TypeError("Cannot digest non-sequence object!")
     
     # check cyclic peptides
     if sequence.chainType != 'aminoacids':
-        raise TypeError, 'Digest function is not supported for non-amino sequences!'
+        raise TypeError('Digest function is not supported for non-amino sequences!')
     
     # check cyclic peptides
     if sequence.cyclic:
-        raise TypeError, 'Digest function is not supported for cyclic peptides!'
+        raise TypeError('Digest function is not supported for cyclic peptides!')
     
     # check sequence
     if not sequence.chain:
@@ -62,7 +62,7 @@ def digest(sequence, enzyme, miscleavage=0, allowMods=False, strict=True):
         enzyme = blocks.enzymes[enzyme]
         expression = re.compile(enzyme.expression+'$')
     else:
-        raise KeyError, 'Unknown enzyme! -> ' + enzyme
+        raise KeyError('Unknown enzyme! -> ' + enzyme)
     
     # get digest indices
     slices = [] # from | to | miscl
@@ -161,7 +161,7 @@ def fragment(sequence, series, scrambling=False):
     
     # check sequence object
     if not isinstance(sequence, obj_sequence.sequence):
-        raise TypeError, "Cannot fragment non-sequence object!"
+        raise TypeError("Cannot fragment non-sequence object!")
     
     # generate fragments for linear peptide
     if not sequence.cyclic:
@@ -218,11 +218,11 @@ def fragmentserie(sequence, serie, cyclicParent=False):
     
     # check sequence object
     if not isinstance(sequence, obj_sequence.sequence):
-        raise TypeError, "Cannot fragment non-sequence object!"
+        raise TypeError("Cannot fragment non-sequence object!")
     
     # check cyclic peptides
     if sequence.cyclic:
-        raise TypeError, 'Direct fragmentation of cyclic peptides is not supported!'
+        raise TypeError('Direct fragmentation of cyclic peptides is not supported!')
     
     frags = []
     length = len(sequence)

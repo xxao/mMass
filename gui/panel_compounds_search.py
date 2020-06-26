@@ -21,13 +21,13 @@ import math
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
-import doc
+from . import doc
 
 from gui.panel_match import panelMatch
 
@@ -35,11 +35,11 @@ from gui.panel_match import panelMatch
 # FLOATING PANEL WITH COUPOUND SEARCH TOOL
 # ----------------------------------------
 
-class panelCompoundsSearch(wx.MiniFrame):
+class panelCompoundsSearch(wx.MiniFrame, mspy.MakeModalMixin):
     """Compounds search tool."""
     
     def __init__(self, parent, tool='compounds'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Compounds Search', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Compounds Search', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         self.matchPanel = None
@@ -54,7 +54,7 @@ class panelCompoundsSearch(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select default tool
         self.onToolSelected(tool=self.currentTool)
@@ -107,7 +107,7 @@ class panelCompoundsSearch(wx.MiniFrame):
         self.tool_label = wx.StaticText(panel, -1, "Compounds:")
         self.tool_label.SetFont(wx.SMALL_FONT)
         
-        choices = libs.compounds.keys()
+        choices = list(libs.compounds.keys())
         choices.sort()
         choices.insert(0,'Compounds lists')
         self.compounds_choice = wx.Choice(panel, -1, choices=choices, size=(250, mwx.SMALL_CHOICE_HEIGHT))
@@ -337,7 +337,7 @@ class panelCompoundsSearch(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -623,7 +623,7 @@ class panelCompoundsSearch(wx.MiniFrame):
         """Annotate matched peaks."""
         
         # check document
-        if self.currentDocument == None:
+        if self.currentDocument is None:
             wx.Bell()
             return
         
@@ -713,17 +713,17 @@ class panelCompoundsSearch(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
+        errFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         if config.match['units'] == 'ppm':
-            errFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+            errFormat = '%0.' + repr(config.main['ppmDigits']) + 'f'
         fontMatched = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         
         row = -1
         for index, item in enumerate(self.currentCompounds):
             
             # filter data
-            if self._compoundsFilter == 1 and item[5] == None:
+            if self._compoundsFilter == 1 and item[5] is None:
                 continue
             elif self._compoundsFilter == -1 and item[5] != None:
                 continue
@@ -747,13 +747,13 @@ class panelCompoundsSearch(wx.MiniFrame):
             
             # add data
             row += 1
-            self.compoundsList.InsertStringItem(row, '')
-            self.compoundsList.SetStringItem(row, 0, item[0])
-            self.compoundsList.SetStringItem(row, 1, mz)
-            self.compoundsList.SetStringItem(row, 2, z)
-            self.compoundsList.SetStringItem(row, 3, adduct)
-            self.compoundsList.SetStringItem(row, 4, formula)
-            self.compoundsList.SetStringItem(row, 5, error)
+            self.compoundsList.InsertItem(row, '')
+            self.compoundsList.SetItem(row, 0, item[0])
+            self.compoundsList.SetItem(row, 1, mz)
+            self.compoundsList.SetItem(row, 2, z)
+            self.compoundsList.SetItem(row, 3, adduct)
+            self.compoundsList.SetItem(row, 4, formula)
+            self.compoundsList.SetItem(row, 5, error)
             self.compoundsList.SetItemData(row, index)
             
             # mark matched

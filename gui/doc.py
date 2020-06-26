@@ -29,8 +29,8 @@ import numpy
 import wx
 
 # load modules
-import images
-import config
+from . import images
+from . import config
 import mspy
 
 
@@ -328,9 +328,9 @@ class document():
     def report(self, image=None):
         """Get HTML report."""
         
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        intFormat = '%0.' + `config.main['intDigits']` + 'f'
-        ppmFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
+        intFormat = '%0.' + repr(config.main['intDigits']) + 'f'
+        ppmFormat = '%0.' + repr(config.main['ppmDigits']) + 'f'
         
         # add header
         buff = REPORT_HEADER
@@ -547,8 +547,8 @@ class document():
             precision = 'd'
         
         # convert data to binary
-        mzArray = ''
-        intArray = ''
+        mzArray = b''
+        intArray = b''
         for point in spectrum:
             mzArray += struct.pack(precision, point[0])
             intArray += struct.pack(precision, point[1])
@@ -604,7 +604,7 @@ class document():
         
         buff = []
         
-        format = '%0.' + `config.main['mzDigits']` + 'f'
+        format = '%0.' + repr(config.main['mzDigits']) + 'f'
         for mod in sequence.modifications:
             name = mod[0]
             

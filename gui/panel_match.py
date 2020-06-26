@@ -20,23 +20,23 @@ import threading
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
 import mspy.plot
-import doc
+from . import doc
 
 
 # FLOATING PANEL WITH MATCH TOOLS
 # -------------------------------
 
-class panelMatch(wx.MiniFrame):
+class panelMatch(wx.MiniFrame, mspy.MakeModalMixin):
     """Data match tool."""
     
     def __init__(self, parentTool, mainFrame, module):
-        wx.MiniFrame.__init__(self, parentTool, -1, 'Match Data', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parentTool, -1, 'Match Data', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parentTool = parentTool
         self.mainFrame = mainFrame
@@ -53,7 +53,7 @@ class panelMatch(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select default tool
         self.onToolSelected(tool=self.currentTool)
@@ -375,7 +375,7 @@ class panelMatch(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -640,7 +640,7 @@ class panelMatch(wx.MiniFrame):
             self.currentErrors = []
             self.currentCalibrationPoints = []
             
-            digits = '%0.' + `config.main['mzDigits']` + 'f'
+            digits = '%0.' + repr(config.main['mzDigits']) + 'f'
             for pIndex, peak in enumerate(self.currentPeaklist):
                 for x, item in enumerate(self.currentData):
                     
@@ -667,7 +667,7 @@ class panelMatch(wx.MiniFrame):
             for item in self.currentData:
                 for match in item[-1]:
                     error = match.delta(config.match['units'])
-                    if item[errorCol] == None or abs(item[errorCol]) > abs(error):
+                    if item[errorCol] is None or abs(item[errorCol]) > abs(error):
                         item[errorCol] = error
             
             # get match summary
@@ -737,8 +737,8 @@ class panelMatch(wx.MiniFrame):
         
         # add new data
         for row, item in enumerate(self.currentSummary):
-            self.summaryList.InsertStringItem(row, item[0])
-            self.summaryList.SetStringItem(row, 1, str(item[1]))
+            self.summaryList.InsertItem(row, item[0])
+            self.summaryList.SetItem(row, 1, str(item[1]))
             self.summaryList.SetItemData(row, row)
         
         # update background

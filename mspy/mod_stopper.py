@@ -28,7 +28,7 @@ class stopper:
     def __init__(self):
         self.value = False
     
-    def __nonzero__(self):
+    def __bool__(self):
         return self.value
     
     def __repr__(self):

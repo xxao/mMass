@@ -19,11 +19,11 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
 
 from gui.panel_match import panelMatch
@@ -36,7 +36,7 @@ class panelMassFilter(wx.MiniFrame):
     """Mass filter tool."""
     
     def __init__(self, parent):
-        wx.MiniFrame.__init__(self, parent, -1, 'Mass Filter', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Mass Filter', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         self.matchPanel = None
@@ -48,7 +48,7 @@ class panelMassFilter(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -83,7 +83,7 @@ class panelMassFilter(wx.MiniFrame):
         references_label = wx.StaticText(panel, -1, "References:")
         references_label.SetFont(wx.SMALL_FONT)
         
-        choices = libs.references.keys()
+        choices = list(libs.references.keys())
         choices.sort()
         choices.insert(0,'Reference lists')
         self.references_choice = wx.Choice(panel, -1, choices=choices, size=(200, mwx.SMALL_CHOICE_HEIGHT))
@@ -291,7 +291,7 @@ class panelMassFilter(wx.MiniFrame):
         """Annotate matched peaks."""
         
         # check document
-        if self.currentDocument == None:
+        if self.currentDocument is None:
             wx.Bell()
             return
         
@@ -321,7 +321,7 @@ class panelMassFilter(wx.MiniFrame):
         """Remove matched masses from current peaklist."""
         
         # check document
-        if self.currentDocument == None:
+        if self.currentDocument is None:
             wx.Bell()
             return
         
@@ -369,10 +369,10 @@ class panelMassFilter(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
+        errFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         if config.match['units'] == 'ppm':
-            errFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+            errFormat = '%0.' + repr(config.main['ppmDigits']) + 'f'
         fontMatched = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         fontSkipped = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_ITALIC, wx.NORMAL)
         
@@ -380,7 +380,7 @@ class panelMassFilter(wx.MiniFrame):
         for index, item in enumerate(self.currentReferences):
             
             # filter data
-            if self._referencesFilter == 1 and item[2] == None:
+            if self._referencesFilter == 1 and item[2] is None:
                 continue
             elif self._referencesFilter == -1 and item[2] != None:
                 continue
@@ -394,10 +394,10 @@ class panelMassFilter(wx.MiniFrame):
             
             # add data
             row += 1
-            self.referencesList.InsertStringItem(row, '')
-            self.referencesList.SetStringItem(row, 0, item[0])
-            self.referencesList.SetStringItem(row, 1, theoretical)
-            self.referencesList.SetStringItem(row, 2, error)
+            self.referencesList.InsertItem(row, '')
+            self.referencesList.SetItem(row, 0, item[0])
+            self.referencesList.SetItem(row, 1, theoretical)
+            self.referencesList.SetItem(row, 2, error)
             self.referencesList.SetItemData(row, index)
             
             # mark matched

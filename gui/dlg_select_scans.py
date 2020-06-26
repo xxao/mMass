@@ -20,8 +20,8 @@ import datetime
 import wx
 
 # load modules
-import mwx
-import config
+from . import mwx
+from . import config
 import mspy
 
 
@@ -221,15 +221,15 @@ class dlgSelectScans(wx.Dialog):
                 try: pointsCount = str(scan['pointsCount'])
                 except: pass
             
-            self.scanList.InsertStringItem(row, str(scan['scanNumber']))
-            self.scanList.SetStringItem(row, 1, retentionTime)
-            self.scanList.SetStringItem(row, 2, msLevel)
-            self.scanList.SetStringItem(row, 3, precursorMZ)
-            self.scanList.SetStringItem(row, 4, precursorCharge)
-            self.scanList.SetStringItem(row, 5, mzRange)
-            self.scanList.SetStringItem(row, 6, totIonCurrent)
-            self.scanList.SetStringItem(row, 7, pointsCount)
-            self.scanList.SetStringItem(row, 8, scan['spectrumType'])
+            self.scanList.InsertItem(row, str(scan['scanNumber']))
+            self.scanList.SetItem(row, 1, retentionTime)
+            self.scanList.SetItem(row, 2, msLevel)
+            self.scanList.SetItem(row, 3, precursorMZ)
+            self.scanList.SetItem(row, 4, precursorCharge)
+            self.scanList.SetItem(row, 5, mzRange)
+            self.scanList.SetItem(row, 6, totIonCurrent)
+            self.scanList.SetItem(row, 7, pointsCount)
+            self.scanList.SetItem(row, 8, scan['spectrumType'])
             self.scanList.SetItemData(row, row)
             row += 1
         
@@ -247,7 +247,7 @@ class dlgSelectScans(wx.Dialog):
         ticData = []
         bpcData = []
         for scanID, scan in sorted(self.scans.items()):
-            if scan['msLevel'] != 1 or scan['retentionTime'] == None:
+            if scan['msLevel'] != 1 or scan['retentionTime'] is None:
                 continue
             if scan['totIonCurrent'] != None:
                 ticData.append((scan['retentionTime']/60, scan['totIonCurrent']))
@@ -318,7 +318,7 @@ class dlgSelectScans(wx.Dialog):
         nearest = None
         retention = position[0]*60
         for scanID, scan in sorted(self.scans.items()):
-            if scan['retentionTime'] != None and diff == None:
+            if scan['retentionTime'] != None and diff is None:
                 diff = abs(scan['retentionTime'] - retention)
                 nearest = scanID
             elif scan['retentionTime'] != None:

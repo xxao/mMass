@@ -19,11 +19,11 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from .ids import *
+from . import mwx
+from . import images
+from . import config
+from . import libs
 import mspy
 
 
@@ -34,7 +34,7 @@ class panelDocumentInfo(wx.MiniFrame):
     """Document info tools."""
     
     def __init__(self, parent, tool='summary'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Document Information', size=(400, 200), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Document Information', size=(400, 200), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
         
         self.parent = parent
         
@@ -43,7 +43,7 @@ class panelDocumentInfo(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
         
         # select default tool
         self.onToolSelected(tool=self.currentTool)
@@ -261,7 +261,7 @@ class panelDocumentInfo(wx.MiniFrame):
         
         # pack elements
         mainSizer = wx.BoxSizer(wx.VERTICAL)
-        mainSizer.Add(self.notes_value, 1, wx.EXPAND|wx.ALIGN_CENTER|wx.ALL, mwx.PANEL_SPACE_MAIN)
+        mainSizer.Add(self.notes_value, 1, wx.EXPAND|wx.ALL, mwx.PANEL_SPACE_MAIN)
         
         # fit layout
         mainSizer.Fit(panel)
@@ -332,7 +332,7 @@ class panelDocumentInfo(wx.MiniFrame):
         """Show presets."""
         
         # get presets
-        presets = libs.presets['operator'].keys()
+        presets = list(libs.presets['operator'].keys())
         presets.sort()
         
         # make menu

@@ -20,12 +20,12 @@ import re
 import os.path
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_peak
-import obj_peaklist
-import obj_scan
+from . import obj_peak
+from . import obj_peaklist
+from . import obj_scan
 
 
 # PARSE SIMPLE ASCII XY
@@ -39,7 +39,7 @@ class parseXY():
         
         # check path
         if not os.path.exists(path):
-            raise IOError, 'File not found! --> ' + self.path
+            raise IOError('File not found! --> ' + self.path)
     # ----
     
     
@@ -80,9 +80,8 @@ class parseXY():
         
         # open document
         try:
-            document = file(self.path)
-            rawData = document.readlines()
-            document.close()
+            with open(self.path, 'rb') as document:
+                rawData = document.readlines()
         except IOError:
             return False
         

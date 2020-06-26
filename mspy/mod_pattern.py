@@ -20,20 +20,20 @@ import math
 import numpy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import blocks
+from . import blocks
 
 # load objects
-import obj_compound
-import obj_peaklist
+from . import obj_compound
+from . import obj_peaklist
 
 # load modules
 import calculations
-import mod_basics
-import mod_signal
-import mod_peakpicking
+from . import mod_basics
+from . import mod_signal
+from . import mod_peakpicking
 
 
 # ISOTOPIC PATTERN FUNCTIONS
@@ -62,7 +62,7 @@ def pattern(compound, fwhm=0.1, threshold=0.01, charge=0, agentFormula='H', agen
     # add charging agent to compound
     if charge and agentFormula != 'e':
         formula = compound.formula()
-        for atom, count in agentFormula.composition().items():
+        for atom, count in list(agentFormula.composition().items()):
             formula += '%s%d' % (atom, count*(charge/agentCharge))
         compound = obj_compound.compound(formula)
     
@@ -70,7 +70,7 @@ def pattern(compound, fwhm=0.1, threshold=0.01, charge=0, agentFormula='H', agen
     composition = compound.composition()
     for atom in composition:
         if composition[atom] < 0:
-            raise ValueError, 'Pattern cannot be calculated for this formula! --> ' + compound.formula()
+            raise ValueError('Pattern cannot be calculated for this formula! --> ' + compound.formula())
     
     # set internal thresholds
     internalThreshold = threshold/100.
@@ -89,7 +89,7 @@ def pattern(compound, fwhm=0.1, threshold=0.01, charge=0, agentFormula='H', agen
             isotope = blocks.elements[symbol].isotopes[int(massNumber)]
             atomPattern.append([isotope[0], 1.]) # [mass, abundance]
         else:
-            for massNumber, isotope in blocks.elements[atom].isotopes.items():
+            for massNumber, isotope in list(blocks.elements[atom].isotopes.items()):
                 if isotope[1] > 0.:
                     atomPattern.append(list(isotope)) # [mass, abundance]
         
@@ -259,11 +259,11 @@ def matchpattern(signal, pattern, pickingHeight=0.75, baseline=None):
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Baseline must be NumPy array!"
+        raise TypeError("Baseline must be NumPy array!")
     
     # check signal data
     if len(signal) == 0:

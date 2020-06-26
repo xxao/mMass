@@ -25,12 +25,12 @@ import numpy
 from copy import deepcopy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_peak
-import obj_peaklist
-import obj_scan
+from . import obj_peak
+from . import obj_peaklist
+from . import obj_scan
 
 
 # PARSE mzData DATA
@@ -47,7 +47,7 @@ class parseMZDATA():
         
         # check path
         if not os.path.exists(path):
-            raise IOError, 'File not found! --> ' + self.path
+            raise IOError('File not found! --> ' + self.path)
     # ----
     
     
@@ -61,9 +61,8 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
-            parser.parse(document)
-            document.close()
+            with open(self.path, 'rb') as document:
+                parser.parse(document)
             self._scans = handler.data
         except xml.sax.SAXException:
             self._scans = False
@@ -95,9 +94,8 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
-            parser.parse(document)
-            document.close()
+            with open(self.path, 'rb') as document:
+                parser.parse(document)
         except stopParsing:
             self._info = handler.data
         except xml.sax.SAXException:
@@ -121,9 +119,8 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
-            parser.parse(document)
-            document.close()
+            with open(self.path, 'rb') as document:
+                parser.parse(document)
             self._scanlist = handler.data
         except xml.sax.SAXException:
             self._scanlist = False
@@ -145,9 +142,8 @@ class parseMZDATA():
             parser = xml.sax.make_parser()
             parser.setContentHandler(handler)
             try:
-                document = file(self.path)
-                parser.parse(document)
-                document.close()
+                with open(self.path, 'rb') as document:
+                    parser.parse(document)
                 data = handler.data
             except stopParsing:
                 data = handler.data
@@ -232,7 +228,7 @@ class parseMZDATA():
         
         # format
         if scanData['spectrumType'] == 'discrete':
-            data = map(list, zip(mzData, intData))
+            data = list(map(list, list(zip(mzData, intData))))
         else:
             mzData = numpy.array(mzData)
             mzData.shape = (-1,1)
@@ -482,7 +478,7 @@ class scanHandler(xml.sax.handler.ContentHandler):
                 scanID = int(scanID)
             
             # selected scan
-            if self.scanID == None or scanID == self.scanID:
+            if self.scanID is None or scanID == self.scanID:
                 self._isMatch = True
                 
                 self.data = {

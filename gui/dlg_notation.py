@@ -19,8 +19,8 @@
 import wx
 
 # load modules
-import mwx
-import config
+from . import mwx
+from . import config
 import mspy
 
 
@@ -39,7 +39,7 @@ class dlgNotation(wx.Dialog):
         self.button = button
         
         # set dlg title
-        format = 'Notation for m/z: %0.' + `config.main['mzDigits']` + 'f'
+        format = 'Notation for m/z: %0.' + repr(config.main['mzDigits']) + 'f'
         title = format % (self.notation.mz)
         self.SetTitle(title)
         

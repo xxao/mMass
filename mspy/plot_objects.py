@@ -21,7 +21,7 @@ import numpy
 import copy
 
 # load modules
-import mod_signal
+from . import mod_signal
 import calculations
 
 
@@ -330,7 +330,7 @@ class annotations:
         self.normalization = 1.0
         
         # get new attributes
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
         
         # convert points to array
@@ -355,7 +355,7 @@ class annotations:
     def setProperties(self, **attr):
         """Set object properties."""
         
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
     # ----
     
@@ -529,7 +529,7 @@ class annotations:
         
         # prepare labels
         labels = []
-        format = '%0.'+`self.properties['xPosDigits']`+'f - '
+        format = '%0.'+repr(self.properties['xPosDigits'])+'f - '
         for x, label in enumerate(self.labelsCropped):
             
             # check max length
@@ -625,7 +625,7 @@ class points:
         self.normalization = 1.0
         
         # get new attributes
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
         
         # convert points to array
@@ -643,7 +643,7 @@ class points:
     def setProperties(self, **attr):
         """Set object properties."""
         
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
     # ----
     
@@ -722,10 +722,10 @@ class points:
         # add current offset
         if not self.properties['normalized']:
             if self.properties['xOffset']:
-                format = ' X%0.'+`self.properties['xOffsetDigits']`+'f'
+                format = ' X%0.'+repr(self.properties['xOffsetDigits'])+'f'
                 offset += format % self.properties['xOffset']
             if self.properties['yOffset']:
-                format = ' Y%0.'+`self.properties['yOffsetDigits']`+'f'
+                format = ' Y%0.'+repr(self.properties['yOffsetDigits'])+'f'
                 offset += format % self.properties['yOffset']
             if legend and offset:
                 legend += ' (Offset%s)' % offset
@@ -909,7 +909,7 @@ class spectrum:
         self.normalization = 1.0
         
         # get new attributes
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
         
         # convert spectrum points to array
@@ -936,7 +936,7 @@ class spectrum:
     def setProperties(self, **attr):
         """Set object properties."""
         
-        for name, value in attr.items():
+        for name, value in list(attr.items()):
             self.properties[name] = value
     # ----
     
@@ -1051,10 +1051,10 @@ class spectrum:
         # add current offset
         if not self.properties['normalized']:
             if self.properties['xOffset']:
-                format = ' X%0.'+`self.properties['xOffsetDigits']`+'f'
+                format = ' X%0.'+repr(self.properties['xOffsetDigits'])+'f'
                 offset += format % self.properties['xOffset']
             if self.properties['yOffset']:
-                format = ' Y%0.'+`self.properties['yOffsetDigits']`+'f'
+                format = ' Y%0.'+repr(self.properties['yOffsetDigits'])+'f'
                 offset += format % self.properties['yOffset']
             if legend and offset:
                 legend += ' (Offset%s)' % offset
@@ -1199,7 +1199,7 @@ class spectrum:
         
         # prepare labels
         labels = []
-        format = '%0.'+`self.properties['labelDigits']`+'f'
+        format = '%0.'+repr(self.properties['labelDigits'])+'f'
         for x, peak in enumerate(self.peaklistScaled):
             
             # skip isotopes
@@ -1595,9 +1595,9 @@ def _scaleAndShift(points, scaleX, scaleY, shiftX, shiftY):
     
     # check signal type
     if not isinstance(points, numpy.ndarray):
-        raise TypeError, "Signal points must be NumPy array!"
+        raise TypeError("Signal points must be NumPy array!")
     if points.dtype.name != 'float64':
-        raise TypeError, "Signal points must be float64!"
+        raise TypeError("Signal points must be float64!")
     
     # check signal data
     if len(points) == 0:
@@ -1616,9 +1616,9 @@ def _filterPoints(points, resolution):
     
     # check signal type
     if not isinstance(points, numpy.ndarray):
-        raise TypeError, "Signal points must be NumPy array!"
+        raise TypeError("Signal points must be NumPy array!")
     if points.dtype.name != 'float64':
-        raise TypeError, "Signal points must be float64!"
+        raise TypeError("Signal points must be float64!")
     
     # check signal data
     if len(points) == 0:

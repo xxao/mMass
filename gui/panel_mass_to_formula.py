@@ -24,21 +24,21 @@ import os.path
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
 
 
 # FLOATING PANEL WITH MASS TO FORMULA TOOL
 # ----------------------------------------
 
-class panelMassToFormula(wx.MiniFrame):
+class panelMassToFormula(wx.MiniFrame, mspy.MakeModalMixin):
     """Mass to formula tool."""
     
     def __init__(self, parent):
-        wx.MiniFrame.__init__(self, parent, -1, 'Mass To Formula', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Mass To Formula', size=(400, 300), style=wx.DEFAULT_FRAME_STYLE & ~ wx.MAXIMIZE_BOX)
         
         self.parent = parent
         
@@ -50,7 +50,7 @@ class panelMassToFormula(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -108,7 +108,10 @@ class panelMassToFormula(wx.MiniFrame):
         
         tolerance_label = wx.StaticText(panel, -1, "Tolerance:")
         tolerance_label.SetFont(wx.SMALL_FONT)
-        self.tolerance_value = wx.TextCtrl(panel, -1, str(config.massToFormula['tolerance']), size=(50, -1), validator=mwx.validator('floatPos'))
+        self.tolerance_value = wx.TextCtrl(panel, -1,
+            str(config.massToFormula['tolerance']), size=(50, -1),
+            style=wx.TE_PROCESS_ENTER,
+            validator=mwx.validator('floatPos'))
         self.tolerance_value.Bind(wx.EVT_TEXT_ENTER, self.onGenerate)
         
         self.unitsDa_radio = wx.RadioButton(panel, -1, "Da", style=wx.RB_GROUP)
@@ -339,7 +342,7 @@ class panelMassToFormula(wx.MiniFrame):
         # fit layout
         self.Layout()
         self.mainSizer.Fit(self)
-        try: wx.Yield()
+        try: wx.GetApp().Yield()
         except: pass
     # ----
     
@@ -428,9 +431,8 @@ class panelMassToFormula(wx.MiniFrame):
         # run search
         try:
             path = os.path.join(tempfile.gettempdir(), 'mmass_formula_search.html')
-            htmlFile = file(path, 'w')
-            htmlFile.write(htmlData.encode("utf-8"))
-            htmlFile.close()
+            with open(path, 'wb') as f:
+                f.write(htmlData.encode("utf-8"))
             webbrowser.open('file://'+path, autoraise=1)
         except:
             wx.Bell()
@@ -608,7 +610,7 @@ class panelMassToFormula(wx.MiniFrame):
         
         # enable/disable profile check
         self.checkPattern_check.Enable(True)
-        if self.currentDocument == None or not self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument is None or not self.currentDocument.spectrum.hasprofile():
             self.checkPattern_check.Enable(False)
         
         # check mass
@@ -800,11 +802,11 @@ class panelMassToFormula(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
+        errFormat = '%0.' + repr(config.main['mzDigits']) + 'f'
         
         if config.massToFormula['units'] == 'ppm':
-            errFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+            errFormat = '%0.' + repr(config.main['ppmDigits']) + 'f'
         
         row = -1
         for index, item in enumerate(self.currentFormulae):
@@ -829,13 +831,13 @@ class panelMassToFormula(wx.MiniFrame):
             
             # add data
             row += 1
-            self.formulaeList.InsertStringItem(row, item[0])
-            self.formulaeList.SetStringItem(row, 1, mass)
-            self.formulaeList.SetStringItem(row, 2, mz)
-            self.formulaeList.SetStringItem(row, 3, error)
-            self.formulaeList.SetStringItem(row, 4, hc)
-            self.formulaeList.SetStringItem(row, 5, rdbe)
-            self.formulaeList.SetStringItem(row, 6, similarity)
+            self.formulaeList.InsertItem(row, item[0])
+            self.formulaeList.SetItem(row, 1, mass)
+            self.formulaeList.SetItem(row, 2, mz)
+            self.formulaeList.SetItem(row, 3, error)
+            self.formulaeList.SetItem(row, 4, hc)
+            self.formulaeList.SetItem(row, 5, rdbe)
+            self.formulaeList.SetItem(row, 6, similarity)
             self.formulaeList.SetItemData(row, index)
         
         # sort data
@@ -851,7 +853,7 @@ class panelMassToFormula(wx.MiniFrame):
         """Compare theoretical and real isotopic pattern."""
         
         # check document
-        if self.currentDocument == None or not self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument is None or not self.currentDocument.spectrum.hasprofile():
             return None
         
         # get baseline window

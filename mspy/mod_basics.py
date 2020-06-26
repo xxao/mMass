@@ -20,13 +20,13 @@ import math
 import re
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from .mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import blocks
+from . import blocks
 
 # load objects
-import obj_compound
+from . import obj_compound
 
 
 # BASIC CONSTANTS
@@ -70,7 +70,7 @@ def delta(measuredMass, countedMass, units='ppm'):
     elif units == '%':
         return (measuredMass - countedMass) / countedMass*100
     else:
-        raise ValueError, 'Unknown units for delta! -->' + units
+        raise ValueError('Unknown units for delta! -->' + units)
 # ----
 
 
@@ -149,7 +149,7 @@ def md(mass, mdType='standard', kendrickFormula='CH2', rounding='floor'):
         return  nominalmass(mass * kendrickF, rounding) - (mass * kendrickF)
     
     # unknown mass defect type
-    else: raise ValueError, 'Unknown mass defect type! --> ' + mdType
+    else: raise ValueError('Unknown mass defect type! --> ' + mdType)
 # ----
 
 
@@ -169,7 +169,7 @@ def nominalmass(mass, rounding='floor'):
         return round(mass)
     
     # unknown rounding function
-    else: raise ValueError, 'Unknown nominal mass rounding! --> ' + rounding
+    else: raise ValueError('Unknown nominal mass rounding! --> ' + rounding)
 # ----
 
 

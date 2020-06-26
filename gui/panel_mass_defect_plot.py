@@ -20,10 +20,10 @@ import math
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from .ids import *
+from . import mwx
+from . import images
+from . import config
 import mspy
 import mspy.plot
 
@@ -43,7 +43,7 @@ class panelMassDefectPlot(wx.MiniFrame):
         
         # make gui items
         self.makeGUI()
-        wx.EVT_CLOSE(self, self.onClose)
+        self.Bind(wx.EVT_CLOSE, self.onClose)
     # ----
     
     
@@ -283,7 +283,7 @@ class panelMassDefectPlot(wx.MiniFrame):
         """Highlight selected point in spectrum."""
         
         # check document
-        if self.currentDocument == None:
+        if self.currentDocument is None:
             evt.Skip()
             return
         

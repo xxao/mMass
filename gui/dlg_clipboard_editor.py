@@ -19,8 +19,8 @@
 import wx
 
 # load modules
-import mwx
-import config
+from . import mwx
+from . import config
 
 
 # CLIPBOARD EDITOR DIALOG
