@@ -352,18 +352,18 @@ class compound:
         
         # check formula
         if not mod_basics.FORMULA_PATTERN.match(formula):
-            raise ValueError, 'Wrong formula! --> ' + formula
+            raise ValueError('Wrong formula! --> ' + formula)
         
         # check elements and isotopes
         for atom in mod_basics.ELEMENT_PATTERN.findall(formula):
             if not atom[0] in blocks.elements:
-                raise ValueError, 'Unknown element in formula! --> ' + atom[0] + ' in ' + formula
+                raise ValueError('Unknown element in formula! --> ' + atom[0] + ' in ' + formula)
             elif atom[1] and not int(atom[1]) in blocks.elements[atom[0]].isotopes:
-                raise ValueError, 'Unknown isotope in formula! --> ' + atom[0] + atom[1] + ' in ' + formula
+                raise ValueError('Unknown isotope in formula! --> ' + atom[0] + atom[1] + ' in ' + formula)
         
         # check brackets
         if formula.count(')') != formula.count('('):
-            raise ValueError, 'Wrong number of brackets in formula! --> ' + formula
+            raise ValueError('Wrong number of brackets in formula! --> ' + formula)
     # ----
     
     

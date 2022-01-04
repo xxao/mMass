@@ -39,7 +39,7 @@ class parseXY():
         
         # check path
         if not os.path.exists(path):
-            raise IOError, 'File not found! --> ' + self.path
+            raise IOError('File not found! --> ' + self.path)
     # ----
     
     

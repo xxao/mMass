@@ -57,7 +57,7 @@ def labelpoint(signal, mz, baseline=None):
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
@@ -118,7 +118,7 @@ def labelpeak(signal, mz=None, minX=None, maxX=None, pickingHeight=0.75, baselin
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
@@ -210,7 +210,7 @@ def labelscan(signal, minX=None, maxX=None, pickingHeight=0.75, absThreshold=0.,
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):

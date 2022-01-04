@@ -69,7 +69,7 @@ else:
         except: pass
 
 if not os.path.exists(confdir):
-    raise IOError, "Configuration folder cannot be found!"
+    raise IOError( "Configuration folder cannot be found!")
 
 
 # INIT DEFAULT VALUES

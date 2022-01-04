@@ -259,7 +259,7 @@ def matchpattern(signal, pattern, pickingHeight=0.75, baseline=None):
     
     # check signal type
     if not isinstance(signal, numpy.ndarray):
-        raise TypeError, "Signal must be NumPy array!"
+        raise TypeError("Signal must be NumPy array!")
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
