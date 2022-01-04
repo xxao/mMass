@@ -127,11 +127,14 @@ class parseMZML():
         
         # parse document
         try:
-            document = open(self.path)
-            parser.parse(document)
-            document.close()
-            self._scanlist = handler.data
-        except xml.sax.SAXException:
+
+            with open(self.path) as document:
+            
+                parser.parse(document)
+        
+                self._scanlist = handler.data
+        except xml.sax.SAXException as e:
+            print(e)
             self._scanlist = False
         
         return self._scanlist

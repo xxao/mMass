@@ -25,7 +25,7 @@ import xml.dom.minidom
 # SET VERSION
 # -----------
 
-version = '5.5.0'
+version = '6.0.0a'
 nightbuild = ''
 
 
@@ -1340,10 +1340,10 @@ def saveConfig(path=os.path.join(confdir, 'config.xml')):
     # save config file
     try:
         save = open(path, 'w')
-        save.write(buff.encode("utf-8"))
+        save.write(buff)
         save.close()
         return True
-    except:
+    except Exception as e:
         return False
 # ----
 

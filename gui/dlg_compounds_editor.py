@@ -22,9 +22,9 @@ import xml.dom.minidom
 
 # load modules
 from gui.ids import *
-import gui.mwx
+import gui.mwx as mwx
 import gui.config as config
-import gui.libs
+import gui.libs as libs
 import mspy
 
 

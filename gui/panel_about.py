@@ -20,9 +20,9 @@ import wx
 
 # load modules
 from gui.ids import *
-import gui.mwx
-import gui.images
-import gui.config
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 
 
 # ABOUT mMass PANEL
@@ -40,7 +40,7 @@ class panelAbout(frame):
     """About mMass."""
     
     def __init__(self, parent):
-        frame.__init__(self, parent, -1, frameTitle, style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.MINIMIZE_BOX))
+        frame.__init__(self, parent, -1, frameTitle, style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER  | wx.MAXIMIZE_BOX | wx.MINIMIZE_BOX))
         self.parent = parent
         
         # make gui items
@@ -75,6 +75,9 @@ class panelAbout(frame):
         
         copyright = wx.StaticText(panel, -1, "(c) 2005-2013 Martin Strohalm")
         copyright.SetFont(wx.SMALL_FONT)
+
+        copyright2 = wx.StaticText(panel, -1, "Updated to Python 3 by Michael Hollas")
+        copyright2.SetFont(wx.SMALL_FONT)
         
         homepage_butt = wx.Button(panel, ID_helpHomepage, "Homepage", size=(150, -1))
         homepage_butt.Bind(wx.EVT_BUTTON, self.parent.onLibraryLink)
@@ -93,6 +96,8 @@ class panelAbout(frame):
         sizer.Add(version, 0, wx.CENTER|wx.LEFT|wx.RIGHT, 20)
         sizer.AddSpacer(10)
         sizer.Add(copyright, 0, wx.CENTER|wx.LEFT|wx.RIGHT, 20)
+        sizer.AddSpacer(20)
+        sizer.Add(copyright2, 0, wx.CENTER|wx.LEFT|wx.RIGHT, 20)
         sizer.AddSpacer(20)
         sizer.Add(homepage_butt, 0, wx.CENTER|wx.LEFT|wx.RIGHT, 20)
         sizer.AddSpacer(10)
