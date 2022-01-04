@@ -26,7 +26,7 @@ setup(
     ext_modules=[
         Extension('calculations', ['calculations.c'],
             include_dirs=[numpyInclude, pythonInclude],
-            libraries=['m']
+            libraries=['msvcrt']
         )
     ],
 )
