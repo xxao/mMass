@@ -20,7 +20,7 @@ import os.path
 import xml.dom.minidom
 
 # load objects
-import obj_compound
+import mspy.obj_compound as obj_compound
 
 # set default blocks path
 blocksdir = '.'
@@ -596,7 +596,7 @@ def saveMonomers(path=os.path.join(blocksdir, 'monomers.xml')):
     
     # save monomers file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True
@@ -625,7 +625,7 @@ def saveEnzymes(path=os.path.join(blocksdir, 'enzymes.xml')):
     
     # save enzymes file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True
@@ -654,7 +654,7 @@ def saveModifications(path=os.path.join(blocksdir, 'modifications.xml')):
     
     # save modifications file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True

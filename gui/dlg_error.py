@@ -22,9 +22,9 @@ import numpy
 import wx
 
 # load modules
-import mwx
-import config
-import images
+import gui.mwx as mwx
+import gui.config as config
+import gui.images as images
 
 
 # SYSTEM ERROR
@@ -52,7 +52,7 @@ class dlgError(wx.Dialog):
         self.exception += '\nSystem: %s' % str(platform.system())
         self.exception += '\nMac: %s' % str(platform.mac_ver())
         self.exception += '\nMSW: %s' % str(platform.win32_ver())
-        self.exception += '\nLinux: %s' % str(platform.dist())
+        #self.exception += '\nLinux: %s' % str(platform.dist())
         self.exception += '\n-------------------------\n'
         self.exception += 'Add your comments:\n'
         

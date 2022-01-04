@@ -20,10 +20,10 @@ import wx
 import webbrowser
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
 import mspy
 
 

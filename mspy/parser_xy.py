@@ -20,12 +20,12 @@ import re
 import os.path
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_peak
-import obj_peaklist
-import obj_scan
+import mspy.obj_peak as obj_peak
+import mspy.obj_peaklist as obj_peaklist
+import mspy.obj_scan as obj_scan
 
 
 # PARSE SIMPLE ASCII XY
@@ -80,7 +80,7 @@ class parseXY():
         
         # open document
         try:
-            document = file(self.path)
+            document = open(self.path)
             rawData = document.readlines()
             document.close()
         except IOError:

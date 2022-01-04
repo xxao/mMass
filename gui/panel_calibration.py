@@ -22,11 +22,11 @@ import wx
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
+import gui.libs
 import mspy
 import mspy.plot
 
@@ -555,7 +555,7 @@ class panelCalibration(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # empty references
@@ -590,8 +590,8 @@ class panelCalibration(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        ppmFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
+        ppmFormat = '%0.' + config.main['ppmDigits'] + 'f'
         fontSkipped = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_ITALIC, wx.NORMAL)
         fontUsed = wx.SMALL_FONT
         for row, item in enumerate(self.currentReferences):

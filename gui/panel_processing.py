@@ -22,13 +22,13 @@ import wx
 import copy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
+import gui.libs
 import mspy
-import doc
+import gui.doc
 
 
 # FLOATING PANEL WITH PROCESSING TOOLS
@@ -825,7 +825,7 @@ class panelProcessing(wx.MiniFrame):
     def onStop(self, evt):
         """Cancel current processing."""
         
-        if self.processing and self.processing.isAlive():
+        if self.processing and self.processing.is_alive():
             mspy.stop()
         else:
             wx.Bell()
@@ -1006,7 +1006,7 @@ class panelProcessing(wx.MiniFrame):
             return
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             return
         
         # get params
@@ -1053,7 +1053,7 @@ class panelProcessing(wx.MiniFrame):
             return
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             return
         
         # get params
@@ -1133,7 +1133,7 @@ class panelProcessing(wx.MiniFrame):
         
         # pulse gauge while working
         self.processing.start()
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # send tmp spectrum to plot canvas
@@ -1167,7 +1167,7 @@ class panelProcessing(wx.MiniFrame):
         
         # check data
         if self.currentTool in ('baseline', 'smoothing', 'peakpicking') \
-            and not self.currentDocument.spectrum.hasprofile():
+            and not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         if self.currentTool in ('deisotoping', 'deconvolution') \
@@ -1208,7 +1208,7 @@ class panelProcessing(wx.MiniFrame):
         
         # pulse gauge while working
         self.processing.start()
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # update gui
@@ -1500,7 +1500,7 @@ class panelProcessing(wx.MiniFrame):
         """Preview smoothing results."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         
@@ -1529,7 +1529,7 @@ class panelProcessing(wx.MiniFrame):
         """Preview smoothing results."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         
@@ -1727,7 +1727,7 @@ class panelProcessing(wx.MiniFrame):
         """Subtract baseline."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         
@@ -1760,7 +1760,7 @@ class panelProcessing(wx.MiniFrame):
         """Smooth data."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         
@@ -1794,7 +1794,7 @@ class panelProcessing(wx.MiniFrame):
         """Find peaks."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             wx.Bell()
             return
         
@@ -2061,7 +2061,7 @@ class panelProcessing(wx.MiniFrame):
         """Make peakpicking threshold line."""
         
         # check current spectrum
-        if not self.currentDocument or not self.currentDocument.spectrum.hasprofile():
+        if not self.currentDocument or not self.currentDocument.spectrum.hasproopen():
             return []
         
         # get baseline window

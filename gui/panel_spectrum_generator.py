@@ -21,9 +21,9 @@ import wx
 import numpy
 
 # load modules
-import mwx
-import images
-import config
+import gui.mwx
+import gui.images
+import gui.config as config
 import mspy
 import mspy.plot
 
@@ -288,7 +288,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
     def onStop(self, evt):
         """Cancel current processing."""
         
-        if self.processing and self.processing.isAlive():
+        if self.processing and self.processing.is_alive():
             mspy.stop()
         else:
             wx.Bell()
@@ -327,7 +327,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # update spectrum canvas
@@ -352,7 +352,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
             return
         
         # ask to owerwrite spectrum
-        if self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument.spectrum.hasproopen():
             title = 'Do you really want to apply generated spectrum\nto current document?'
             message = 'Original profile data will be lost.'
             buttons = [(wx.ID_CANCEL, "Cancel", 80, False, 15), (wx.ID_OK, "Apply", 80, True, 0)]
@@ -368,7 +368,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         
         # set profile to document
         points = self.currentProfile.copy()
-        self.currentDocument.spectrum.setprofile(points)
+        self.currentDocument.spectrum.setproopen(points)
         
         # update document
         self.parent.onDocumentChanged(items=('spectrum'))
@@ -586,7 +586,7 @@ class panelSpectrumGenerator(wx.MiniFrame):
         try:
             
             # make profile spectrum
-            self.currentProfile = mspy.profile(
+            self.currentProfile = mspy.proopen(
                 peaklist = self.currentDocument.spectrum.peaklist,
                 fwhm = config.spectrumGenerator['fwhm'],
                 points = config.spectrumGenerator['points'],

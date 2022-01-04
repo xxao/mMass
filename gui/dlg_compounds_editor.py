@@ -21,10 +21,10 @@ import copy
 import xml.dom.minidom
 
 # load modules
-from ids import *
-import mwx
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.config as config
+import gui.libs
 import mspy
 
 
@@ -505,7 +505,7 @@ class dlgCompoundsEditor(wx.Dialog):
             return
         
         # add new data
-        digits = '%0.' + `config.main['mzDigits']` + 'f'
+        digits = '%0.' +config.main['mzDigits'] + 'f'
         for row, item in enumerate(self.itemsMap):
             
             # format data

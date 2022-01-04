@@ -16,14 +16,14 @@
 # -------------------------------------------------------------------------
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import blocks
+import mspy.blocks as blocks
 
 # load modules
-import mod_basics
-import mod_pattern
+import mspy.mod_basics as mod_basics
+import mspy.mod_pattern as mod_pattern
 
 
 # COMPOUND OBJECT DEFINITION
@@ -149,6 +149,9 @@ class compound:
         
         # group elements
         self._composition = {}
+
+        self.newComp = {}
+
         for symbol, isotop, count in mod_basics.ELEMENT_PATTERN.findall(unfoldedFormula):
             
             # make atom
@@ -171,9 +174,11 @@ class compound:
         
         # remove zeros
         for atom in self._composition.keys():
-            if self._composition[atom] == 0:
-                del self._composition[atom]
+            if self._composition[atom] != 0:
+                self.newComp[atom] = self._composition[atom]
         
+        self._composition =  self.newComp
+
         return self._composition
     # ----
     

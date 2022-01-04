@@ -17,5 +17,5 @@
 
 
 # load objects
-from plot_objects import *
-from plot_canvas import *
+from mspy.plot_objects import *
+from mspy.plot_canvas import *

@@ -20,17 +20,17 @@ import re
 import copy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import blocks
+import mspy.blocks as blocks
 
 # load objects
-import obj_compound
+import mspy.obj_compound as obj_compound
 
 # load modules
-import mod_basics
-import mod_pattern
+import mspy.mod_basics as mod_basics
+import mspy.mod_pattern as mod_pattern
 
 
 # SEQUENCE OBJECT DEFINITION
@@ -61,7 +61,7 @@ class sequence:
         
         for monomer in self.chain:
             if not monomer in blocks.monomers:
-                raise KeyError, 'Unknown monomer in the sequence! --> ' + monomer
+                raise KeyError('Unknown monomer in the sequence! --> ' + monomer)
         
         # set terminal groups
         if self.cyclic:
@@ -129,7 +129,7 @@ class sequence:
         
         # check slice
         if stop <= start and not self.cyclic:
-            raise ValueError, 'Invalid slice!'
+            raise ValueError('Invalid slice!')
         
         # break the links
         parent = copy.deepcopy(self)
@@ -242,15 +242,15 @@ class sequence:
         
         # check slice
         if stop < start:
-            raise ValueError, 'Invalid slice!'
+            raise ValueError('Invalid slice!')
         
         # check value
         if not isinstance(value, sequence):
-            raise TypeError, 'Invalid object to instert!'
+            raise TypeError('Invalid object to instert!')
         
         # check chain type
         if value.chainType != self.chainType:
-            raise TypeError, 'Invalid chain type to instert!'
+            raise TypeError('Invalid chain type to instert!')
         
         # break the links
         value = copy.deepcopy(value)
@@ -274,7 +274,7 @@ class sequence:
         
         # adding modifications not implemented
         if value.modifications or value.labels:
-            raise NotImplementedError, "Sequence __setslice__ doesn't support modifications and labels."
+            raise NotImplementedError("Sequence __setslice__ doesn't support modifications and labels.")
         
         # clear some values
         self.history = [('init', 0, len(self.chain))]
@@ -292,7 +292,7 @@ class sequence:
         
         # check slice
         if stop < start:
-            raise ValueError, 'Invalid slice!'
+            raise ValueError('Invalid slice!')
         
         # remove sequence
         self.chain = self.chain[:start] + self.chain[stop:]
@@ -563,7 +563,7 @@ class sequence:
         
         # check cyclic peptides
         if self.cyclic:
-            raise TypeError, 'Search function is not supported for cyclic peptides!'
+            raise TypeError('Search function is not supported for cyclic peptides!')
         
         matches = []
         
@@ -841,7 +841,7 @@ class sequence:
         
         # check modification
         if not name in blocks.modifications:
-            raise KeyError, 'Unknown modification! --> ' + name
+            raise KeyError('Unknown modification! --> ' + name)
         
         # check position
         try: position = int(position)
@@ -888,7 +888,7 @@ class sequence:
         
         # check modification
         if not name in blocks.modifications:
-            raise KeyError, 'Unknown modification! --> ' + name
+            raise KeyError('Unknown modification! --> ' + name)
         
         # check position
         try: position = int(position)

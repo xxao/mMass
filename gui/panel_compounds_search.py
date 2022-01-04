@@ -21,13 +21,13 @@ import math
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
+import gui.libs
 import mspy
-import doc
+import gui.doc
 
 from gui.panel_match import panelMatch
 
@@ -345,7 +345,7 @@ class panelCompoundsSearch(wx.MiniFrame):
     def onStop(self, evt):
         """Cancel current processing."""
         
-        if self.processing and self.processing.isAlive():
+        if self.processing and self.processing.is_alive():
             mspy.stop()
         else:
             wx.Bell()
@@ -576,7 +576,7 @@ class panelCompoundsSearch(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # update compounds list
@@ -713,10 +713,10 @@ class panelCompoundsSearch(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
+        errFormat = '%0.' + config.main['mzDigits'] + 'f'
         if config.match['units'] == 'ppm':
-            errFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+            errFormat = '%0.' + config.main['ppmDigits'] + 'f'
         fontMatched = wx.Font(mwx.SMALL_FONT_SIZE, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         
         row = -1

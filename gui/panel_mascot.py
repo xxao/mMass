@@ -19,20 +19,20 @@
 import re
 import threading
 import wx
-import httplib
+import http.client
 import socket
 import webbrowser
 import tempfile
 import os.path
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config as config
+import gui.libs
 import mspy
-import doc
+import gui.doc
 
 
 # FLOATING PANEL WITH MASCOT SEARCH
@@ -903,7 +903,7 @@ class panelMascot(wx.MiniFrame):
         htmlData = self.makeSearchHTML()
         try:
             path = os.path.join(tempfile.gettempdir(), 'mmass_mascot_search.html')
-            htmlFile = file(path, 'w')
+            htmlFile = open(path, 'w')
             htmlFile.write(htmlData.encode("utf-8"))
             htmlFile.close()
             webbrowser.open('file://'+path, autoraise=1)
@@ -1240,7 +1240,7 @@ class panelMascot(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # hide processing gauge

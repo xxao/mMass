@@ -21,11 +21,11 @@ import numpy
 import copy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import doc
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
+import gui.doc
 import mspy
 import mspy.plot
 
@@ -541,7 +541,7 @@ class panelMassCalculator(wx.MiniFrame):
             return
         
         # re-calculate pattern profile
-        self.makeProfile()
+        self.makeProopen()
         
         # update gui
         self.updatePatternCanvas(rescale=False)
@@ -814,7 +814,7 @@ class panelMassCalculator(wx.MiniFrame):
             return
         
         # add new data
-        format = '%0.' + `config.main['mzDigits']` + 'f'
+        format = '%0.' + config.main['mzDigits'] + 'f'
         for row, ion in enumerate(self.currentIons):
             
             # format data
@@ -1000,7 +1000,7 @@ class panelMassCalculator(wx.MiniFrame):
             )
             
             # make profile
-            self.makeProfile()
+            self.makeProopen()
             
         # task canceled
         except mspy.ForceQuit:
@@ -1011,7 +1011,7 @@ class panelMassCalculator(wx.MiniFrame):
     # ----
     
     
-    def makeProfile(self):
+    def makeProopen(self):
         """Generate pattern profile."""
         
         self.currentPatternProfile = None
@@ -1028,7 +1028,7 @@ class panelMassCalculator(wx.MiniFrame):
             charge = self.currentIon[3]
         
         # make profile
-        self.currentPatternProfile = mspy.profile(
+        self.currentPatternProfile = mspy.proopen(
             peaklist = self.currentPattern,
             fwhm = config.massCalculator['patternFwhm'],
             points = 20,

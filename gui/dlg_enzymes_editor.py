@@ -20,8 +20,8 @@ import re
 import wx
 
 # load modules
-import mwx
-import config
+import gui.mwx
+import gui.config as config
 import mspy
 
 

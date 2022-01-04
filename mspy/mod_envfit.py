@@ -21,17 +21,17 @@ import numpy
 from numpy.linalg import solve as solveLinEq
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_compound
-import obj_peaklist
+import mspy.obj_compound as obj_compound
+import mspy.obj_peaklist as obj_peaklist
 
 # load modules
-import mod_pattern
-import mod_signal
-import mod_peakpicking
-import mod_calibration
+import mspy.mod_pattern as mod_pattern
+import mspy.mod_signal as mod_signal
+import mspy.mod_peakpicking  as mod_peakpicking
+import mspy.mod_calibration as mod_calibration
 
 
 # ENVELOPE FIT
@@ -231,7 +231,7 @@ class envfit():
             isotopes += [(p[0], p[1]*abundance) for p in self.models[x][1]]
         
         # make profile from isotopes
-        profile = mod_pattern.profile(isotopes, fwhm=self.fwhm, points=points, model=self.peakShape)
+        profile = mod_pattern.proopen(isotopes, fwhm=self.fwhm, points=points, model=self.peakShape)
         
         return profile
     # ----
@@ -312,7 +312,7 @@ class envfit():
                 self.models[x][1] = pattern
             
             # calculate model profile
-            profile = mod_pattern.profile(pattern, fwhm=self.fwhm, raster=raster, model=self.peakShape)
+            profile = mod_pattern.proopen(pattern, fwhm=self.fwhm, raster=raster, model=self.peakShape)
             model = profile[:,1].flatten()
             
             # check model profile
@@ -352,7 +352,7 @@ class envfit():
             return
         
         # make total envelope
-        profile = mod_pattern.profile(isotopes, fwhm=self.fwhm, points=10, model=self.peakShape)
+        profile = mod_pattern.proopen(isotopes, fwhm=self.fwhm, points=10, model=self.peakShape)
         
         # label peaks in profile
         peaklist = mod_peakpicking.labelscan(profile, pickingHeight=0.95, relThreshold=0.01)

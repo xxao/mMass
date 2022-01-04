@@ -20,11 +20,11 @@ import threading
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
+import gui.libs
 import mspy
 
 
@@ -365,7 +365,7 @@ class panelEnvelopeFit(wx.MiniFrame):
     def onStop(self, evt):
         """Cancel current processing."""
         
-        if self.processing and self.processing.isAlive():
+        if self.processing and self.processing.is_alive():
             mspy.stop()
         else:
             wx.Bell()
@@ -405,7 +405,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         self.currentFit = None
         
         # check document
-        if not self.currentDocument or not (self.currentDocument.spectrum.hasprofile() or self.currentDocument.spectrum.haspeaks()):
+        if not self.currentDocument or not (self.currentDocument.spectrum.hasproopen() or self.currentDocument.spectrum.haspeaks()):
             wx.Bell()
             return
         
@@ -425,7 +425,7 @@ class panelEnvelopeFit(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # check error
@@ -490,7 +490,7 @@ class panelEnvelopeFit(wx.MiniFrame):
             self.scaleMax_value.SetValue(str(scale[1]))
         
         # update fitting options
-        if self.currentDocument and not self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument and not self.currentDocument.spectrum.hasproopen():
             self.fitToPeaklist_radio.SetValue(True)
             self.fitToSpectrum_radio.Disable()
         elif self.currentDocument and not self.currentDocument.spectrum.haspeaks():

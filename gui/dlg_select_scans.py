@@ -20,8 +20,8 @@ import datetime
 import wx
 
 # load modules
-import mwx
-import config
+import gui.mwx
+import gui.config
 import mspy
 
 

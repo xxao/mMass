@@ -20,8 +20,8 @@ import re
 import wx
 
 # load modules
-import mwx
-import config
+import gui.mwx
+import gui.config
 import mspy
 
 
@@ -355,7 +355,7 @@ class dlgMonomersEditor(wx.Dialog):
             return
         
         # add new data
-        digits = '%0.' + `config.main['mzDigits']` + 'f'
+        digits = '%0.' + config.main['mzDigits'] + 'f'
         for row, item in enumerate(self.itemsMap):
             
             # format data

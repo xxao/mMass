@@ -23,7 +23,7 @@ import xml.dom.minidom
 import copy
 
 # load modules
-import config
+import gui.config as config
 import mspy
 
 
@@ -32,7 +32,7 @@ import mspy
 if sys.platform == 'darwin':
     for item in ('monomers.xml', 'modifications.xml', 'enzymes.xml', 'presets.xml', 'references.xml', 'compounds.xml', 'mascot.xml'):
         if not os.path.exists(os.path.join(config.confdir, item)):
-            try: shutil.copyfile(os.path.join('configs', item), os.path.join(config.confdir, item))
+            try: shutil.copyopen(os.path.join('configs', item), os.path.join(config.confdir, item))
             except: pass
 
 
@@ -896,7 +896,7 @@ def savePresets(path=os.path.join(config.confdir, 'presets.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True
@@ -921,7 +921,7 @@ def saveReferences(path=os.path.join(config.confdir, 'references.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True
@@ -946,7 +946,7 @@ def saveCompounds(path=os.path.join(config.confdir, 'compounds.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True
@@ -976,7 +976,7 @@ def saveMascot(path=os.path.join(config.confdir, 'mascot.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True

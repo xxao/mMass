@@ -24,10 +24,10 @@ import os.path
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
 import mspy
 
 
@@ -347,7 +347,7 @@ class panelMassToFormula(wx.MiniFrame):
     def onStop(self, evt):
         """Cancel current processing."""
         
-        if self.processing and self.processing.isAlive():
+        if self.processing and self.processing.is_alive():
             mspy.stop()
         else:
             wx.Bell()
@@ -428,7 +428,7 @@ class panelMassToFormula(wx.MiniFrame):
         # run search
         try:
             path = os.path.join(tempfile.gettempdir(), 'mmass_formula_search.html')
-            htmlFile = file(path, 'w')
+            htmlFile = open(path, 'w')
             htmlFile.write(htmlData.encode("utf-8"))
             htmlFile.close()
             webbrowser.open('file://'+path, autoraise=1)
@@ -552,7 +552,7 @@ class panelMassToFormula(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # update gui
@@ -608,7 +608,7 @@ class panelMassToFormula(wx.MiniFrame):
         
         # enable/disable profile check
         self.checkPattern_check.Enable(True)
-        if self.currentDocument == None or not self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument == None or not self.currentDocument.spectrum.hasproopen():
             self.checkPattern_check.Enable(False)
         
         # check mass
@@ -800,11 +800,11 @@ class panelMassToFormula(wx.MiniFrame):
             return
         
         # add new data
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        errFormat = '%0.' + `config.main['mzDigits']` + 'f'
+        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
+        errFormat = '%0.' + config.main['mzDigits'] + 'f'
         
         if config.massToFormula['units'] == 'ppm':
-            errFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+            errFormat = '%0.' + config.main['ppmDigits'] + 'f'
         
         row = -1
         for index, item in enumerate(self.currentFormulae):
@@ -851,7 +851,7 @@ class panelMassToFormula(wx.MiniFrame):
         """Compare theoretical and real isotopic pattern."""
         
         # check document
-        if self.currentDocument == None or not self.currentDocument.spectrum.hasprofile():
+        if self.currentDocument == None or not self.currentDocument.spectrum.hasproopen():
             return None
         
         # get baseline window

@@ -1512,7 +1512,7 @@ m_arrayd *signal_profile_to_raster( m_arrayd *p_peaks, m_arrayd *p_raster, doubl
     return p_profile;
 }
 
-m_arrayd *signal_profile( m_arrayd *p_peaks, int points, double noise, int shape )
+m_arrayd *signal_proopen( m_arrayd *p_peaks, int points, double noise, int shape )
 {
     
     m_arrayd *p_profile, *p_raster;
@@ -2404,7 +2404,7 @@ static PyObject *_wrap_signal_gausslorentzian( PyObject *self, PyObject *args )
     return PyArray_Return(p_results);
 }
 
-static PyObject *_wrap_signal_profile( PyObject *self, PyObject *args )
+static PyObject *_wrap_signal_proopen( PyObject *self, PyObject *args )
 {
     PyArrayObject *p_peaks, *p_results;
     m_arrayd *p_mpeaks, *p_mresults;
@@ -2421,7 +2421,7 @@ static PyObject *_wrap_signal_profile( PyObject *self, PyObject *args )
     p_mpeaks = array_py2md(p_peaks);
     
     // make profile
-    p_mresults = signal_profile( p_mpeaks, points, noise, shape );
+    p_mresults = signal_proopen( p_mpeaks, points, noise, shape );
     
     // make numpy array
     p_results = array_md2py( p_mresults );
@@ -2558,7 +2558,7 @@ static PyMethodDef calculations_methods[] = {
    {"signal_gaussian", _wrap_signal_gaussian, METH_VARARGS, "signal_gaussian( double, double, double, double, int, double )"},
    {"signal_lorentzian", _wrap_signal_lorentzian, METH_VARARGS, "signal_lorentzian( double, double, double, double, int, double )"},
    {"signal_gausslorentzian", _wrap_signal_gausslorentzian, METH_VARARGS, "signal_gausslorentzian( double, double, double, double, int, double )"},
-   {"signal_profile", _wrap_signal_profile, METH_VARARGS, "signal_profile( PyArray, int, double, int )"},
+   {"signal_profile", _wrap_signal_profile, METH_VARARGS, "signal_proopen( PyArray, int, double, int )"},
    {"signal_profile_to_raster", _wrap_signal_profile_to_raster, METH_VARARGS, "signal_profile_to_raster( PyArray, PyArray, double, int )"},
    
    {"formula_composition", _wrap_formula_composition, METH_VARARGS, "formula_composition( PyTupleObject, PyTupleObject, PyTupleObject, double, double, int )"},

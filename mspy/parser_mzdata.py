@@ -25,12 +25,12 @@ import numpy
 from copy import deepcopy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_peak
-import obj_peaklist
-import obj_scan
+import mspy.obj_peak as obj_peak
+import mspy.obj_peaklist as obj_peaklist
+import mspy.obj_scan as obj_scan
 
 
 # PARSE mzData DATA
@@ -47,7 +47,7 @@ class parseMZDATA():
         
         # check path
         if not os.path.exists(path):
-            raise IOError, 'File not found! --> ' + self.path
+            raise IOError('File not found! --> ' + self.path)
     # ----
     
     
@@ -61,7 +61,7 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
+            document = open(self.path)
             parser.parse(document)
             document.close()
             self._scans = handler.data
@@ -95,7 +95,7 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
+            document = open(self.path)
             parser.parse(document)
             document.close()
         except stopParsing:
@@ -121,7 +121,7 @@ class parseMZDATA():
         
         # parse document
         try:
-            document = file(self.path)
+            document = open(self.path)
             parser.parse(document)
             document.close()
             self._scanlist = handler.data
@@ -145,7 +145,7 @@ class parseMZDATA():
             parser = xml.sax.make_parser()
             parser.setContentHandler(handler)
             try:
-                document = file(self.path)
+                document = open(self.path)
                 parser.parse(document)
                 document.close()
                 data = handler.data

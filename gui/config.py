@@ -61,8 +61,8 @@ else:
         path = os.path.join(confdir, folder)
         if os.path.isdir(path):
             confdir = path
-        if os.path.isfile(path):
-            break
+        #if os.path.isopen(path):
+        #    break
     confdir = os.path.join(confdir, 'configs')
     if not os.path.exists(confdir):
         try: os.mkdir(confdir)
@@ -1339,7 +1339,7 @@ def saveConfig(path=os.path.join(confdir, 'config.xml')):
     
     # save config file
     try:
-        save = file(path, 'w')
+        save = open(path, 'w')
         save.write(buff.encode("utf-8"))
         save.close()
         return True

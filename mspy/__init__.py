@@ -16,34 +16,34 @@
 # -------------------------------------------------------------------------
 
 # load stopper
-from mod_stopper import *
+from mspy.mod_stopper import *
 
 # load building blocks
-from blocks import *
+from mspy.blocks import *
 
 # load objects
-from obj_compound import *
-from obj_sequence import *
-from obj_peak import *
-from obj_peaklist import *
-from obj_scan import *
+from mspy.obj_compound import *
+from mspy.obj_sequence import *
+from mspy.obj_peak import *
+from mspy.obj_peaklist import *
+from mspy.obj_scan import *
 
 # load modules
-from mod_basics import *
-from mod_pattern import *
-from mod_signal import *
-from mod_calibration import *
-from mod_peakpicking import *
-from mod_proteo import *
-from mod_formulator import *
-from mod_envfit import *
-from mod_mascot import *
-from mod_utils import *
+from mspy.mod_basics import *
+from mspy.mod_pattern import *
+from mspy.mod_signal import *
+from mspy.mod_calibration import *
+from mspy.mod_peakpicking import *
+from mspy.mod_proteo import *
+from mspy.mod_formulator import *
+from mspy.mod_envfit import *
+from mspy.mod_mascot import *
+from mspy.mod_utils import *
 
 # load parsers
-from parser_xy import parseXY
-from parser_mzxml import parseMZXML
-from parser_mzdata import parseMZDATA
-from parser_mzml import parseMZML
-from parser_mgf import parseMGF
-from parser_fasta import parseFASTA
+from mspy.parser_xy import parseXY
+from mspy.parser_mzxml import parseMZXML
+from mspy.parser_mzdata import parseMZDATA
+from mspy.parser_mzml import parseMZML
+from mspy.parser_mgf import parseMGF
+from mspy.parser_fasta import parseFASTA

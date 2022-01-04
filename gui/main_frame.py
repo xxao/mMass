@@ -29,7 +29,7 @@ import re
 import random
 import mspy
 import socket
-import httplib
+import http.client
 import webbrowser
 import tempfile
 import wx
@@ -37,49 +37,49 @@ import wx.aui
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
-import libs
-import doc
+from gui.ids import *
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
+import gui.libs
+import gui.doc
 
-from panel_about import panelAbout
-from panel_calibration import panelCalibration
-from panel_compare_peaklists import panelComparePeaklists
-from panel_compounds_search import panelCompoundsSearch
-from panel_document_info import panelDocumentInfo
-from panel_document_export import panelDocumentExport
-from panel_documents import panelDocuments
-from panel_envelope_fit import panelEnvelopeFit
-from panel_mascot import panelMascot
-from panel_mass_calculator import panelMassCalculator
-from panel_mass_filter import panelMassFilter
-from panel_mass_to_formula import panelMassToFormula
-from panel_mass_defect_plot import panelMassDefectPlot
-from panel_peak_differences import panelPeakDifferences
-from panel_periodic_table import panelPeriodicTable
-from panel_peaklist import panelPeaklist
-from panel_processing import panelProcessing
-from panel_profound import panelProfound
-from panel_prospector import panelProspector
-from panel_sequence import panelSequence
-from panel_spectrum import panelSpectrum, dlgViewRange, dlgSpectrumOffset
-from panel_spectrum_generator import panelSpectrumGenerator
+from gui.panel_about import panelAbout
+from gui.panel_calibration import panelCalibration
+from gui.panel_compare_peaklists import panelComparePeaklists
+from gui.panel_compounds_search import panelCompoundsSearch
+from gui.panel_document_info import panelDocumentInfo
+from gui.panel_document_export import panelDocumentExport
+from gui.panel_documents import panelDocuments
+from gui.panel_envelope_fit import panelEnvelopeFit
+from gui.panel_mascot import panelMascot
+from gui.panel_mass_calculator import panelMassCalculator
+from gui.panel_mass_filter import panelMassFilter
+from gui.panel_mass_to_formula import panelMassToFormula
+from gui.panel_mass_defect_plot import panelMassDefectPlot
+from gui.panel_peak_differences import panelPeakDifferences
+from gui.panel_periodic_table import panelPeriodicTable
+from gui.panel_peaklist import panelPeaklist
+from gui.panel_processing import panelProcessing
+from gui.panel_profound import panelProfound
+from gui.panel_prospector import panelProspector
+from gui.panel_sequence import panelSequence
+from gui.panel_spectrum import panelSpectrum, dlgViewRange, dlgSpectrumOffset
+from gui.panel_spectrum_generator import panelSpectrumGenerator
 
-from dlg_compounds_editor import dlgCompoundsEditor
-from dlg_enzymes_editor import dlgEnzymesEditor
-from dlg_mascot_editor import dlgMascotEditor
-from dlg_modifications_editor import dlgModificationsEditor
-from dlg_monomers_editor import dlgMonomersEditor
-from dlg_presets_editor import dlgPresetsEditor
-from dlg_references_editor import dlgReferencesEditor
+from gui.dlg_compounds_editor import dlgCompoundsEditor
+from gui.dlg_enzymes_editor import dlgEnzymesEditor
+from gui.dlg_mascot_editor import dlgMascotEditor
+from gui.dlg_modifications_editor import dlgModificationsEditor
+from gui.dlg_monomers_editor import dlgMonomersEditor
+from gui.dlg_presets_editor import dlgPresetsEditor
+from gui.dlg_references_editor import dlgReferencesEditor
 
-from dlg_error import dlgError
-from dlg_preferences import dlgPreferences
-from dlg_select_scans import dlgSelectScans
-from dlg_select_sequences import dlgSelectSequences
-from dlg_clipboard_editor import dlgClipboardEditor
+from gui.dlg_error import dlgError
+from gui.dlg_preferences import dlgPreferences
+from gui.dlg_select_scans import dlgSelectScans
+from gui.dlg_select_sequences import dlgSelectSequences
+from gui.dlg_clipboard_editor import dlgClipboardEditor
 
 
 # MAIN FRAME
@@ -781,13 +781,13 @@ class mainFrame(wx.Frame):
         
         # set frame manager properties
         artProvider = self.AUIManager.GetArtProvider()
-        artProvider.SetColor(wx.aui.AUI_DOCKART_SASH_COLOUR, self.documentsPanel.GetBackgroundColour())
-        artProvider.SetColor(wx.aui.AUI_DOCKART_INACTIVE_CAPTION_COLOUR, self.documentsPanel.GetBackgroundColour())
+        artProvider.SetColour(wx.aui.AUI_DOCKART_SASH_COLOUR, self.documentsPanel.GetBackgroundColour())
+        artProvider.SetColour(wx.aui.AUI_DOCKART_INACTIVE_CAPTION_COLOUR, self.documentsPanel.GetBackgroundColour())
         artProvider.SetMetric(wx.aui.AUI_DOCKART_SASH_SIZE, mwx.SASH_SIZE)
         artProvider.SetMetric(wx.aui.AUI_DOCKART_GRIPPER_SIZE, mwx.GRIPPER_SIZE)
         if mwx.SASH_COLOUR:
             self.SetOwnBackgroundColour(mwx.SASH_COLOUR)
-            artProvider.SetColor(wx.aui.AUI_DOCKART_SASH_COLOUR, mwx.SASH_COLOUR)
+            artProvider.SetColour(wx.aui.AUI_DOCKART_SASH_COLOUR, mwx.SASH_COLOUR)
         
         # set last layout
         self.onWindowLayout(layout=config.main['layout'])
@@ -1542,7 +1542,7 @@ class mainFrame(wx.Frame):
         # get document XML
         process = threading.Thread(target=self.runDocumentSave, kwargs={'docIndex':docIndex})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         
         # save file
@@ -1550,7 +1550,7 @@ class mainFrame(wx.Frame):
         if self.currentDocumentXML:
             gauge.setLabel('Saving data...')
             try:
-                save = file(path, 'w')
+                save = open(path, 'w')
                 save.write(self.currentDocumentXML.encode("utf-8"))
                 save.close()
                 failed = False
@@ -1665,11 +1665,11 @@ class mainFrame(wx.Frame):
             reportImage.SetOption(wx.IMAGE_OPTION_RESOLUTIONX, '72')
             reportImage.SetOption(wx.IMAGE_OPTION_RESOLUTIONY, '72')
             reportImage.SetOption(wx.IMAGE_OPTION_RESOLUTIONUNIT, '1')
-            reportImage.SaveFile(imagePath, wx.BITMAP_TYPE_PNG)
+            reportImage.Saveopen(imagePath, wx.BITMAP_TYPE_PNG)
             
             # make report file
             reportHTML = self.documents[self.currentDocument].report(image=imagePath)
-            reportFile = file(reportPath, 'w')
+            reportFile = open(reportPath, 'w')
             reportFile.write(reportHTML.encode("utf-8"))
             reportFile.close()
             
@@ -2521,7 +2521,7 @@ class mainFrame(wx.Frame):
             baseline = None
             
             # try to approximate intensity and baseline
-            if self.currentDocument != None and charge != None and self.documents[self.currentDocument].spectrum.hasprofile():
+            if self.currentDocument != None and charge != None and self.documents[self.currentDocument].spectrum.hasproopen():
                 compound = mspy.compound(formula)
                 mz = compound.mz(charge=charge, agentFormula=agentFormula, agentCharge=agentCharge)[0]
                 peak = mspy.labelpeak(
@@ -3230,7 +3230,7 @@ class mainFrame(wx.Frame):
         # run process
         process = threading.Thread(target=self.runLibrarySave, kwargs={'library':library})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         gauge.close()
         
@@ -3363,7 +3363,7 @@ class mainFrame(wx.Frame):
         # try to open pdf
         try:
             if wx.Platform == '__WXMSW__':
-                os.startfile(path)
+                os.startopen(path)
             else:
                 try: subprocess.Popen(['xdg-open', path])
                 except: subprocess.Popen(['open', path])
@@ -3509,7 +3509,7 @@ class mainFrame(wx.Frame):
             # load document
             process = threading.Thread(target=self.runDocumentParser, kwargs={'path':path, 'docType':docType, 'scan':scan})
             process.start()
-            while process.isAlive():
+            while process.is_alive():
                 gauge.pulse()
             
             # append document
@@ -3552,7 +3552,7 @@ class mainFrame(wx.Frame):
         # load document
         process = threading.Thread(target=self.runDocumentXYParser, kwargs={'rawData':rawData, 'dataType':dataType})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         
         # append document
@@ -3584,7 +3584,7 @@ class mainFrame(wx.Frame):
         gauge.show()
         process = threading.Thread(target=self.runCompassXport, kwargs={'path':path})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         gauge.close()
         
@@ -3721,7 +3721,7 @@ class mainFrame(wx.Frame):
             self.documents.append(document)
             
             # precalculate baseline
-            if document.spectrum.hasprofile():
+            if document.spectrum.hasproopen():
                 document.spectrum.baseline(
                     window = (1./config.processing['baseline']['precision']),
                     offset = config.processing['baseline']['offset']
@@ -3916,7 +3916,7 @@ class mainFrame(wx.Frame):
         gauge.show()
         process = threading.Thread(target=self.getDocumentScanList, kwargs={'path':path, 'docType':docType})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         gauge.close()
         
@@ -3953,7 +3953,7 @@ class mainFrame(wx.Frame):
         gauge.show()
         process = threading.Thread(target=self.getDocumentSequences, kwargs={'path':path, 'docType':docType})
         process.start()
-        while process.isAlive():
+        while process.is_alive():
             gauge.pulse()
         gauge.close()
         
@@ -4190,32 +4190,32 @@ class mainFrame(wx.Frame):
     
     def getAvailableUpdates(self):
         """Check for available updates."""
-        
+        return False
         # get latest version available
-        socket.setdefaulttimeout(5)
-        conn = httplib.HTTPConnection('www.mmass.org')
-        try:
-            conn.connect()
-            url = '/update.php?version=%s&platform=%s' % (config.version, platform.platform())
-            conn.request('GET', url)
-            response = conn.getresponse()
-        except:
-            return False
+        #socket.setdefaulttimeout(5)
+        #conn = http.client.HTTPConnection('www.mmass.org')
+        #try:
+        #    conn.connect()
+        #    url = '/update.php?version=%s&platform=%s' % (config.version, platform.platform())
+        #    conn.request('GET', url)
+        #    response = conn.getresponse()
+        #except:
+        #    return False
         
-        if response.status == 200:
-            data = response.read()
-            conn.close()
-        else:
-            conn.close()
-            return False
+        #if response.status == 200:
+        #    data = response.read()
+        #    conn.close()
+        #else:
+        #    conn.close()
+        #    return False
         
-        # check version
-        if re.match('^([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})$', data):
-            config.main['updatesAvailable'] = data
-            config.main['updatesChecked'] = time.strftime("%Y%m%d", time.localtime())
-            return True
-        else:
-            return False
+        ## check version
+        #if re.match('^([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})$', data):
+        #    config.main['updatesAvailable'] = data
+        #    config.main['updatesChecked'] = time.strftime("%Y%m%d", time.localtime())
+        #    return True
+        #else:
+        #    return False
     # ----
     
     

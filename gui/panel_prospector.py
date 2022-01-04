@@ -22,12 +22,12 @@ import tempfile
 import os.path
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config as config
 import mspy
-import doc
+import gui.doc
 
 
 # FLOATING PANEL WITH PROSPECTOR SEARCH TOOLS
@@ -617,7 +617,7 @@ class panelProspector(wx.MiniFrame):
         htmlData = self.makeSearchHTML()
         try:
             path = os.path.join(tempfile.gettempdir(), 'mmass_prospector_search.html')
-            htmlFile = file(path, 'w')
+            htmlFile = open(path, 'w')
             htmlFile.write(htmlData.encode("utf-8"))
             htmlFile.close()
             webbrowser.open('file://'+path, autoraise=1)

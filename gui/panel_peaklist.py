@@ -19,14 +19,14 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 import mspy
-import doc
+import gui.doc as doc
 
-from dlg_notation import dlgNotation
+from gui.dlg_notation import dlgNotation
 
 
 # PEAKLIST PANEL
@@ -298,8 +298,8 @@ class panelPeaklist(wx.Panel):
         buttons.Add(self.peakReplace_butt, 0)
         
         mainSizer = wx.BoxSizer(wx.VERTICAL)
-        mainSizer.Add(grid, 0, wx.EXPAND|wx.ALIGN_CENTER|wx.ALL, 10)
-        mainSizer.Add(buttons, 0, wx.ALIGN_CENTER|wx.RIGHT|wx.LEFT|wx.BOTTOM, 10)
+        mainSizer.Add(grid, 0, wx.EXPAND|wx.ALL, 10)
+        mainSizer.Add(buttons, 0, wx.RIGHT|wx.LEFT|wx.BOTTOM, 10)
         
         # fit layout
         mainSizer.Fit(panel)
@@ -764,9 +764,9 @@ class panelPeaklist(wx.Panel):
         """Refresh item data in the list."""
         
         # set formats
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        intFormat = '%0.' + `config.main['intDigits']` + 'f'
-        fwhmFormat = '%0.' + `max(config.main['mzDigits'],3)` + 'f'
+        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
+        intFormat = '%0.' +config.main['intDigits'] + 'f'
+        fwhmFormat = '%0.' + max(config.main['mzDigits'],3) + 'f'
         
         # insert data
         x = 0

@@ -16,13 +16,13 @@
 # -------------------------------------------------------------------------
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import blocks
+import mspy.blocks
 
 # load modules
-import mod_basics
+import mspy.mod_basics
 
 
 # PEAK OBJECT DEFINITION

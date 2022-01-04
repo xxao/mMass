@@ -20,7 +20,7 @@ import numpy
 from numpy.linalg import solve as solveLinEq
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 
 # DATA RE-CALIBRATION

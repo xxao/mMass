@@ -20,13 +20,13 @@ import wx
 import numpy
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 import mspy
 import mspy.plot
-
+ 
 
 # SPECTRUM PANEL WITH CANVAS AND TOOLBAR
 # --------------------------------------
@@ -595,12 +595,12 @@ class panelSpectrum(wx.Panel):
         distance = self.spectrumCanvas.getDistance()
         
         # format numbers
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        intFormat = '%0.' + `config.main['intDigits']` + 'f'
-        distFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        ppmFormat = '%0.' + `config.main['ppmDigits']` + 'f'
-        areaFormat = '%0.' + `config.main['intDigits']` + 'f'
-        chargeFormat = '%0.' + `config.main['chargeDigits']` + 'f'
+        mzFormat = '%0.' + str(config.main['mzDigits']) + 'f'
+        intFormat = '%0.' + str(config.main['intDigits']) + 'f'
+        distFormat = '%0.' + str(config.main['mzDigits']) + 'f'
+        ppmFormat = '%0.' + str(config.main['ppmDigits']) + 'f'
+        areaFormat = '%0.' + str(config.main['intDigits']) + 'f'
+        chargeFormat = '%0.' + str(config.main['chargeDigits']) + 'f'
         
         if position and abs(position[1]) > 10000:
             intFormat = '%.2e'
@@ -922,7 +922,7 @@ class panelSpectrum(wx.Panel):
         """Label peak in selection."""
         
         # check document
-        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasprofile():
+        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasproopen():
             return
         
         # get baseline window
@@ -962,7 +962,7 @@ class panelSpectrum(wx.Panel):
         """Label point at position."""
         
         # check document
-        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasprofile():
+        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasproopen():
             return
         
         # get baseline window
@@ -1000,7 +1000,7 @@ class panelSpectrum(wx.Panel):
         """Label isotopes."""
         
         # check document
-        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasprofile():
+        if self.currentDocument == None or not self.documents[self.currentDocument].spectrum.hasproopen():
             return
         
         # get baseline window

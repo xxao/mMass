@@ -21,10 +21,10 @@ import os.path
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx
+import gui.images
+import gui.config
 import mspy
 
 
@@ -562,7 +562,7 @@ class panelDocumentExport(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # hide processing gauge
@@ -597,7 +597,7 @@ class panelDocumentExport(wx.MiniFrame):
         self.processing.start()
         
         # pulse gauge while working
-        while self.processing and self.processing.isAlive():
+        while self.processing and self.processing.is_alive():
             self.gauge.pulse()
         
         # hide processing gauge
@@ -705,7 +705,7 @@ class panelDocumentExport(wx.MiniFrame):
         
         # save image
         try:
-            image.SaveFile(path, fileFormat)
+            image.Saveopen(path, fileFormat)
         except:
             wx.Bell()
     # ----
@@ -801,7 +801,7 @@ class panelDocumentExport(wx.MiniFrame):
             
         # save file
         try:
-            save = file(path, 'w')
+            save = open(path, 'w')
             save.write(buff.encode("utf-8"))
             save.close()
         except IOError:
@@ -835,7 +835,7 @@ class panelDocumentExport(wx.MiniFrame):
         
         # save file
         try:
-            save = file(path, 'w')
+            save = open(path, 'w')
             save.write(buff.encode("utf-8"))
             save.close()
         except IOError:

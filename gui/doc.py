@@ -29,8 +29,8 @@ import numpy
 import wx
 
 # load modules
-import images
-import config
+import gui.images
+import gui.config
 import mspy
 
 
@@ -328,9 +328,9 @@ class document():
     def report(self, image=None):
         """Get HTML report."""
         
-        mzFormat = '%0.' + `config.main['mzDigits']` + 'f'
-        intFormat = '%0.' + `config.main['intDigits']` + 'f'
-        ppmFormat = '%0.' + `config.main['ppmDigits']` + 'f'
+        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
+        intFormat = '%0.' + config.main['intDigits'] + 'f'
+        ppmFormat = '%0.' + config.main['ppmDigits'] + 'f'
         
         # add header
         buff = REPORT_HEADER
@@ -604,7 +604,7 @@ class document():
         
         buff = []
         
-        format = '%0.' + `config.main['mzDigits']` + 'f'
+        format = '%0.' + config.main['mzDigits'] + 'f'
         for mod in sequence.modifications:
             name = mod[0]
             
@@ -993,7 +993,7 @@ class parseMSD():
             points = points.copy()
             
             # add to spectrum
-            self.document.spectrum.setprofile(points)
+            self.document.spectrum.setproopen(points)
     # ----
     
     

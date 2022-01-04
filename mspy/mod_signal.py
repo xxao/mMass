@@ -19,10 +19,10 @@
 import numpy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load modules
-import calculations
+import mspy.calculations
 
 
 # SIGNAL PROCESSING FUNCTIONS
@@ -213,7 +213,7 @@ def area(signal, minX=None, maxX=None, baseline=None):
     # check baseline type
     if baseline != None:
         if not isinstance(baseline, numpy.ndarray):
-            raise TypeError, "Baseline must be NumPy array!"
+            raise TypeError("Baseline must be NumPy array!")
         if baseline.dtype.name != 'float64':
             raise TypeError("Signal data must be float64!")
     
@@ -467,7 +467,7 @@ def smooth(signal, method, window, cycles=1):
     
     # unknown smoothing method
     else:
-        raise KeyError, "Unknown smoothing method! -->", method
+        raise KeyError("Unknown smoothing method! -->", method)
 # ----
 
 
@@ -581,9 +581,9 @@ def combine(signalA, signalB):
     
     # check signal type
     if not isinstance(signalA, numpy.ndarray) or not isinstance(signalB, numpy.ndarray):
-        raise TypeError, "Signals must be NumPy arrays!"
+        raise TypeError("Signals must be NumPy arrays!")
     if signalA.dtype.name != 'float64' or signalB.dtype.name != 'float64':
-        raise TypeError, "Signals data must be float64!"
+        raise TypeError( "Signals data must be float64!")
     
     # check signal data
     if len(signalA) == 0 and len(signalB) == 0:
@@ -602,9 +602,9 @@ def overlay(signalA, signalB):
     
     # check signal type
     if not isinstance(signalA, numpy.ndarray) or not isinstance(signalB, numpy.ndarray):
-        raise TypeError, "Signals must be NumPy arrays!"
+        raise TypeError("Signals must be NumPy arrays!")
     if signalA.dtype.name != 'float64' or signalB.dtype.name != 'float64':
-        raise TypeError, "Signals data must be float64!"
+        raise TypeError("Signals data must be float64!")
     
     # check signal data
     if len(signalA) == 0 and len(signalB) == 0:
@@ -623,9 +623,9 @@ def subtract(signalA, signalB):
     
     # check signal type
     if not isinstance(signalA, numpy.ndarray) or not isinstance(signalB, numpy.ndarray):
-        raise TypeError, "Signals must be NumPy arrays!"
+        raise TypeError("Signals must be NumPy arrays!")
     if signalA.dtype.name != 'float64' or signalB.dtype.name != 'float64':
-        raise TypeError, "Signals data must be float64!"
+        raise TypeError("Signals data must be float64!")
     
     # check signal data
     if len(signalA) == 0 and len(signalB) == 0:
@@ -644,9 +644,9 @@ def subbase(signal, baseline):
     
     # check signal type
     if not isinstance(signal, numpy.ndarray) or not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Signals must be NumPy arrays!"
+        raise TypeError("Signals must be NumPy arrays!")
     if signal.dtype.name != 'float64' or baseline.dtype.name != 'float64':
-        raise TypeError, "Signals data must be float64!"
+        raise TypeError("Signals data must be float64!")
     
     # check signal data
     if len(signal) == 0:

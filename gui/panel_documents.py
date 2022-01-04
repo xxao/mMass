@@ -19,14 +19,14 @@
 import wx
 
 # load modules
-from ids import *
-import mwx
-import images
-import config
+from gui.ids import *
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 import mspy
-import doc
+import gui.doc as doc
 
-from dlg_notation import dlgNotation
+from gui.dlg_notation import dlgNotation
 
 
 # DOCUMENTS PANEL
@@ -229,7 +229,7 @@ class panelDocuments(wx.Panel):
             if itemData.offset == [0,0]:
                 menu.Enable(ID_documentClearOffset, False)
             
-            if itemData.spectrum.hasprofile() == False:
+            if itemData.spectrum.hasproopen() == False:
                 menu.Enable(ID_documentStyle, False)
             elif itemData.style == wx.DOT:
                 style.Check(ID_documentStyleDot, True)

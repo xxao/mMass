@@ -24,7 +24,7 @@ import sys
 import os
 import threading
 import socket
-import SocketServer
+import socketserver
 import wx
 
 # load modules
@@ -70,7 +70,7 @@ class mMass(wx.App):
     # ----
     
     
-    def MacOpenFile(self, path):
+    def MacOpenopen(self, path):
         """"Enable drag/drop under Mac."""
         
         if path != 'mmass.py':
@@ -89,13 +89,13 @@ class mMass(wx.App):
     
     
 
-class TCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+class TCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     """TCP communication server."""
     
     def __init__(self, server_address, RequestHandlerClass):
         self.allow_reuse_address = True
         self.stopped = False
-        SocketServer.TCPServer.__init__(self, server_address, RequestHandlerClass, False)
+        socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass, False)
     # ----
     
     
@@ -112,7 +112,7 @@ class TCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
     
     
 
-class TCPServerHandler(SocketServer.BaseRequestHandler):
+class TCPServerHandler(socketserver.BaseRequestHandler):
     """TCP communication server handler."""
     
     def handle(self):
@@ -135,40 +135,44 @@ if __name__ == '__main__':
     
     server = None
     
-    # use server
-    if config.main['useServer'] and sys.platform != 'darwin':
+    ## use server
+    #if config.main['useServer'] and sys.platform != 'darwin':
         
-        # init server params
-        HOST = socket.gethostname()
-        PORT = config.main['serverPort']
+    #    # init server params
+    #    HOST = socket.gethostname()
+    #    PORT = config.main['serverPort']
         
-        # get command
-        command = ''
-        if len(sys.argv) > 1:
-            command = sys.argv[-1]
+    #    # get command
+    #    command = ''
+    #    if len(sys.argv) > 1:
+    #        command = sys.argv[-1]
         
-        # try to connect to existing server
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.connect((HOST, PORT))
-            sock.sendall(command)
-            sock.close()
-            sys.exit()
+    #    # try to connect to existing server
+    #    try:
+    #        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #        sock.connect((HOST, PORT))
+    #        sock.sendall(command)
+    #        sock.close()
+    #        sys.exit()
         
-        # init new app and server
-        except socket.error:
+    #    # init new app and server
+    #    except socket.error:
             
-            server = TCPServer((HOST, PORT), TCPServerHandler)
-            server.server_bind()
-            server.server_activate()
-            server_thread = threading.Thread(target=server.serve_forever)
-            server_thread.setDaemon(True)
-            server_thread.start()
+    #        server = TCPServer((HOST, PORT), TCPServerHandler)
+    #        server.server_bind()
+    #        server.server_activate()
+    #        server_thread = threading.Thread(target=server.serve_forever)
+    #        server_thread.setDaemon(True)
+    #        server_thread.start()
             
-            app = mMass(0)
-            app.MainLoop()
+    #        app = mMass(0)
+    #        app.MainLoop()
     
-    # skip server
-    else:
-        app = mMass(0)
-        app.MainLoop()
+    ## skip server
+    #else:
+    #    app = mMass(0)
+    #    app.MainLoop()
+
+
+    app = mMass(0)
+    app.MainLoop()

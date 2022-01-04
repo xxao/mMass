@@ -20,10 +20,10 @@ import re
 import os.path
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_sequence
+import mspy.obj_sequence as obj_sequence
 
 
 # compile basic patterns
@@ -44,7 +44,7 @@ class parseFASTA():
         
         # check path
         if not os.path.exists(path):
-            raise IOError, 'File not found! --> ' + self.path
+            raise IOError('File not found! --> ' + self.path)
     # ----
     
     
@@ -53,7 +53,7 @@ class parseFASTA():
         
         # open document
         try:
-            document = file(self.path)
+            document = open(self.path)
             rawData = document.readlines()
             document.close()
         except IOError:

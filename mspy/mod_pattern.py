@@ -20,20 +20,20 @@ import math
 import numpy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import blocks
+import mspy.blocks
 
 # load objects
-import obj_compound
-import obj_peaklist
+import mspy.obj_compound
+import mspy.obj_peaklist
 
 # load modules
-import calculations
-import mod_basics
-import mod_signal
-import mod_peakpicking
+import mspy.calculations
+import mspy.mod_basics
+import mspy.mod_signal
+import mspy.mod_peakpicking
 
 
 # ISOTOPIC PATTERN FUNCTIONS
@@ -70,7 +70,7 @@ def pattern(compound, fwhm=0.1, threshold=0.01, charge=0, agentFormula='H', agen
     composition = compound.composition()
     for atom in composition:
         if composition[atom] < 0:
-            raise ValueError, 'Pattern cannot be calculated for this formula! --> ' + compound.formula()
+            raise ValueError('Pattern cannot be calculated for this formula! --> ' + compound.formula())
     
     # set internal thresholds
     internalThreshold = threshold/100.
@@ -131,7 +131,7 @@ def pattern(compound, fwhm=0.1, threshold=0.01, charge=0, agentFormula='H', agen
     
     # get real peaks from profile
     if real:
-        prof = profile(finalPattern, fwhm=fwhm, points=100, model=model)
+        prof = proopen(finalPattern, fwhm=fwhm, points=100, model=model)
         finalPattern = []
         for isotope in mod_signal.maxima(prof):
             finalPattern.append(isotope)
@@ -195,7 +195,7 @@ def gausslorentzian(x, minY, maxY, fwhm=0.1, points=500):
 # ----
 
 
-def profile(peaklist, fwhm=0.1, points=10, noise=0, raster=None, forceFwhm=False, model='gaussian'):
+def proopen(peaklist, fwhm=0.1, points=10, noise=0, raster=None, forceFwhm=False, model='gaussian'):
     """Make profile spectrum for given peaklist.
         peaklist (mspy.peaklist) - peaklist
         fwhm (float) - default peak fwhm
@@ -234,7 +234,7 @@ def profile(peaklist, fwhm=0.1, points=10, noise=0, raster=None, forceFwhm=False
     if raster != None:
         data = calculations.signal_profile_to_raster(numpy.array(peaks), raster, float(noise), shape)
     else:
-        data = calculations.signal_profile(numpy.array(peaks), int(points), float(noise), shape)
+        data = calculations.signal_proopen(numpy.array(peaks), int(points), float(noise), shape)
     
     # make baseline
     baseline = []
@@ -263,7 +263,7 @@ def matchpattern(signal, pattern, pickingHeight=0.75, baseline=None):
     
    # check baseline type
     if baseline != None and not isinstance(baseline, numpy.ndarray):
-        raise TypeError, "Baseline must be NumPy array!"
+        raise TypeError("Baseline must be NumPy array!")
     
     # check signal data
     if len(signal) == 0:

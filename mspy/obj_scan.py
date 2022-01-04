@@ -20,15 +20,15 @@ import numpy
 import copy
 
 # load stopper
-from mod_stopper import CHECK_FORCE_QUIT
+from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import obj_peak
-import obj_peaklist
+import mspy.obj_peak as obj_peak
+import mspy.obj_peaklist as obj_peaklist
 
 # load modules
-import mod_signal
-import mod_peakpicking
+import mspy.mod_signal as mod_signal
+import mspy.mod_peakpicking as mod_peakpicking
 
 
 # SCAN OBJECT DEFINITION
@@ -248,7 +248,7 @@ class scan:
     # ----
     
     
-    def hasprofile(self):
+    def hasproopen(self):
         """Return true if scan has profile data."""
         return bool(len(self.profile))
     # ----
@@ -263,7 +263,7 @@ class scan:
     
     # SETTERS
     
-    def setprofile(self, profile):
+    def setproopen(self, profile):
         """Set new profile data."""
         
         self.profile = profile
@@ -368,7 +368,7 @@ class scan:
         
         # check scan
         if not isinstance(other, scan):
-            raise TypeError, "Cannot combine with non-scan object!"
+            raise TypeError("Cannot combine with non-scan object!")
         
         # use profiles only
         if len(self.profile) or len(other.profile):
@@ -395,7 +395,7 @@ class scan:
         
         # check scan
         if not isinstance(other, scan):
-            raise TypeError, "Cannot overlay with non-scan object!"
+            raise TypeError("Cannot overlay with non-scan object!")
         
         # use profiles only
         if len(self.profile) or len(other.profile):
@@ -418,7 +418,7 @@ class scan:
         
         # check scan
         if not isinstance(other, scan):
-            raise TypeError, "Cannot subtract non-scan object!"
+            raise TypeError("Cannot subtract non-scan object!")
         
         # use profiles only
         if len(self.profile) and len(other.profile):
