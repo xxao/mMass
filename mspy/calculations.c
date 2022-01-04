@@ -617,11 +617,16 @@ m_arrayd *signal_smooth_ma( m_arrayd *p_signal, int window, int cycles )
     if ( window % 2 != 0) {
         window -= 1;
     }
-    
+
+
     // make kernel
     ksize = window + 1;
-    ksum = window + 1;
-    double kernel[ksize];
+    ksum = window + 1;    
+
+
+    double *kernel = (double*) malloc (ksize * sizeof(double));
+
+
     for ( i = 0; i <= ksize; ++i ) {
         kernel[i] = 1/ksum;
     }
@@ -680,7 +685,12 @@ m_arrayd *signal_smooth_ga( m_arrayd *p_signal, int window, int cycles )
     // make kernel
     ksize = window + 1;
     ksum = 0;
-    double kernel[ksize];
+
+
+
+    double *kernel = (double*) malloc (ksize * sizeof(double));
+
+    //double kernel[ksize];
     for ( i = 0; i <= ksize; ++i ) {
         r = (i - (ksize-1)/2.0);
         k = exp(-(r*r/(ksize*ksize/16.0)));
@@ -1697,7 +1707,7 @@ PyObject *list_mi2py( m_arrayi *p_inarr )
     else if ( p_inarr->dim == 1 ) {
         p_outlist = PyList_New( p_inarr->len );
         for ( i = 0; i < p_inarr->len; ++i ) {
-            p_item = PyInt_FromLong( p_inarr->data[i] );
+            p_item = PyLong_FromLong( p_inarr->data[i] );
             PyList_SetItem( p_outlist, i, p_item );
         }
     }
@@ -1708,7 +1718,7 @@ PyObject *list_mi2py( m_arrayi *p_inarr )
         for ( i = 0; i < p_inarr->len; ++i ) {
             p_inner = PyList_New( p_inarr->cell );
             for ( j = 0; j < p_inarr->cell; ++j ) {
-                p_item = PyInt_FromLong( p_inarr->data[i*p_inarr->cell+j] );
+                p_item = PyLong_FromLong( p_inarr->data[i*p_inarr->cell+j] );
                 PyList_SetItem( p_inner, j,  p_item);
             }
             PyList_Append(p_outlist, p_inner);
@@ -2556,7 +2566,25 @@ static PyMethodDef calculations_methods[] = {
    {NULL, NULL, 0, NULL}
 };
 
-PyMODINIT_FUNC initcalculations(void) {
+
+static struct PyModuleDef spammodule = {
+    PyModuleDef_HEAD_INIT,
+    "calculations",   /* name of module */
+    NULL, /* module documentation, may be NULL */
+    -1,       /* size of per-interpreter state of the module,
+                 or -1 if the module keeps state in global variables. */
+    calculations_methods
+};
+
+PyMODINIT_FUNC
+PyInit_calculations(void)
+{
+    return PyModule_Create(&spammodule);
+}
+
+
+/*PyMODINIT_FUNC initcalculations(void) {
     Py_InitModule3("calculations", calculations_methods,"");
     import_array();
 }
+*/
