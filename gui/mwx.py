@@ -349,14 +349,14 @@ class sortListCtrl(wx.ListCtrl):
     
     def _sortItems(self, item1, item2):
         """Sort items."""
-        
         comp = cmp(item1[self._currentColumn], item2[self._currentColumn])
         if comp == 0 and self._secondarySortColumn != None:
             comp = cmp(item1[self._secondarySortColumn], item2[self._secondarySortColumn])
         
         return comp * self._currentDirection
     # ----
-    
+
+ 
     
     def _columnSorter(self, key1, key2):
         """Sort data."""
@@ -936,4 +936,5 @@ def layout(parent, sizer):
     parent.SetMinSize(size)
 # ----
 
-
+def cmp(a, b):
+    return (a > b) - (a < b) 

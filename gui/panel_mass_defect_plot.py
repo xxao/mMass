@@ -21,9 +21,9 @@ import wx
 
 # load modules
 from gui.ids import *
-import gui.mwx
-import gui.images
-import gui.config
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 import mspy
 import mspy.plot
 

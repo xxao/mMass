@@ -1631,14 +1631,14 @@ class canvas(wx.Window):
             dist2 = self.positionScreenToUser((x2,y2))
             
             if self.mouseFnLMB == 'xDistance':
-                format = '%0.'+self.properties['xPosDigits']+'f'
+                format = '%0.'+str(self.properties['xPosDigits'])+'f'
                 distance = format % (dist2[0] - dist1[0])
                 textSize = dc.GetTextExtent(distance)
                 x = x2 + 5
                 y = y2 - textSize[1] - 2
             
             elif self.mouseFnLMB == 'yDistance':
-                format = '%0.'+self.properties['yPosDigits']+'f'
+                format = '%0.'+str(self.properties['yPosDigits'])+'f'
                 distance = format % (dist2[1] - dist1[1])
                 textSize = dc.GetTextExtent(distance)
                 x = x2 + 5

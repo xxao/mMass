@@ -24,11 +24,11 @@ import copy
 from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import mspy.obj_peak
+import mspy.obj_peak as obj_peak
 
 # load modules
-import mspy.mod_peakpicking
-
+import mspy.mod_peakpicking as mod_peakpicking
+ 
 
 # PEAKLIST OBJECT DEFINITION
 # --------------------------

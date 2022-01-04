@@ -66,7 +66,7 @@ class mMass(wx.App):
         
         # delete instance lock file
         # del self.instance
-        pass
+        return 1
     # ----
     
     

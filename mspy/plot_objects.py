@@ -921,7 +921,7 @@ class spectrum:
         
         # convert peaklist points to array
         self.peaklist = copy.deepcopy(scan.peaklist)
-        self.peaklistPoints = numpy.array([[peak.mz, peak.ai, peak.base] for peak in scan.peaklist])
+        self.peaklistPoints = numpy.array([[peak.mz, peak.ai, peak.base] for peak in scan.peaklist.peaks])
         self.peaklistCropped = self.peaklistPoints
         self.peaklistScaled = self.peaklistCropped
         self.peaklistCroppedPeaks = self.peaklist[:]
@@ -1199,7 +1199,7 @@ class spectrum:
         
         # prepare labels
         labels = []
-        format = '%0.'+self.properties['labelDigits']+'f'
+        format = '%0.'+str(self.properties['labelDigits'])+'f'
         for x, peak in enumerate(self.peaklistScaled):
             
             # skip isotopes

@@ -21,12 +21,12 @@ import wx
 
 # load modules
 from gui.ids import *
-import gui.mwx
-import gui.images
-import gui.config
-import mspy
+import gui.mwx as mwx
+import gui.images as images 
+import gui.config as config
+import mspy 
 import mspy.plot
-import gui.doc
+import gui.doc as doc
 
 
 # FLOATING PANEL WITH MATCH TOOLS

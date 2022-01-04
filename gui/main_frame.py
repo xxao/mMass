@@ -41,8 +41,8 @@ from gui.ids import *
 import gui.mwx as mwx
 import gui.images as images
 import gui.config as config
-import gui.libs
-import gui.doc
+import gui.libs as libs
+import gui.doc as doc
 
 from gui.panel_about import panelAbout
 from gui.panel_calibration import panelCalibration

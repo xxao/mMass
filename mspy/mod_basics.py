@@ -23,10 +23,10 @@ import re
 from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import mspy.blocks
+import mspy.blocks as blocks
 
 # load objects
-import mspy.obj_compound
+import mspy.obj_compound as obj_compound
 
 
 # BASIC CONSTANTS

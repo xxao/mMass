@@ -19,10 +19,10 @@
 from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load objects
-import mspy.blocks
+import mspy.blocks as blocks
 
 # load modules
-import mspy.mod_basics
+import mspy.mod_basics as mod_basics
 
 
 # PEAK OBJECT DEFINITION

@@ -24,10 +24,10 @@ import os.path
 import numpy
 
 # load modules
-from gui.ids import *
-import gui.mwx
-import gui.images
-import gui.config
+from gui.ids import * 
+import gui.mwx as mwx
+import gui.images as images
+import gui.config as config
 import mspy
 
 

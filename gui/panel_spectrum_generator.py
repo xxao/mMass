@@ -21,10 +21,10 @@ import wx
 import numpy
 
 # load modules
-import gui.mwx
-import gui.images
+import gui.mwx as mwx
+import gui.images as images
 import gui.config as config
-import mspy
+import mspy 
 import mspy.plot
 
 

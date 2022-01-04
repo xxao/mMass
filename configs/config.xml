@@ -2,20 +2,20 @@
 <mMassConfig version="1.0">
 
   <main>
-    <param name="appWidth" value="1043" type="int" />
-    <param name="appHeight" value="620" type="int" />
+    <param name="appWidth" value="1169" type="int" />
+    <param name="appHeight" value="848" type="int" />
     <param name="appMaximized" value="0" type="int" />
     <param name="layout" value="default" type="str" />
     <param name="documentsWidth" value="195" type="int" />
-    <param name="documentsHeight" value="550" type="int" />
+    <param name="documentsHeight" value="759" type="int" />
     <param name="peaklistWidth" value="195" type="int" />
-    <param name="peaklistHeight" value="550" type="int" />
+    <param name="peaklistHeight" value="759" type="int" />
     <param name="reverseScrolling" value="0" type="int" />
     <param name="macListCtrlGeneric" value="1" type="int" />
     <param name="cursorInfo" value="mz;dist;ppm;z" type="str" />
     <param name="peaklistColumns" value="mz;int;rel;sn;z;fwhm;resol" type="str" />
-    <param name="mzDigits" value="4" type="int" />
-    <param name="intDigits" value="0" type="int" />
+    <param name="mzDigits" value="1" type="int" />
+    <param name="intDigits" value="3" type="int" />
     <param name="ppmDigits" value="1" type="int" />
     <param name="chargeDigits" value="2" type="int" />
     <param name="lastDir" value="" type="unicode" />
@@ -26,7 +26,7 @@
     <param name="serverPort" value="65456" type="int" />
     <param name="updatesEnabled" value="1" type="int" />
     <param name="updatesChecked" value="" type="str" />
-    <param name="updatesCurrent" value="" type="str" />
+    <param name="updatesCurrent" value="6.0.0a" type="str" />
     <param name="updatesAvailable" value="" type="str" />
     <param name="compassMode" value="Profile" type="str" />
     <param name="compassFormat" value="mzML" type="str" />
@@ -34,6 +34,7 @@
   </main>
 
   <recent>
+    <path value="C:\Data\I2MS\new IgG data\Titers\1853_HCLCwithstandard_I2MS_1kV_IT0.05_001_data_spectra_Centplus1.mzml" />
   </recent>
 
   <colours>
@@ -448,23 +449,23 @@
   </prospector>
 
   <links>
-    <link name="unimod" value="http://www.unimod.org/" />
-    <link name="fasta" value="http://www.ebi.ac.uk/Tools/fasta33/" />
-    <link name="pir" value="http://pir.georgetown.edu/" />
-    <link name="expasy" value="http://www.expasy.org/" />
-    <link name="ncbi" value="http://www.ncbi.nlm.nih.gov/Entrez/" />
     <link name="mMassWhatsNew" value="http://www.mmass.org/download/history.php" />
     <link name="biomedmstools" value="http://ms.biomed.cas.cz/MSTools/" />
-    <link name="matrixscience" value="http://www.matrixscience.com/" />
-    <link name="emblebi" value="http://www.ebi.ac.uk/services/" />
-    <link name="deltamass" value="http://www.abrf.org/index.cfm/dm.home" />
     <link name="blast" value="http://www.ebi.ac.uk/Tools/blastall/" />
-    <link name="prospector" value="http://prospector.ucsf.edu/" />
     <link name="clustalw" value="http://www.ebi.ac.uk/Tools/clustalw/" />
-    <link name="profound" value="http://prowl.rockefeller.edu/prowl-cgi/profound.exe" />
-    <link name="uniprot" value="http://www.uniprot.org/" />
+    <link name="deltamass" value="http://www.abrf.org/index.cfm/dm.home" />
+    <link name="emblebi" value="http://www.ebi.ac.uk/services/" />
+    <link name="expasy" value="http://www.expasy.org/" />
+    <link name="fasta" value="http://www.ebi.ac.uk/Tools/fasta33/" />
+    <link name="matrixscience" value="http://www.matrixscience.com/" />
     <link name="muscle" value="http://phylogenomics.berkeley.edu/cgi-bin/muscle/input_muscle.py" />
+    <link name="ncbi" value="http://www.ncbi.nlm.nih.gov/Entrez/" />
     <link name="pdb" value="http://www.rcsb.org/pdb/" />
+    <link name="pir" value="http://pir.georgetown.edu/" />
+    <link name="profound" value="http://prowl.rockefeller.edu/prowl-cgi/profound.exe" />
+    <link name="prospector" value="http://prospector.ucsf.edu/" />
+    <link name="unimod" value="http://www.unimod.org/" />
+    <link name="uniprot" value="http://www.uniprot.org/" />
   </links>
 
 </mMassConfig>

@@ -706,7 +706,7 @@ class panelPeaklist(wx.Panel):
             return
         
         # update peaks count
-        count = '%d' % len(self.currentDocument.spectrum.peaklist)
+        count = '%d' % len(self.currentDocument.spectrum.peaklist.peaks)
         if count != '0':
             self.peaksCount.SetLabel(count)
         else:
@@ -714,7 +714,7 @@ class panelPeaklist(wx.Panel):
         
         # set new data map
         self.peakListMap = []
-        for peak in self.currentDocument.spectrum.peaklist:
+        for peak in self.currentDocument.spectrum.peaklist.peaks:
             row = []
             for column in config.main['peaklistColumns']:
                 if column == 'mz':
@@ -764,9 +764,9 @@ class panelPeaklist(wx.Panel):
         """Refresh item data in the list."""
         
         # set formats
-        mzFormat = '%0.' + config.main['mzDigits'] + 'f'
-        intFormat = '%0.' +config.main['intDigits'] + 'f'
-        fwhmFormat = '%0.' + max(config.main['mzDigits'],3) + 'f'
+        mzFormat = '%0.' + str(config.main['mzDigits']) + 'f'
+        intFormat = '%0.' +str(config.main['intDigits']) + 'f'
+        fwhmFormat = '%0.' + str(max(config.main['mzDigits'],3)) + 'f'
         
         # insert data
         x = 0

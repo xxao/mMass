@@ -29,8 +29,8 @@ import numpy
 import wx
 
 # load modules
-import gui.images
-import gui.config
+import gui.images as images
+import gui.config as config
 import mspy
 
 

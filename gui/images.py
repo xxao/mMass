@@ -19,7 +19,7 @@
 import wx
 from wx.tools import img2py
 
-import gui.ids
+import gui.ids as ids
 
 
 # IMAGES

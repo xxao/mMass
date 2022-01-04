@@ -19,9 +19,9 @@
 import datetime
 import wx
 
-# load modules
-import gui.mwx
-import gui.config
+# load modules 
+import gui.mwx as mwx
+import gui.config   as config
 import mspy
 
 

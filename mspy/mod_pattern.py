@@ -23,17 +23,17 @@ import numpy
 from mspy.mod_stopper import CHECK_FORCE_QUIT
 
 # load blocks
-import mspy.blocks
+import mspy.blocks as blocks
 
 # load objects
-import mspy.obj_compound
-import mspy.obj_peaklist
+import mspy.obj_compound as obj_compound 
+import mspy.obj_peaklist as obj_peaklist
 
 # load modules
-import mspy.calculations
-import mspy.mod_basics
-import mspy.mod_signal
-import mspy.mod_peakpicking
+import mspy.calculations as calculations
+import mspy.mod_basics as mod_basics
+import mspy.mod_signal as mod_signal
+import mspy.mod_peakpicking as mod_peakpicking
 
 
 # ISOTOPIC PATTERN FUNCTIONS

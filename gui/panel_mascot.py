@@ -27,12 +27,12 @@ import os.path
 
 # load modules
 from gui.ids import *
-import gui.mwx
-import gui.images
+import gui.mwx as mwx
+import gui.images as images
 import gui.config as config
-import gui.libs
+import gui.libs as libs
 import mspy
-import gui.doc
+import gui.doc as doc
 
 
 # FLOATING PANEL WITH MASCOT SEARCH

@@ -28,13 +28,13 @@ from mspy.mod_stopper import CHECK_FORCE_QUIT
 import mspy.blocks
 
 # load objects
-import mspy.obj_compound
-import mspy.obj_peak
-import mspy.obj_peaklist
+import mspy.obj_compound as obj_compound
+import mspy.obj_peak as obj_peak
+import mspy.obj_peaklist as obj_peaklist
 
 # load modules
-import mspy.mod_basics
-import mspy.mod_signal
+import mspy.mod_basics as mod_basics
+import mspy.mod_signal as mod_signal
 
 
 # BASIC CONSTANTS

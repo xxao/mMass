@@ -1187,37 +1187,37 @@ class dlgCanvasProperties(wx.Dialog):
         # make canvas params
         mzDigits_label = wx.StaticText(self, -1, "m/z precision:")
         self.mzDigits_slider = wx.Slider(self, -1, config.main['mzDigits'], 0, 6, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.mzDigits_slider.SetTickFreq(1,1)
+        self.mzDigits_slider.SetTickFreq(1)
         self.mzDigits_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         intDigits_label = wx.StaticText(self, -1, "Intensity precision:")
         self.intDigits_slider = wx.Slider(self, -1, config.main['intDigits'], 0, 6, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.intDigits_slider.SetTickFreq(1,1)
+        self.intDigits_slider.SetTickFreq(1)
         self.intDigits_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         posBarSize_label = wx.StaticText(self, -1, "Bars height:")
         self.posBarSize_slider = wx.Slider(self, -1, config.spectrum['posBarSize'], 5, 20, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.posBarSize_slider.SetTickFreq(5,1)
+        self.posBarSize_slider.SetTickFreq(5)
         self.posBarSize_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         gelHeight_label = wx.StaticText(self, -1, "Gel height:")
         self.gelHeight_slider = wx.Slider(self, -1, config.spectrum['gelHeight'], 10, 50, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.gelHeight_slider.SetTickFreq(5,1)
+        self.gelHeight_slider.SetTickFreq(5)
         self.gelHeight_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         axisFontSize_label = wx.StaticText(self, -1, "Canvas font size:")
         self.axisFontSize_slider = wx.Slider(self, -1, config.spectrum['axisFontSize'], 5, 15, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.axisFontSize_slider.SetTickFreq(2,1)
+        self.axisFontSize_slider.SetTickFreq(2)
         self.axisFontSize_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         labelFontSize_label = wx.StaticText(self, -1, "Label font size:")
         self.labelFontSize_slider = wx.Slider(self, -1, config.spectrum['labelFontSize'], 5, 15, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.labelFontSize_slider.SetTickFreq(2,1)
+        self.labelFontSize_slider.SetTickFreq(2)
         self.labelFontSize_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         notationMaxLength_label = wx.StaticText(self, -1, "Notation length:")
         self.notationMaxLength_slider = wx.Slider(self, -1, config.spectrum['notationMaxLength'], 1, 100, size=(150, -1), style=mwx.SLIDER_STYLE)
-        self.notationMaxLength_slider.SetTickFreq(10,1)
+        self.notationMaxLength_slider.SetTickFreq(10)
         self.notationMaxLength_slider.Bind(wx.EVT_SCROLL, self.onChange)
         
         # pack elements
