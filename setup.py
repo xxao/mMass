@@ -5,6 +5,8 @@ from gui.config import version, nightbuild
 if nightbuild:
     version = '%s (%s)' % (version, nightbuild)
 
+
+
 # make win32 distribution
 if sys.platform == 'win32':
     from distutils.core import setup
@@ -24,7 +26,7 @@ if sys.platform == 'win32':
         ]),
         ("",[
             "license.txt",
-            "readme.txt",
+            "readme.md",
             "User Guide.pdf",
         ]),
     ]
@@ -36,7 +38,7 @@ if sys.platform == 'win32':
         optimize = 2,
         excludes = ["Tkconstants","Tkinter","tcl"],
     )
-    
+    print("made it here")
     # main setup
     setup(
         name = "mMass",
@@ -53,6 +55,8 @@ if sys.platform == 'win32':
         data_files = additionalFiles,
         options = dict(py2exe = py2exe_options),
         zipfile = None
+
+        
     )
 
 
@@ -137,6 +141,8 @@ if sys.platform == 'darwin':
         ),
     )
     
+
+    print("made it here")
     # main setup
     setup(
         app = ['mmass.py'],
