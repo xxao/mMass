@@ -34,7 +34,7 @@ class panelDocumentInfo(wx.MiniFrame):
     """Document info tools."""
     
     def __init__(self, parent, tool='summary'):
-        wx.MiniFrame.__init__(self, parent, -1, 'Document Information', size=(400, 200), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.MiniFrame.__init__(self, parent, -1, 'Document Information', size=(400, 200), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER  | wx.MAXIMIZE_BOX))
         
         self.parent = parent
         

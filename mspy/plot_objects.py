@@ -917,7 +917,13 @@ class spectrum:
         self.spectrumCropped = self.spectrumPoints
         self.spectrumScaled = self.spectrumCropped
         if len(self.spectrumPoints):
-            self.spectrumBox = (numpy.minimum.reduce(self.spectrumPoints), numpy.maximum.reduce(self.spectrumPoints))
+
+            minMz = min(self.spectrumPoints, key=lambda peak: peak.mz)
+            maxMz = max(self.spectrumPoints, key=lambda peak: peak.mz)
+            minY = min(self.spectrumPoints, key=lambda peak: peak.intensity)
+            maxY = max(self.spectrumPoints, key=lambda peak: peak.intensity)
+
+            self.spectrumBox = ((minMz.mz,minY.intensity),(maxMz.mz,maxY.intensity))
         
         # convert peaklist points to array
         self.peaklist = copy.deepcopy(scan.peaklist)

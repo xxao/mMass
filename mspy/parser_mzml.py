@@ -182,7 +182,10 @@ class parseMZML():
                 newpoints.append(obj_peak.peak(p[0], p[1]))
             scan = obj_scan.scan(peaklist=obj_peaklist.peaklist(newpoints))
         else:
-            scan = obj_scan.scan(profile=newpoints)
+             for x, p in enumerate(points):
+           
+                newpoints.append(obj_peak.peak(p[0], p[1]))
+             scan = obj_scan.scan(profile=newpoints)
         
         # set metadata
         scan.title = scanData['title']
