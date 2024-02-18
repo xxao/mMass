@@ -1,6 +1,6 @@
-# Official mMass Repository
+# mMass Backup Repository
 
-This is the official source code backup repository for
+This is my original source code backup repository for
 mMass software. Although mMass is no longer actively
 developed and supported I decided to put the code here for others to be able
 to share it, fork it and all the git craziness. Feel free to make your own
