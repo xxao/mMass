@@ -26,6 +26,11 @@ of the day, the code has not been touched since 2013.
 - wxPython 2.8.12.1
 
 
+## Distributions
+
+The last available distributions are available in [separate repo](https://github.com/xxao/mMass-Dist).
+
+
 ## Disclaimer
 
 This program is distributed in the hope that it will be useful, but WITHOUT
